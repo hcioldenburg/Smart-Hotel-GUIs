@@ -1,0 +1,242 @@
+[
+  {
+    "id": "smartfan",
+    "type": "rect",
+    "x": 110,
+    "y": 100,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Fan"
+  },
+  {
+    "id": "socket_fan",
+    "type": "rect",
+    "x": 110,
+    "y": 35,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Smart Plug"
+  },
+  {
+    "id": "floorlamp",
+    "type": "rect",
+    "x": 100,
+    "y": 530,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Floor Lamp"
+  },
+  {
+    "id": "tv",
+    "type": "rect",
+    "x": 280,
+    "y": 480,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "TV"
+  },
+  {
+    "id": "socket_tv",
+    "type": "rect",
+    "x": 280,
+    "y": 530,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Smart Plug"
+  },
+  {
+    "id": "ipad",
+    "type": "rect",
+    "x": 380,
+    "y": 500,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "IPad"
+  },
+  {
+    "id": "hub",
+    "type": "rect",
+    "x": 490,
+    "y": 120,
+    "width": 60,
+    "height": 60,
+    "fill": "orange",
+    "label": "Hub"
+  },
+  {
+    "id": "curtain",
+    "type": "rect",
+    "x": 30,
+    "y": 100,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Curtain"
+  },
+  {
+    "id": "rollo",
+    "type": "rect",
+    "x": 30,
+    "y": 460,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Roller Shutter"
+  },
+  {
+    "id": "heater",
+    "type": "rect",
+    "x": 30,
+    "y": 400,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Heater"
+  },
+  {
+    "id": "presencesensor",
+    "type": "rect",
+    "x": 280,
+    "y": 350,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Presencesensor"
+  },
+  {
+    "id": "doorsensor",
+    "type": "rect",
+    "x": 540,
+    "y": 430,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Doorsensor"
+  },
+  {
+    "id": "windowsensor",
+    "type": "rect",
+    "x": 30,
+    "y": 340,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Windowsensor"
+  },
+  {
+    "id": "windowlight",
+    "type": "rect",
+    "x": 30,
+    "y": 160,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Walllight"
+  },
+  {
+    "id": "temperaturesensor",
+    "type": "rect",
+    "x": 30,
+    "y": 220,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Temperaturesensor"
+  },
+  {
+    "id": "rolloswitch",
+    "type": "rect",
+    "x": 30,
+    "y": 280,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Roller Shutter Control"
+  },
+  {
+    "id": "doorlight",
+    "type": "rect",
+    "x": 442,
+    "y": 500,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Walllight"
+  },
+  {
+    "id": "doorswitch",
+    "type": "rect",
+    "x": 500,
+    "y": 500,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Wallswitch"
+  },
+  {
+    "id": "bedlight_l",
+    "type": "rect",
+    "x": 180,
+    "y": 84,
+   "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Bedlight"
+  },
+  {
+    "id": "socket_bedlightl",
+    "type": "rect",
+    "x": 180,
+    "y": 35,
+   "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Smart Plug"
+  },
+  {
+    "id": "sf02",
+    "type": "rect",
+    "x": 180,
+    "y": 140,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Button"
+  },
+  {
+    "id": "bedlight_r",
+    "type": "rect",
+    "x": 400,
+    "y": 84,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Bedlight"
+  },
+  {
+    "id": "sf01",
+    "type": "rect",
+    "x": 400,
+    "y": 140,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Button"
+  },
+  {
+    "id": "FloorLampButton",
+    "type": "rect",
+    "x": 170,
+    "y": 530,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Button"
+  }
+]

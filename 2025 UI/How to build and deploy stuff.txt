@@ -1,0 +1,13 @@
+1) Terminal: npm run build-vite
+2) Docker: docker build --platform=linux/amd64 -f src/deploy/baseline.containerfile -t registry-gitlab.offis.de/mwozniak/smart-hotel-lab/structual:development .
+        Replace structual:development with the (nameOfTheUI):development
+3) Docker: docker push registry-gitlab.offis.de/mwozniak/smart-hotel-lab/structual:development
+        Replace structual:development with the (nameOfTheUI):development
+4) Terminal: uol-shhub@UOL-SHHub:~/middleware$ podman-compose -f artefacts.development.yml pull 
+5) Terminal: uol-shhub@UOL-SHHub:~/middleware$ podman-compose -f artefacts.development.yml up -d 
+
+Done!
+
+P.S. Interceptor runs on port 3000, so ssh -i /Users/joker/.ssh/id_rsa -L 3000:localhost:3000 uol-shhub@86.38.4.62 to access and setup scenarios
+
+

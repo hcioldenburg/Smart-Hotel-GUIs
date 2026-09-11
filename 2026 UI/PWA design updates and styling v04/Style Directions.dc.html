@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #E7E5DF; font-family: 'Manrope', system-ui, sans-serif; }
+</style>
+</helmet>
+
+<div style="width: max-content; min-width: 100%; min-height: 100vh; padding: 48px; background: #E7E5DF; box-sizing: border-box;">
+  <div style="margin-bottom: 8px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 26px; color: #2A2A30;">SmartHotel — Palette Directions</div>
+  <div style="margin-bottom: 36px; font-size: 15px; color: #6F6A60; max-width: 760px; line-height: 1.5;">Three skins of the new floor-map view, all built on charcoal + amber from your render. Pick one and I'll lock the whole app to it. The live app currently runs Direction A.</div>
+
+  <div style="display: flex; gap: 48px; align-items: flex-start;">
+
+    <sc-for list="{{ directions }}" as="dir" hint-placeholder-count="3">
+      <div style="flex: none; width: 600px;">
+        <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px;">
+          <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; color: #2A2A30;">{{ dir.tag }}</span>
+          <span style="font-size: 14px; color: #8A857A;">{{ dir.name }}</span>
+        </div>
+
+        <!-- swatches -->
+        <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+          <sc-for list="{{ dir.swatches }}" as="sw" hint-placeholder-count="4">
+            <div style="display: flex; flex-direction: column; gap: 5px; align-items: center;">
+              <div style="width: 46px; height: 46px; border-radius: 11px; background: {{ sw.color }}; border: 1px solid rgba(0,0,0,.08);"></div>
+              <span style="font-size: 10px; color: #8A857A; letter-spacing: .2px;">{{ sw.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <!-- frame -->
+        <div style="background: #FFFFFF; border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,.10); overflow: hidden;">
+          <div style="{{ dir.appStyle }}">
+            <!-- mini topbar -->
+            <div style="{{ dir.topbarStyle }}">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 18px; height: 18px; border-radius: 5px; background: #E0992F;"></div>
+                <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14px; color: {{ dir.fg }};">SmartHotel</span>
+              </div>
+              <div style="{{ dir.clockStyle }}">6:24 PM</div>
+            </div>
+
+            <div style="display: flex;">
+              <!-- mini rail -->
+              <div style="{{ dir.railStyle }}">
+                <div style="{{ dir.railActive }}"></div>
+                <div style="{{ dir.railItem }}"></div>
+                <div style="{{ dir.railItem }}"></div>
+              </div>
+
+              <!-- map area -->
+              <div style="flex: 1; padding: 14px;">
+                <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+                  <span style="{{ dir.pillActive }}">All</span>
+                  <span style="{{ dir.pill }}">Lights</span>
+                  <span style="{{ dir.pill }}">Sensors</span>
+                </div>
+                <div style="position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden; background: #2A2A30;">
+                  <img src="assets/floor-map.png" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+                  <div style="position: absolute; inset: 0; background: {{ dir.scrim }}; pointer-events: none;"></div>
+                  <sc-for list="{{ dir.bubbles }}" as="b" hint-placeholder-count="6">
+                    <div style="position: absolute; left: {{ b.left }}; top: {{ b.top }}; transform: translate(-50%,-50%); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: {{ b.fg }}; background: {{ b.bg }}; box-shadow: {{ b.shadow }};">
+                      {{ b.iconEl }}
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  ICONS = {
+    bulb:['M9 18h6','M10 21h4','M8.5 14a5 5 0 1 1 7 0c-.7.8-1.2 1.6-1.4 2.5H9.9C9.7 15.6 9.2 14.8 8.5 14Z'],
+    floorlamp:['M9.4 3h5.2l1.9 7H7.5z','M12 10v8','M9 21h6'],
+    fan:['M12 12V3a4.5 4.5 0 0 1 0 9','M12 12h9a4.5 4.5 0 0 1-9 0','M12 12v9a4.5 4.5 0 0 1 0-9','M12 12H3a4.5 4.5 0 0 1 9 0'],
+    curtains:['M3 3h18','M6 3v17','M18 3v17','M6 3c3.4 2.5 3.4 14.5 0 17','M18 3c-3.4 2.5-3.4 14.5 0 17','M12 3v17'],
+    thermometer:['M14 14.8V6a2 2 0 1 0-4 0v8.8a4 4 0 1 0 4 0Z'],
+    motion:['M12 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z','M9 22v-5l-1.5-3 4-2 4 2L14 17v5','M4 9a8 8 0 0 1 16 0'],
+    walllamp:['M5 3v18','M5 8h5a5 5 0 0 1 5 5','M11 13h8l-4 6z'],
+  };
+  ic(name, color) {
+    const ds = this.ICONS[name] || this.ICONS.bulb;
+    return React.createElement('svg', { width: 17, height: 17, viewBox: '0 0 24 24', fill: 'none', stroke: color, strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round' },
+      ds.map((d, i) => React.createElement('path', { key: i, d })));
+  }
+
+  // device layout shared across directions: [icon, x, y, on/off]
+  layout = [
+    ['curtains', 72, 12, false],
+    ['walllamp', 43, 9, false],
+    ['floorlamp', 17, 27, true],
+    ['bulb', 84, 28, true],
+    ['fan', 84, 15, false],
+    ['motion', 50, 50, false],
+    ['thermometer', 90, 71, false],
+  ];
+
+  bubbles(theme) {
+    return this.layout.map(([icon, x, y, on]) => ({
+      left: x + '%', top: y + '%',
+      iconEl: this.ic(icon, on ? theme.onFg : theme.offFg),
+      bg: on ? theme.onBg : theme.offBg,
+      fg: on ? theme.onFg : theme.offFg,
+      shadow: on ? theme.onShadow : theme.offShadow,
+    }));
+  }
+
+  renderVals() {
+    const dirs = [
+      {
+        tag: 'A', name: 'Warm Linen  ·  the lead',
+        fg: '#25242A',
+        appStyle: 'background:#F4F1EA;',
+        topbarStyle: 'height:42px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #E5DFD2;',
+        clockStyle: 'font-family:\'Space Grotesk\',sans-serif;font-weight:600;font-size:11px;color:#3A3833;border:1px solid #E0D9CB;background:#FBFAF6;border-radius:999px;padding:4px 11px;',
+        railStyle: 'width:54px;flex:none;background:#24242A;padding-top:12px;display:flex;flex-direction:column;align-items:center;gap:8px;',
+        railActive: 'width:38px;height:38px;border-radius:11px;background:rgba(224,153,47,.20);',
+        railItem: 'width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.05);',
+        pillActive: 'font-size:11px;font-weight:600;padding:5px 12px;border-radius:999px;background:#F6E6C9;color:#9A6A1E;border:1px solid #EAD3A4;',
+        pill: 'font-size:11px;font-weight:600;padding:5px 12px;border-radius:999px;background:#FFFFFF;color:#6F6A60;border:1px solid #E7E1D5;',
+        scrim: 'radial-gradient(120% 120% at 50% 35%, rgba(36,36,42,.10) 0%, rgba(36,36,42,.34) 100%)',
+        theme: { onBg:'#E0992F', onFg:'#2A2A30', offBg:'#FBFAF6', offFg:'#2A2A30', onShadow:'0 0 0 3px rgba(224,153,47,.22), 0 0 16px 4px rgba(224,153,47,.55)', offShadow:'0 3px 9px rgba(0,0,0,.3)' },
+        swatches: [{ color:'#F4F1EA', label:'Canvas' },{ color:'#24242A', label:'Rail' },{ color:'#E0992F', label:'Amber' },{ color:'#FFFFFF', label:'Card' }],
+      },
+      {
+        tag: 'B', name: 'Charcoal  ·  dark & premium',
+        fg: '#F2EEE5',
+        appStyle: 'background:#1E1E22;',
+        topbarStyle: 'height:42px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #2E2E34;',
+        clockStyle: 'font-family:\'Space Grotesk\',sans-serif;font-weight:600;font-size:11px;color:#CFC9BC;border:1px solid #3A3A42;background:#27272C;border-radius:999px;padding:4px 11px;',
+        railStyle: 'width:54px;flex:none;background:#111114;padding-top:12px;display:flex;flex-direction:column;align-items:center;gap:8px;',
+        railActive: 'width:38px;height:38px;border-radius:11px;background:rgba(224,153,47,.24);',
+        railItem: 'width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.04);',
+        pillActive: 'font-size:11px;font-weight:600;padding:5px 12px;border-radius:999px;background:rgba(224,153,47,.18);color:#E7A53A;border:1px solid rgba(224,153,47,.4);',
+        pill: 'font-size:11px;font-weight:600;padding:5px 12px;border-radius:999px;background:#27272C;color:#A8A296;border:1px solid #34343C;',
+        scrim: 'radial-gradient(120% 120% at 50% 35%, rgba(15,15,18,.18) 0%, rgba(15,15,18,.52) 100%)',
+        theme: { onBg:'#E0992F', onFg:'#1A1306', offBg:'#2C2C32', offFg:'#E9E4D8', onShadow:'0 0 0 3px rgba(224,153,47,.28), 0 0 22px 6px rgba(224,153,47,.7)', offShadow:'0 3px 10px rgba(0,0,0,.55)' },
+        swatches: [{ color:'#1E1E22', label:'Canvas' },{ color:'#111114', label:'Rail' },{ color:'#E0992F', label:'Amber' },{ color:'#27272C', label:'Card' }],
+      },
+      {
+        tag: 'C', name: 'Paper & Slate  ·  soft utilitarian',
+        fg: '#2C2C34',
+        appStyle: 'background:#FAF8F4;',
+        topbarStyle: 'height:42px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #EAE6DE;',
+        clockStyle: 'font-family:\'Space Grotesk\',sans-serif;font-weight:600;font-size:11px;color:#4A4A52;border:1px solid #E2DED4;background:#FFFFFF;border-radius:999px;padding:4px 11px;',
+        railStyle: 'width:54px;flex:none;background:#3C3C44;padding-top:12px;display:flex;flex-direction:column;align-items:center;gap:8px;',
+        railActive: 'width:38px;height:38px;border-radius:11px;background:rgba(224,153,47,.22);',
+        railItem: 'width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.06);',
+        pillActive: 'font-size:11px;font-weight:600;padding:5px 12px;border-radius:999px;background:#FBEFD9;color:#A66E22;border:1px solid #EDD9B2;',
+        pill: 'font-size:11px;font-weight:600;padding:5px 12px;border-radius:999px;background:#FFFFFF;color:#6E6A62;border:1px solid #E6E1D7;',
+        scrim: 'radial-gradient(120% 120% at 50% 35%, rgba(60,60,68,.06) 0%, rgba(60,60,68,.26) 100%)',
+        theme: { onBg:'#D98E2A', onFg:'#2A2008', offBg:'#FFFFFF', offFg:'#3C3C44', onShadow:'0 0 0 3px rgba(217,142,42,.18), 0 0 14px 3px rgba(217,142,42,.42)', offShadow:'0 2px 8px rgba(60,60,68,.22)' },
+        swatches: [{ color:'#FAF8F4', label:'Canvas' },{ color:'#3C3C44', label:'Rail' },{ color:'#D98E2A', label:'Amber' },{ color:'#FFFFFF', label:'Card' }],
+      },
+    ];
+
+    return {
+      directions: dirs.map(d => ({ ...d, bubbles: this.bubbles(d.theme) })),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s --cacert certs/rootCA.pem -H 'Authorization: Bearer __TRACKED_VAR__' https://192.168.178.37:5173/api/states/light.floorlamp)",
+      "Bash(curl -s -i --cacert certs/rootCA.pem --max-time 5 -H 'Connection: Upgrade' -H 'Upgrade: websocket' -H 'Sec-WebSocket-Version: 13' -H 'Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==' https://192.168.178.37:5173/api/websocket)"
+    ]
+  }
+}

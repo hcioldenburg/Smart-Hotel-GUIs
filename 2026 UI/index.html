@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- viewport-fit=cover + the fullscreen manifest keep the app edge-to-edge
+         with the Android system bars hidden when launched from the home screen. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>SmartHotel</title>
+
+    <!-- PWA. The manifest is generated per port by vite.config.ts, so each
+         condition installs as its own app with its own badged icon. -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#E0992F" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <script>
+      // Per-condition touch icon (port 5172 = Dashboard, 5173 = Floor Map).
+      (function () {
+        var c = location.port === '5173' ? 2 : 1;
+        var l = document.createElement('link');
+        l.rel = 'apple-touch-icon';
+        l.href = '/icon-cond' + c + '-192.png';
+        document.head.appendChild(l);
+      })();
+      // Registering a service worker is what makes Android offer "Install app"
+      // instead of a plain bookmark. Needs a secure context (HTTPS, or the origin
+      // allow-listed in chrome://flags) — it is skipped silently otherwise.
+      if ('serviceWorker' in navigator && window.isSecureContext) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js').catch(function () {});
+        });
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

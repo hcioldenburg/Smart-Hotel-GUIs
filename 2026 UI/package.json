@@ -1,0 +1,39 @@
+{
+  "name": "smart-home-ui-rework",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:c1": "vite --port 5172 --strictPort",
+    "dev:c2": "vite --port 5173 --strictPort",
+    "build": "tsc -b && vite build",
+    "build:c1": "tsc -b && vite build --mode c1",
+    "build:c2": "tsc -b && vite build --mode c2",
+    "build:all": "tsc -b && vite build --mode c1 --outDir dist/c1 && vite build --mode c2 --outDir dist/c2",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.2.0",
+    "@mui/material": "^7.2.0",
+    "axios": "^1.18.1",
+    "home-assistant-js-websocket": "^9.6.0",
+    "konva": "^9.3.22",
+    "lucide-react": "^0.522.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-konva": "^19.0.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.10",
+    "@types/node": "^26.1.0",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^4.4.1",
+    "tailwindcss": "^4.1.10",
+    "typescript": "~5.8.3",
+    "vite": "^6.3.5"
+  }
+}

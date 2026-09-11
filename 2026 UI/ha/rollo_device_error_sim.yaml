@@ -1,0 +1,161 @@
+# Roller-shutter device-error simulation (HA-side command gate)
+#
+# ##########################################################################
+# DO NOT PASTE THIS WHOLE FILE INTO HA'S EDITOR. It is a configuration.yaml-
+# shaped reference copy; the UI editors validate one script / one automation
+# and reject the top-level keys with:
+#     Message malformed: extra keys not allowed @ data['input_boolean']
+# Copy one block at a time, de-indented, without its leading "- ".
+# ##########################################################################
+#
+# WHAT THIS SIMULATES
+# While input_boolean.roller_dev_err_sim is on, the roller shutter behaves as if
+# its wheel were stuck: every command is accepted, the motor engages, and the
+# shutter moves 1% and no further. Whether the command came from the portal, a
+# study rule, or the wall switch makes no difference.
+#
+# 1% is the smallest step the hardware can be given — HA cover positions are
+# integers 0..100, so anything finer truncates to no movement at all.
+#
+# WHY IT IS A COMMAND GATE AND NOT A REACTIVE CLAMP
+# The first version of this watched cover.rollo and tried to stop a move in
+# progress. That cannot work: cover.rollo never reports `opening` or `closing`
+# (eight hours of history shows only `open` and `unavailable`), so HA does not
+# learn the shutter moved until it has already arrived. Stopping it after the
+# fact produced a full trip to the target followed by a second trip back, which
+# reads as a haywire shutter rather than a stuck one.
+#
+# So the position is clamped *before* it reaches the hardware. Everything that
+# moves the shutter calls script.roller_move instead of cover.set_cover_position,
+# and the script decides what the device is actually told.
+#
+# CALLERS THAT MUST GO THROUGH THE GATE (all rewritten below)
+#   automation.exp_window_open_shutter_open   cover.set_cover_position -> 100
+#   automation.exp_evening_wind_down          device action set_position -> 20
+#   automation.exp_morning_routine            device action set_position -> 81
+#   automation.ps_roller_shutter_switch       device actions open / close / stop
+#   the portal                                src/components/DeviceTile.tsx and
+#                                             DeviceDetailPanel.tsx, routed via
+#                                             DeviceDef.positionScript
+#
+# Roller shutter device_id: 0726b5708c7d06e31ba6dc2e9d3ec793
+# Curtain device_id:        138f0ddc7ee52ee489dfbf72e067d6c3  (leave alone)
+#
+# See also src/lib/faultSim.ts, which implements the *connection* error for
+# sensors by an unrelated mechanism. The two faults do not interact.
+
+# ---------------------------------------------------------------------------
+# Helper — create via Settings > Devices & Services > Helpers.
+# Only this one is needed. input_boolean.roller_sim_busy and
+# input_number.roller_sim_anchor belonged to the old reactive clamp and can be
+# deleted.
+# ---------------------------------------------------------------------------
+input_boolean:
+  roller_dev_err_sim:
+    name: Roller device error sim
+    icon: mdi:alert-octagon
+
+# ---------------------------------------------------------------------------
+# The gate. Create under Settings > Automations & Scenes > Scripts.
+# The entity ID must end up as script.roller_move — set it in the script's
+# rename dialog if HA derives something else from the alias.
+# ---------------------------------------------------------------------------
+script:
+  roller_move:
+    alias: Roller move (device-error gate)
+    description: >-
+      Single entry point for moving the roller shutter. Passes the requested
+      position through untouched, unless the device-error simulation is armed,
+      in which case the shutter is told to move only 1% toward the target.
+    # queued rather than single: the portal debounces drags but a rule firing
+    # mid-drag would otherwise be dropped silently.
+    mode: queued
+    max: 10
+    fields:
+      position:
+        name: Position
+        description: Requested position, 0 (closed) to 100 (open).
+        required: true
+        selector:
+          number:
+            min: 0
+            max: 100
+    sequence:
+      - variables:
+          cur: "{{ state_attr('cover.rollo','current_position') | int(0) }}"
+          want: "{{ position | int(cur) }}"
+          armed: "{{ is_state('input_boolean.roller_dev_err_sim','on') }}"
+          # Armed: 1% toward the requested position, clamped to 0..100. A
+          # request equal to the current position stays a no-op so the motor
+          # doesn't twitch on a redundant command.
+          eff: >-
+            {% if not armed or want == cur %}
+            {{ want }}
+            {% else %}
+            {{ [[cur + (1 if want > cur else -1), 0] | max, 100] | min }}
+            {% endif %}
+      - action: cover.set_cover_position
+        target:
+          entity_id: cover.rollo
+        data:
+          position: "{{ eff | int }}"
+
+# ---------------------------------------------------------------------------
+# Rule rewrites — APPLIED. All four callers now route through the gate; the
+# originals are in ha/backups/*.before.json if any needs reverting. Each rewrite
+# replaced ONLY the shutter action, leaving every other action untouched.
+#
+# Still bypassing the gate, but DISABLED — if either is ever re-enabled it will
+# move the shutter directly and the fault will not apply to it:
+#   automation.exp_rollershutter_eveningclosing
+#   automation.ps_roller_shutter_switch_old
+# ---------------------------------------------------------------------------
+#
+# automation.exp_window_open_shutter_open — replace the whole actions: block
+#   was: action: cover.set_cover_position, target.device_id 0726b570..., position 100
+#
+#   actions:
+#     - action: script.roller_move
+#       data:
+#         position: 100
+#
+# automation.exp_evening_wind_down — replace the FIRST action only
+#   was: device_id 0726b570..., domain cover, type set_position, position 20
+#   (keep the curtain close and the floor lamp turn_on actions untouched)
+#
+#     - action: script.roller_move
+#       data:
+#         position: 20
+#
+# automation.exp_morning_routine — replace the SECOND action only
+#   was: device_id 0726b570..., domain cover, type set_position, position 81
+#   (keep the curtain open, the script call, the delay and the androidtv
+#   actions untouched)
+#
+#     - action: script.roller_move
+#       data:
+#         position: 81
+#
+# automation.ps_roller_shutter_switch — inside the choose:, replace the two
+# device actions on device 0726b570... The RolloSwitchRelease branch keeps its
+# stop action unchanged; under the fault the move is only 1% anyway, so stop
+# has nothing left to do.
+#
+#   RolloSwitchUP branch:
+#     - action: script.roller_move
+#       data:
+#         position: 100
+#
+#   RolloSwitchDOWN branch:
+#     - action: script.roller_move
+#       data:
+#         position: 0
+
+# ---------------------------------------------------------------------------
+# Cleanup — the reactive clamp is superseded. Delete both automations and the
+# two helpers they used.
+# ---------------------------------------------------------------------------
+#   automation.roller_sim_capture_anchor        (id 1784561394498)
+#   automation.roller_sim_clamp_movement_to_1   (id 1784561505365)
+#   input_boolean.roller_sim_busy
+#   input_number.roller_sim_anchor

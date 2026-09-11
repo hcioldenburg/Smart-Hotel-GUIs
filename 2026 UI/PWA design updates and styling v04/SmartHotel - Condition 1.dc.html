@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#DCD6CA"/><rect x="30" y="30" width="40" height="40" rx="9" fill="#B8862E"/><text x="50" y="57" font-family="sans-serif" font-size="20" font-weight="700" fill="#fff" text-anchor="middle">SH</text></svg></template>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #DCD6CA; font-family: 'Manrope', system-ui, sans-serif; }
+  .sh-scroll::-webkit-scrollbar { width: 10px; height: 10px; }
+  .sh-scroll::-webkit-scrollbar-thumb { background: #D2CBBC; border-radius: 999px; border: 3px solid transparent; background-clip: content-box; }
+  .sh-scroll::-webkit-scrollbar-track { background: transparent; }
+  input[type=range].sh-range { -webkit-appearance: none; appearance: none; height: 6px; border-radius: 999px; background: #E7E1D5; outline: none; }
+  input[type=range].sh-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #E0992F; cursor: pointer; box-shadow: 0 1px 4px rgba(176,118,30,.5); }
+  @keyframes shSense { 0% { transform: scale(.5); opacity: .65; } 70% { opacity: 0; } 100% { transform: scale(1.65); opacity: 0; } }
+</style>
+</helmet>
+
+<div style="width: 1366px; height: 1024px; margin: 24px auto; background: #F4F1EA; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; position: relative; color: #25242A; box-shadow: 0 24px 60px rgba(40,38,32,.22); font-family: 'Manrope', system-ui, sans-serif;">
+
+  <!-- Top bar -->
+  <div style="height: 64px; flex: none; padding: 0 26px; display: flex; align-items: center; justify-content: space-between; background: #F4F1EA; border-bottom: 1px solid #E5DFD2;">
+    <div style="display: flex; align-items: center; gap: 11px;">
+      <div style="width: 28px; height: 28px; border-radius: 8px; background: #E0992F; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(224,153,47,.45);">
+        <div style="width: 11px; height: 11px; border-radius: 3px; background: #2A2A30;"></div>
+      </div>
+      <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 21px; letter-spacing: -.5px; color: #25242A;">SmartHotel</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 9px; border: 1px solid #E0D9CB; background: #FBFAF6; border-radius: 999px; padding: 7px 16px;">
+      <span style="display: flex; color: #6F6A60;">{{ clockIcon }}</span>
+      <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14px; color: #3A3833; letter-spacing: .3px;">{{ clock }}</span>
+    </div>
+  </div>
+
+  <!-- Body: rail + content -->
+  <div style="flex: 1; display: flex; min-height: 0;">
+
+    <!-- Nav rail -->
+    <div style="width: 90px; flex: none; background: #3E3D44; display: flex; flex-direction: column; align-items: stretch; gap: 0; padding-top: 16px;">
+      <sc-for list="{{ navList }}" as="nav" hint-placeholder-count="3">
+        <button onClick="{{ nav.onClick }}" style="{{ nav.btnStyle }}">
+          <span style="display: flex; margin-bottom: 5px;">{{ nav.iconEl }}</span>
+          <span style="font-size: 10.5px; font-weight: 600; letter-spacing: .1px; line-height: 1.1; text-align: center;">{{ nav.label }}</span>
+        </button>
+      </sc-for>
+    </div>
+
+    <!-- Content -->
+    <div class="sh-scroll" style="flex: 1; min-width: 0; overflow-y: auto; overflow-x: hidden;">
+      <div style="padding: 26px 30px 40px;">
+
+        <!-- Header row -->
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; min-height: 44px;">
+          <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 30px; letter-spacing: -.6px; color: #25242A; white-space: nowrap;">{{ pageTitle }}</h1>
+        </div>
+
+        <!-- Pills -->
+        <sc-if value="{{ showPills }}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
+            <sc-for list="{{ pillList }}" as="p" hint-placeholder-count="5">
+              <button onClick="{{ p.onClick }}" style="{{ p.style }}">
+                <sc-if value="{{ p.active }}" hint-placeholder-val="{{ true }}"><span style="display: flex;">{{ checkIcon }}</span></sc-if>
+                <span>{{ p.label }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <!-- ===================== YOUR ROOM ===================== -->
+        <sc-if value="{{ isRoom }}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; gap: 24px; margin-top: 24px; align-items: flex-start;">
+
+            <!-- LEFT: vertical view rail + cards/map/graph -->
+            <div style="flex: 1; min-width: 0; display: flex; gap: 18px; align-items: flex-start;">
+
+              <sc-if value="{{ showViewSwitch }}" hint-placeholder-val="{{ true }}">
+                <div style="display: flex; flex-direction: column; gap: 9px; flex: none; width: 172px; padding-top: 2px;">
+                  <sc-for list="{{ viewList }}" as="v" hint-placeholder-count="3">
+                    <button onClick="{{ v.onClick }}" style="{{ v.vStyle }}">
+                      <span style="display: flex;">{{ v.iconEl }}</span>
+                      <span>{{ v.label }}</span>
+                    </button>
+                  </sc-for>
+                </div>
+              </sc-if>
+
+              <div style="flex: 1; min-width: 0;">
+
+              <!-- Cards view (grouped dashboard) -->
+              <sc-if value="{{ roomCards }}" hint-placeholder-val="{{ true }}">
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 14px; align-items: start;">
+                  <sc-for list="{{ dashGroups }}" as="g" hint-placeholder-count="4">
+                    <div style="{{ g.panelStyle }}">
+                      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <span style="width: 30px; height: 30px; border-radius: 9px; background: #F4F0E7; display: flex; align-items: center; justify-content: center;">{{ g.iconEl }}</span>
+                        <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 16px; color: #2F2D28;">{{ g.name }}</span>
+                        <span style="font-size: 12px; color: #A39E93; font-weight: 600;">{{ g.count }}</span>
+                      </div>
+                      <div style="display: flex; flex-wrap: wrap; gap: 16px 6px; justify-content: space-around; align-items: flex-start;">
+                        <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="5">
+                          <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; width: 126px;">
+                            <div style="height: 118px; display: flex; align-items: center; justify-content: center;">{{ it.controlEl }}</div>
+                            <div style="font-weight: 700; font-size: 13px; color: #25242A; text-align: center; line-height: 1.2;">{{ it.name }}</div>
+                            <div style="font-size: 11.5px; color: #8A857A; text-align: center;">{{ it.statusText }}</div>
+                          </div>
+                        </sc-for>
+                      </div>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+
+              <!-- Floor map view -->
+              <sc-if value="{{ roomMap }}" hint-placeholder-val="{{ true }}">
+                <div style="position: relative; width: 100%; max-width: 700px; aspect-ratio: 1 / 1; border-radius: 18px; overflow: hidden; border: 1px solid #E2DBCC; box-shadow: 0 10px 34px rgba(40,38,32,.14); background: #2A2A30;">
+                  <img src="assets/floor-map.png" alt="Room floor map" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+                  <!-- overlay scrim: warm darken + vignette so bubbles pop -->
+                  <div style="position: absolute; inset: 0; background: radial-gradient(120% 120% at 50% 35%, rgba(36,36,42,.10) 0%, rgba(36,36,42,.34) 100%); pointer-events: none;"></div>
+                  <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(244,241,234,.04) 0%, rgba(36,36,42,.16) 100%); pointer-events: none;"></div>
+
+                  <sc-for list="{{ roomMapItems }}" as="dv" hint-placeholder-count="12">
+                    <button onClick="{{ dv.onSelect }}" style="position: absolute; left: {{ dv.left }}; top: {{ dv.top }}; transform: translate(-50%, -50%); background: none; border: none; padding: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 5px; z-index: {{ dv.z }};">
+                      <span style="{{ dv.bubbleStyle }}">
+                        {{ dv.iconEl }}
+                        <sc-if value="{{ dv.isSensor }}" hint-placeholder-val="{{ true }}">{{ dv.senseRingEl }}</sc-if>
+                      </span>
+                      <sc-if value="{{ dv.isSelected }}" hint-placeholder-val="{{ true }}">
+                        <span style="background: #24242A; color: #F4F1EA; font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px; white-space: nowrap; box-shadow: 0 3px 10px rgba(0,0,0,.3);">{{ dv.name }}</span>
+                      </sc-if>
+                    </button>
+                  </sc-for>
+                </div>
+              </sc-if>
+
+              <!-- Graph view -->
+              <sc-if value="{{ roomGraph }}" hint-placeholder-val="{{ true }}">
+                <div style="position: relative; width: 100%; max-width: 700px; aspect-ratio: 1 / 1; border-radius: 18px; overflow: hidden; border: 1px solid #E2DBCC; box-shadow: 0 10px 34px rgba(40,38,32,.14); background: #2A2A30;">
+                  <img src="assets/floor-map.png" alt="Room floor map" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+                  <div style="position: absolute; inset: 0; background: radial-gradient(125% 125% at 50% 45%, rgba(34,34,40,.18) 0%, rgba(34,34,40,.44) 100%); pointer-events: none;"></div>
+                  {{ graphEdgesEl }}
+                  <sc-for list="{{ graphNodes }}" as="n" hint-placeholder-count="14">
+                    <button onClick="{{ n.onClick }}" style="position: absolute; left: {{ n.left }}; top: {{ n.top }}; transform: translate(-50%, -50%); opacity: {{ n.nodeOpacity }}; background: none; border: none; padding: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 5px; z-index: 2; transition: opacity .2s;">
+                      <span style="{{ n.bubbleStyle }}">{{ n.iconEl }}{{ n.ringEl }}</span>
+                      <sc-if value="{{ n.showLabel }}" hint-placeholder-val="{{ true }}">
+                        <span style="background: #F4F1EA; color: #25242A; font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; box-shadow: 0 3px 10px rgba(0,0,0,.4); position: absolute; top: 100%; margin-top: 5px;">{{ n.label }}</span>
+                      </sc-if>
+                    </button>
+                  </sc-for>
+                </div>
+              </sc-if>
+              </div>
+            </div>
+
+            <!-- RIGHT: device detail panel -->
+            <sc-if value="{{ showDevicePanel }}" hint-placeholder-val="{{ true }}">
+              <div style="width: 360px; flex: none; background: #FFFFFF; border: 1px solid #ECE6D9; border-radius: 18px; box-shadow: 0 10px 30px rgba(40,38,32,.10); overflow: hidden;">
+                <div style="padding: 18px 20px; border-bottom: 1px solid #F0EBDF; display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+                  <div style="display: flex; align-items: center; gap: 11px; min-width: 0;">
+                    <div style="{{ sel.avatarStyle }}">{{ sel.iconEl }}</div>
+                    <div style="min-width: 0;">
+                      <div style="font-size: 11.5px; color: #9A958C; font-weight: 600;">{{ sel.cat }}</div>
+                      <div style="font-weight: 700; font-size: 16px; color: #25242A; line-height: 1.15;">{{ sel.name }}</div>
+                    </div>
+                  </div>
+                  <button onClick="{{ closePanel }}" style="width: 30px; height: 30px; flex: none; border: none; background: #F4F0E7; border-radius: 9px; cursor: pointer; color: #6F6A60; display: flex; align-items: center; justify-content: center;">{{ closeIcon }}</button>
+                </div>
+                <div style="padding: 18px 20px;">
+                  <sc-if value="{{ sel.isControl }}" hint-placeholder-val="{{ true }}">
+                    <div style="display: flex; align-items: center; justify-content: space-between; background: #FBF6EC; border: 1px solid #F0E4CC; border-radius: 13px; padding: 13px 15px; margin-bottom: 18px;">
+                      <span style="font-weight: 600; font-size: 14px; color: #3A3833;">{{ sel.statusLine }}</span>
+                      <button onClick="{{ sel.onToggle }}" style="{{ sel.trackStyle }}"><span style="width: 24px; height: 24px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25);"></span></button>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ sel.isSlider }}" hint-placeholder-val="{{ true }}">
+                    <div style="background: #FBF6EC; border: 1px solid #F0E4CC; border-radius: 13px; padding: 13px 15px; margin-bottom: 18px;">
+                      <div style="display: flex; justify-content: space-between; margin-bottom: 11px;"><span style="font-weight: 600; font-size: 14px; color: #3A3833;">Position</span><span style="font-weight: 700; font-size: 14px; color: #C97E1E;">{{ sel.value }}%</span></div>
+                      <input class="sh-range" type="range" min="0" max="100" value="{{ sel.value }}" onInput="{{ sel.onSlide }}" style="width: 100%; background-image: {{ sel.rangeBg }};">
+                    </div>
+                  </sc-if>
+
+                  <div style="font-size: 12px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #A39E93; margin-bottom: 10px;">Parameters</div>
+                  <div style="display: flex; flex-direction: column; gap: 1px; background: #F0EBDF; border-radius: 11px; overflow: hidden; margin-bottom: 22px;">
+                    <div style="display: flex; justify-content: space-between; padding: 11px 14px; background: #FBFAF6;"><span style="font-size: 13px; color: #8A857A;">State</span><span style="font-size: 13px; font-weight: 600; color: #3A3833;">{{ sel.valueLabel }}</span></div>
+                    <div style="display: flex; justify-content: space-between; padding: 11px 14px; background: #FBFAF6;"><span style="font-size: 13px; color: #8A857A;">Last activity</span><span style="font-size: 13px; font-weight: 600; color: #3A3833;">{{ sel.last }}</span></div>
+                    <div style="display: flex; justify-content: space-between; padding: 11px 14px; background: #FBFAF6;"><span style="font-size: 13px; color: #8A857A;">Category</span><span style="font-size: 13px; font-weight: 600; color: #3A3833;">{{ sel.cat }}</span></div>
+                    <sc-if value="{{ sel.hasBattery }}" hint-placeholder-val="{{ true }}">
+                      <div style="display: flex; justify-content: space-between; padding: 11px 14px; background: #FBFAF6;"><span style="font-size: 13px; color: #8A857A;">Battery</span><span style="font-size: 13px; font-weight: 600; color: {{ sel.batteryColor }};">{{ sel.batteryLabel }}</span></div>
+                    </sc-if>
+                  </div>
+
+                  <div style="font-size: 12px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #A39E93; margin-bottom: 10px;">Attached Rules</div>
+                  <sc-if value="{{ sel.hasRules }}" hint-placeholder-val="{{ true }}">
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                      <sc-for list="{{ sel.ruleObjs }}" as="r" hint-placeholder-count="2">
+                        <button onClick="{{ r.onClick }}" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #FBFAF6; border: 1px solid #ECE6D9; border-radius: 11px; padding: 11px 14px; cursor: pointer; text-align: left;">
+                          <span style="font-size: 13.5px; font-weight: 600; color: #3A3833;">{{ r.name }}</span>
+                          <span style="display: flex; color: #C2BCAF;">{{ chevronIcon }}</span>
+                        </button>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ sel.noRules }}" hint-placeholder-val="{{ true }}">
+                    <div style="font-size: 13px; color: #B0AB9F; font-style: italic;">No rules attached.</div>
+                  </sc-if>
+                </div>
+              </div>
+            </sc-if>
+
+            <!-- RIGHT: rule detail panel (graph / map) -->
+            <sc-if value="{{ showRulePanelRoom }}" hint-placeholder-val="{{ true }}">
+              <div style="width: 380px; flex: none; background: #FFFFFF; border: 1px solid #ECE6D9; border-radius: 18px; box-shadow: 0 10px 30px rgba(40,38,32,.10); overflow: hidden;">
+                <div style="padding: 18px 20px; border-bottom: 1px solid #F0EBDF; display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
+                  <div style="display: flex; align-items: center; gap: 11px; min-width: 0;">
+                    <div style="width: 38px; height: 38px; flex: none; border-radius: 11px; background: #FFFFFF; border: 2px solid #E0992F; display: flex; align-items: center; justify-content: center; color: #2A2A30;">{{ gearIcon }}</div>
+                    <div style="min-width: 0;">
+                      <div style="font-size: 11.5px; color: #9A958C; font-weight: 600;">Automation rule</div>
+                      <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 17px; color: #25242A; line-height: 1.15;">{{ rule.name }}</div>
+                    </div>
+                  </div>
+                  <button onClick="{{ closeRulePanel }}" style="width: 30px; height: 30px; flex: none; border: none; background: #F4F0E7; border-radius: 9px; cursor: pointer; color: #6F6A60; display: flex; align-items: center; justify-content: center;">{{ closeIcon }}</button>
+                </div>
+                <div style="padding: 18px 20px;">
+                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+                    <span style="{{ rule.statusStyle }}"><span style="width: 7px; height: 7px; border-radius: 50%; background: {{ rule.statusDot }};"></span>{{ rule.statusLabel }}</span>
+                    <span style="font-size: 12px; color: #9A958C;">Last run {{ rule.last }}</span>
+                  </div>
+                  <div style="background: #FBF1DE; border: 1px solid #F2E3C4; border-radius: 13px; padding: 13px 16px; margin-bottom: 10px;">
+                    <div style="font-size: 11.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #B8862E; margin-bottom: 8px;">Triggers</div>
+                    <div style="display: flex; flex-direction: column; gap: 7px;">
+                      <sc-for list="{{ rule.trigList }}" as="t" hint-placeholder-count="2">
+                        <div style="display: flex; gap: 9px; align-items: flex-start; font-size: 13.5px; color: #3A3833; line-height: 1.4;"><span style="color: #C97E1E; font-weight: 700; flex: none;">WHEN</span><span>{{ t.text }}</span></div>
+                      </sc-for>
+                    </div>
+                  </div>
+                  <sc-if value="{{ rule.hasCond }}" hint-placeholder-val="{{ true }}">
+                    <div style="background: #FBF6EC; border: 1px solid #F0E4CC; border-radius: 13px; padding: 13px 16px; margin-bottom: 10px;">
+                      <div style="font-size: 11.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #B8862E; margin-bottom: 8px;">Conditions</div>
+                      <div style="display: flex; flex-direction: column; gap: 7px;">
+                        <sc-for list="{{ rule.condList }}" as="c" hint-placeholder-count="1">
+                          <div style="display: flex; gap: 9px; align-items: flex-start; font-size: 13.5px; color: #3A3833; line-height: 1.4;"><span style="color: #9A8348; font-weight: 700; flex: none;">AND</span><span>{{ c.text }}</span></div>
+                        </sc-for>
+                      </div>
+                    </div>
+                  </sc-if>
+                  <div style="display: flex; justify-content: center; margin: 4px 0;"><span style="display: flex; color: #C9A24E;">{{ arrowDownIcon }}</span></div>
+                  <div style="background: #E0992F; border-radius: 13px; padding: 14px 16px; margin-bottom: 16px; box-shadow: 0 6px 18px rgba(224,153,47,.32);">
+                    <div style="font-size: 11.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #5C3F12; margin-bottom: 8px;">Actions</div>
+                    <sc-if value="{{ rule.hasAct }}" hint-placeholder-val="{{ true }}">
+                      <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <sc-for list="{{ rule.actList }}" as="a" hint-placeholder-count="2">
+                          <div style="display: flex; gap: 9px; align-items: flex-start; font-size: 13.5px; color: #2A2008; font-weight: 600; line-height: 1.4;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #5C3F12; margin-top: 7px; flex: none;"></span><span>{{ a.text }}</span></div>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+                    <sc-if value="{{ rule.noAct }}" hint-placeholder-val="{{ true }}">
+                      <div style="font-size: 13px; color: #5C3F12; font-style: italic;">No actions configured yet.</div>
+                    </sc-if>
+                  </div>
+                  <div style="border: 1px solid #ECE6D9; border-radius: 13px; padding: 14px 16px; margin-bottom: 12px;">
+                    <div style="font-size: 11.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #A39E93; margin-bottom: 6px;">Summary</div>
+                    <div style="font-size: 13.5px; color: #57534B; line-height: 1.55;">{{ rule.summary }}</div>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <!-- ===================== ALL DEVICES ===================== -->
+        <sc-if value="{{ isDevices }}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; gap: 24px; margin-top: 24px; align-items: flex-start;">
+            <div style="flex: 1; min-width: 0; background: #FFFFFF; border: 1px solid #ECE6D9; border-radius: 18px; box-shadow: 0 10px 30px rgba(40,38,32,.08); overflow: hidden;">
+              <div style="display: grid; grid-template-columns: 2.2fr 1.2fr 1fr 1.2fr 40px; padding: 15px 22px; border-bottom: 1px solid #EFE9DD; font-size: 12px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #A39E93;">
+                <span>Device</span><span>Category</span><span>State</span><span>Last activity</span><span></span>
+              </div>
+              <sc-for list="{{ allDevices }}" as="dv" hint-placeholder-count="10">
+                <div onClick="{{ dv.onSelect }}" style="{{ dv.rowStyle }}">
+                  <span style="display: flex; align-items: center; gap: 12px; min-width: 0;">
+                    <span style="{{ dv.avatarStyleSm }}">{{ dv.iconEl }}</span>
+                    <span style="font-weight: 600; font-size: 14px; color: #25242A; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ dv.name }}</span>
+                  </span>
+                  <span style="font-size: 13.5px; color: #6F6A60; align-self: center;">{{ dv.cat }}</span>
+                  <span style="align-self: center;"><span style="{{ dv.statePill }}">{{ dv.valueLabel }}</span></span>
+                  <span style="font-size: 13.5px; color: #6F6A60; align-self: center;">{{ dv.last }}</span>
+                  <span style="display: flex; align-items: center; justify-content: flex-end; color: #C2BCAF;">{{ chevronIcon }}</span>
+                </div>
+              </sc-for>
+            </div>
+
+            <sc-if value="{{ hasSelected }}" hint-placeholder-val="{{ true }}">
+              <div style="width: 360px; flex: none; background: #FFFFFF; border: 1px solid #ECE6D9; border-radius: 18px; box-shadow: 0 10px 30px rgba(40,38,32,.10); overflow: hidden;">
+                <div style="padding: 18px 20px; border-bottom: 1px solid #F0EBDF; display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+                  <div style="display: flex; align-items: center; gap: 11px; min-width: 0;">
+                    <div style="{{ sel.avatarStyle }}">{{ sel.iconEl }}</div>
+                    <div style="min-width: 0;">
+                      <div style="font-size: 11.5px; color: #9A958C; font-weight: 600;">{{ sel.cat }}</div>
+                      <div style="font-weight: 700; font-size: 16px; color: #25242A; line-height: 1.15;">{{ sel.name }}</div>
+                    </div>
+                  </div>
+                  <button onClick="{{ closePanel }}" style="width: 30px; height: 30px; flex: none; border: none; background: #F4F0E7; border-radius: 9px; cursor: pointer; color: #6F6A60; display: flex; align-items: center; justify-content: center;">{{ closeIcon }}</button>
+                </div>
+                <div style="padding: 18px 20px;">
+                  <div style="font-size: 12px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #A39E93; margin-bottom: 10px;">Parameters</div>
+                  <div style="display: flex; flex-direction: column; gap: 1px; background: #F0EBDF; border-radius: 11px; overflow: hidden; margin-bottom: 22px;">
+                    <div style="display: flex; justify-content: space-between; padding: 11px 14px; background: #FBFAF6;"><span style="font-size: 13px; color: #8A857A;">State</span><span style="font-size: 13px; font-weight: 600; color: #3A3833;">{{ sel.valueLabel }}</span></div>
+                    <div style="display: flex; justify-content: space-between; padding: 11px 14px; background: #FBFAF6;"><span style="font-size: 13px; color: #8A857A;">Last activity</span><span style="font-size: 13px; font-weight: 600; color: #3A3833;">{{ sel.last }}</span></div>
+                    <div style="display: flex; justify-content: space-between; padding: 11px 14px; background: #FBFAF6;"><span style="font-size: 13px; color: #8A857A;">Category</span><span style="font-size: 13px; font-weight: 600; color: #3A3833;">{{ sel.cat }}</span></div>
+                    <sc-if value="{{ sel.hasBattery }}" hint-placeholder-val="{{ true }}">
+                      <div style="display: flex; justify-content: space-between; padding: 11px 14px; background: #FBFAF6;"><span style="font-size: 13px; color: #8A857A;">Battery</span><span style="font-size: 13px; font-weight: 600; color: {{ sel.batteryColor }};">{{ sel.batteryLabel }}</span></div>
+                    </sc-if>
+                  </div>
+                  <div style="font-size: 12px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #A39E93; margin-bottom: 10px;">Attached Rules</div>
+                  <sc-if value="{{ sel.hasRules }}" hint-placeholder-val="{{ true }}">
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                      <sc-for list="{{ sel.ruleObjs }}" as="r" hint-placeholder-count="2">
+                        <button onClick="{{ r.onClick }}" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #FBFAF6; border: 1px solid #ECE6D9; border-radius: 11px; padding: 11px 14px; cursor: pointer; text-align: left;">
+                          <span style="font-size: 13.5px; font-weight: 600; color: #3A3833;">{{ r.name }}</span>
+                          <span style="display: flex; color: #C2BCAF;">{{ chevronIcon }}</span>
+                        </button>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ sel.noRules }}" hint-placeholder-val="{{ true }}">
+                    <div style="font-size: 13px; color: #B0AB9F; font-style: italic;">No rules attached.</div>
+                  </sc-if>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <!-- ===================== ALL RULES ===================== -->
+        <sc-if value="{{ isRules }}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; gap: 24px; margin-top: 24px; align-items: flex-start;">
+            <div style="flex: 1; min-width: 0; background: #FFFFFF; border: 1px solid #ECE6D9; border-radius: 18px; box-shadow: 0 10px 30px rgba(40,38,32,.08); overflow: hidden;">
+              <div style="display: grid; grid-template-columns: 1.7fr .8fr 1fr 40px; padding: 15px 22px; border-bottom: 1px solid #EFE9DD; font-size: 12px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #A39E93;">
+                <span>Rule name</span><span>Status</span><span>Last run</span><span></span>
+              </div>
+              <sc-for list="{{ allRules }}" as="r" hint-placeholder-count="8">
+                <div onClick="{{ r.onClick }}" style="{{ r.rowStyle }}">
+                  <span style="display: flex; align-items: center; gap: 12px;">
+                    <span style="width: 8px; height: 8px; border-radius: 50%; background: {{ r.dot }}; flex: none;"></span>
+                    <span style="font-weight: 600; font-size: 14.5px; color: #25242A;">{{ r.name }}</span>
+                  </span>
+                  <span style="align-self: center;"><span style="{{ r.statusStyle }}">{{ r.statusLabel }}</span></span>
+                  <span style="font-size: 13.5px; color: #6F6A60; align-self: center;">{{ r.last }}</span>
+                  <span style="display: flex; align-items: center; justify-content: flex-end; color: #C2BCAF;">{{ chevronIcon }}</span>
+                </div>
+              </sc-for>
+            </div>
+
+            <sc-if value="{{ hasRule }}" hint-placeholder-val="{{ true }}">
+              <div style="width: 380px; flex: none; background: #FFFFFF; border: 1px solid #ECE6D9; border-radius: 18px; box-shadow: 0 10px 30px rgba(40,38,32,.10); overflow: hidden;">
+                <div style="padding: 18px 20px; border-bottom: 1px solid #F0EBDF; display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
+                  <div style="min-width: 0;">
+                    <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px; color: #25242A;">{{ rule.name }}</div>
+                    <div style="display: flex; align-items: center; gap: 8px; margin-top: 6px;">
+                      <span style="{{ rule.statusStyle }}"><span style="width: 7px; height: 7px; border-radius: 50%; background: {{ rule.statusDot }};"></span>{{ rule.statusLabel }}</span>
+                      <span style="font-size: 12px; color: #9A958C;">Last run {{ rule.last }}</span>
+                    </div>
+                  </div>
+                  <button onClick="{{ closeRule }}" style="width: 30px; height: 30px; flex: none; border: none; background: #F4F0E7; border-radius: 9px; cursor: pointer; color: #6F6A60; display: flex; align-items: center; justify-content: center;">{{ closeIcon }}</button>
+                </div>
+                <div style="padding: 18px 20px;">
+                  <div style="background: #FBF1DE; border: 1px solid #F2E3C4; border-radius: 13px; padding: 13px 16px; margin-bottom: 10px;">
+                    <div style="font-size: 11.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #B8862E; margin-bottom: 8px;">Triggers</div>
+                    <div style="display: flex; flex-direction: column; gap: 7px;">
+                      <sc-for list="{{ rule.trigList }}" as="t" hint-placeholder-count="2">
+                        <div style="display: flex; gap: 9px; align-items: flex-start; font-size: 13.5px; color: #3A3833; line-height: 1.4;"><span style="color: #C97E1E; font-weight: 700; flex: none;">WHEN</span><span>{{ t.text }}</span></div>
+                      </sc-for>
+                    </div>
+                  </div>
+                  <sc-if value="{{ rule.hasCond }}" hint-placeholder-val="{{ true }}">
+                    <div style="background: #FBF6EC; border: 1px solid #F0E4CC; border-radius: 13px; padding: 13px 16px; margin-bottom: 10px;">
+                      <div style="font-size: 11.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #B8862E; margin-bottom: 8px;">Conditions</div>
+                      <div style="display: flex; flex-direction: column; gap: 7px;">
+                        <sc-for list="{{ rule.condList }}" as="c" hint-placeholder-count="1">
+                          <div style="display: flex; gap: 9px; align-items: flex-start; font-size: 13.5px; color: #3A3833; line-height: 1.4;"><span style="color: #9A8348; font-weight: 700; flex: none;">AND</span><span>{{ c.text }}</span></div>
+                        </sc-for>
+                      </div>
+                    </div>
+                  </sc-if>
+                  <div style="display: flex; justify-content: center; margin: 4px 0;"><span style="display: flex; color: #C9A24E;">{{ arrowDownIcon }}</span></div>
+                  <div style="background: #E0992F; border-radius: 13px; padding: 14px 16px; margin-bottom: 16px; box-shadow: 0 6px 18px rgba(224,153,47,.32);">
+                    <div style="font-size: 11.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #5C3F12; margin-bottom: 8px;">Actions</div>
+                    <sc-if value="{{ rule.hasAct }}" hint-placeholder-val="{{ true }}">
+                      <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <sc-for list="{{ rule.actList }}" as="a" hint-placeholder-count="2">
+                          <div style="display: flex; gap: 9px; align-items: flex-start; font-size: 13.5px; color: #2A2008; font-weight: 600; line-height: 1.4;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #5C3F12; margin-top: 7px; flex: none;"></span><span>{{ a.text }}</span></div>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+                    <sc-if value="{{ rule.noAct }}" hint-placeholder-val="{{ true }}">
+                      <div style="font-size: 13px; color: #5C3F12; font-style: italic;">No actions configured yet.</div>
+                    </sc-if>
+                  </div>
+                  <div style="border: 1px solid #ECE6D9; border-radius: 13px; padding: 14px 16px; margin-bottom: 12px;">
+                    <div style="font-size: 11.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #A39E93; margin-bottom: 6px;">Summary</div>
+                    <div style="font-size: 13.5px; color: #57534B; line-height: 1.55;">{{ rule.summary }}</div>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;condition&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;Condition 2 — Devices + Graph&quot;, &quot;options&quot;: [&quot;Condition 1 — Cards only&quot;, &quot;Condition 2 — Devices + Graph&quot;], &quot;tsType&quot;: &quot;string&quot; },
+  &quot;heaterIcon&quot;: { &quot;editor&quot;: null, &quot;default&quot;: &quot;radiator&quot;, &quot;tsType&quot;: &quot;string&quot; },
+  &quot;heaterX&quot;: { &quot;editor&quot;: null, &quot;default&quot;: 24, &quot;tsType&quot;: &quot;number&quot; },
+  &quot;heaterY&quot;: { &quot;editor&quot;: null, &quot;default&quot;: 17, &quot;tsType&quot;: &quot;number&quot; }
+}">
+class Component extends DCLogic {
+  state = {
+    nav: 'room',
+    roomView: 'map',
+    categories: [],
+    selectedId: 'tv',
+    ruleId: null,
+    panelKind: 'device',
+    graphMode: 'dependencies',
+    mapConn: false,
+    mapDeps: false,
+    now: new Date(),
+    devices: [
+      { id:'wld', name:'Door Light',      cat:'Lights',     type:'toggle', on:false, bri:60, icon:'bulb',     x:11, y:75, last:'5h ago',     entity:'light.doorlight',   rules:['Entrance Wall Lights On'] },
+      { id:'wlw', name:'Window Light',    cat:'Lights',     type:'toggle', on:false, bri:100, icon:'bulb',     x:43, y:9,  last:'2 days ago', entity:'light.windowlight', rules:[] },
+      { id:'bll', name:'Bedlight L',      cat:'Lights',     type:'toggle', on:false, bri:75, icon:'floorlamp', x:84, y:28, last:'2 days ago', entity:'light.bedlight_l',  rules:['TV On \u2192 Bed Light Ambient'] },
+      { id:'blr', name:'Bedlight R',      cat:'Lights',     type:'toggle', on:false, bri:75, icon:'floorlamp', x:85, y:59, last:'2 days ago', entity:'light.bedlight_r',  rules:['TV On \u2192 Bed Light Ambient'] },
+      { id:'flr', name:'Floor Lamp',      cat:'Lights',     type:'toggle', on:false, bri:80, icon:'floorlamp',x:17, y:27, last:'2 days ago', entity:'light.floorlamp',   rules:['Evening Wind Down'] },
+      { id:'cur', name:'Curtain',         cat:'Appliances', type:'slider', value:65, icon:'curtains', x:72, y:12, last:'2 days ago', entity:'cover.curtain',     battery:66, rules:['Evening Wind Down','Morning Routine'] },
+      { id:'rsh', name:'Roller Shutter',  cat:'Appliances', type:'slider', value:91, icon:'shutter',  x:25, y:8,  last:'3 days ago', entity:'cover.rollo',       battery:86, rules:['Window Open \u2192 Shutter Open','Evening Wind Down','Morning Routine'] },
+      { id:'fan', name:'SmartFan',        cat:'Appliances', type:'toggle', on:false, icon:'fan',      x:84, y:15, last:'2 days ago', entity:'fan.smartfan',      rules:['Movie Mode \u2014 TV On, Fan Off','Door & Window Open \u2192 Fan Off','Window Closed \u2192 Fan On'] },
+      { id:'fansock', name:'Fan Socket',  cat:'Appliances', type:'toggle', on:false, socket:true, icon:'plug', x:88, y:9, last:'2 days ago', entity:'switch.fan_socket', rules:['Window Closed \u2192 Fan On'] },
+      { id:'htr', name:'Heater',          cat:'Appliances', type:'toggle', on:false, target:21.5, icon:'heater', x:6, y:42, last:'2 days ago', entity:'climate.heater', battery:81, rules:['Temp Low \u2192 Thermostat On'] },
+      { id:'tv',  name:'TV',              cat:'Media',      type:'toggle', on:false, icon:'tv',       x:15, y:52, last:'2 days ago', entity:'binary_sensor.tv_status', rules:['Movie Mode \u2014 TV On, Fan Off','Morning Routine','TV On \u2192 Bed Light Ambient'] },
+      { id:'tvsock', name:'TV Socket',    cat:'Media',      type:'toggle', on:false, socket:true, icon:'plug', x:7, y:47, last:'2 days ago', entity:'switch.tv_socket', rules:[] },
+      { id:'pres',name:'Presence Sensor', cat:'Sensors',    type:'sensor', state:'Presence',     dot:'#5BAE7A', icon:'motion',     x:72, y:38, last:'2h ago',     entity:'binary_sensor.presencesensor_presence', rules:['Window Open \u2192 Shutter Open','Movie Mode \u2014 TV On, Fan Off','Entrance Wall Lights On','Temp Low \u2192 Thermostat On'] },
+      { id:'door',name:'Door Contact',    cat:'Sensors',    type:'sensor', state:'Closed',       dot:'#5BAE7A', icon:'door',       x:13, y:91, last:'7h ago',     entity:'binary_sensor.sensor_door_contact', battery:100, rules:['Door & Window Open \u2192 Fan Off','Entrance Wall Lights On'] },
+      { id:'win', name:'Window Contact',  cat:'Sensors',    type:'sensor', state:'Closed',       dot:'#5BAE7A', icon:'window',     x:33, y:7,  last:'2 days ago', entity:'binary_sensor.sensor_window_contact', battery:100, rules:['Window Open \u2192 Shutter Open','Door & Window Open \u2192 Fan Off','Window Closed \u2192 Fan On'] },
+      { id:'th',  name:'Temp / Humidity', cat:'Sensors',    type:'sensor', state:'23\u00B0C \u00B7 63.5%', dot:'#9A958C', icon:'thermometer', x:13, y:5, last:'30 min ago', entity:'sensor.temp_humid', battery:100, rules:['Window Closed \u2192 Fan On','Temp Low \u2192 Thermostat On'] },
+    ],
+    rules: [
+      { id:1, name:'Entrance Wall Lights On', enabled:false, last:'12 days ago', entity:'automation.exp_entrance_wall_lights_on',
+        triggers:['Door Contact opens','Guest no longer present'],
+        conditions:['Experiment clock between 19:00 and 24:00'],
+        actions:['On entry, if present \u2192 wall lights to 50%','On leaving \u2192 Door Light off'],
+        summary:'In the evening, opening the door brings the entrance wall lights up to 50%; leaving the room switches the Door Light back off.' },
+      { id:2, name:'Evening Bed Lights On', enabled:false, last:'7 days ago', entity:'automation.exp_evening_bed_lights_on',
+        triggers:['Every 30-second tick','Presence lost (on \u2192 off)'],
+        conditions:[],
+        actions:['21:00\u201323:00 \u2192 Bedlights L & R to 75%','After 23:00 \u2192 Bedlights off','On presence lost \u2192 Bedlights off'],
+        summary:'Through the evening the bedside lights hold at 75%, then switch off after 23:00 or as soon as the room is empty.' },
+      { id:3, name:'Evening Wind Down', enabled:false, last:'7 days ago', entity:'automation.exp_evening_wind_down',
+        triggers:['Every 30-second tick'],
+        conditions:['Experiment clock between 21:00 and 23:00'],
+        actions:['Curtain \u2192 20%','Roller Shutter \u2192 closed','Window Light on'],
+        summary:'Late evening lowers the curtain, closes the shutter and turns on the window light to settle the room for the night.' },
+      { id:4, name:'Greeting Door Light', enabled:true, last:'5 days ago', entity:'automation.exp_greeting_door_light',
+        triggers:['Door Contact opens'],
+        conditions:['Experiment clock between 19:00 and 24:00','Presence detected'],
+        actions:['Wake the Fire TV (KEYCODE_WAKEUP)'],
+        summary:'When a present guest opens the door in the evening, the Fire TV wakes to greet them. The only study automation currently live.' },
+      { id:5, name:'Morning Curtains Open', enabled:false, last:'7 days ago', entity:'automation.exp_morning_curtains_open',
+        triggers:['Every 30-second tick'],
+        conditions:['Experiment clock at or after 07:30','Presence detected'],
+        actions:['Open the Curtain'],
+        summary:'From 07:30, once presence is detected, the curtain opens to let the morning light in.' },
+      { id:6, name:'Morning Routine', enabled:false, last:'7 days ago', entity:'automation.exp_morning_routine',
+        triggers:['Every 30-second tick'],
+        conditions:['Experiment clock between 07:00 and 07:05'],
+        actions:['SmartFan on (step disabled)','Open the Curtain','Roller Shutter \u2192 81%','Wake the Fire TV','After 10s \u2192 play SomaFM Drone Zone'],
+        summary:'At 07:00 the room wakes up: curtain and shutter open, the Fire TV powers on and starts SomaFM Drone Zone.' },
+      { id:7, name:'Movie Mode', enabled:false, last:'8 days ago', entity:'automation.exp_movie_mode_tv_on_fan_off',
+        triggers:['TV turns on'],
+        conditions:['Presence detected'],
+        actions:[],
+        summary:'Intended to set the room for the TV \u2014 trigger and condition are wired, but no actions are configured yet.' },
+      { id:8, name:'TV Ambient Wall Dim', enabled:false, last:'10 days ago', entity:'automation.exp_tv_ambient_wall_dim',
+        triggers:['TV turns on','TV turns off'],
+        conditions:['Experiment clock between 19:00 and 01:00'],
+        actions:['TV on \u2192 wall lights to 5% (10s fade)','TV off \u2192 wall lights off (10s fade)'],
+        summary:'In the evening the wall lights fade down to 5% when the TV comes on, and fade back off when it is switched off.' },
+      { id:9, name:'Window Closed \u2192 Fan On', enabled:false, last:'7 days ago', entity:'automation.exp_window_closed_fan_on',
+        triggers:['Window Contact closes (on \u2192 off)'],
+        conditions:['Socket \u2014 Fan is powered on'],
+        actions:['Turn on the SmartFan'],
+        summary:'Closing the window turns the fan on, as long as its socket is powered.' },
+    ],
+  };
+
+  componentDidMount() { this.timer = setInterval(() => this.setState({ now: new Date() }), 10000); }
+  componentWillUnmount() { clearInterval(this.timer); }
+
+  ICONS = {
+    bulb:['M9 18h6','M10 21h4','M8.5 14a5 5 0 1 1 7 0c-.7.8-1.2 1.6-1.4 2.5H9.9C9.7 15.6 9.2 14.8 8.5 14Z'],
+    floorlamp:['M9.4 3h5.2l1.9 7H7.5z','M12 10v8','M9 21h6'],
+    walllamp:['M5 3v18','M5 8h5a5 5 0 0 1 5 5','M11 13h8l-4 6z'],
+    fan:['M12 12V3a4.5 4.5 0 0 1 0 9','M12 12h9a4.5 4.5 0 0 1-9 0','M12 12v9a4.5 4.5 0 0 1 0-9','M12 12H3a4.5 4.5 0 0 1 9 0','M12 12.4a.4.4 0 1 0 0-.8.4.4 0 0 0 0 .8Z'],
+    tv:['M2 7h20v12H2z','M8 3l4 4 4-4'],
+    curtains:['M3 3h18','M6 3v17','M18 3v17','M6 3c3.4 2.5 3.4 14.5 0 17','M18 3c-3.4 2.5-3.4 14.5 0 17','M12 3v17'],
+    shutter:['M4 4h16','M4 4v13','M20 4v13','M4 8h16','M4 12h16','M4 16.5h16'],
+    thermometer:['M14 14.8V6a2 2 0 1 0-4 0v8.8a4 4 0 1 0 4 0Z'],
+    motion:['M12 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z','M9 22v-5l-1.5-3 4-2 4 2L14 17v5','M4 9a8 8 0 0 1 16 0'],
+    door:['M6 21V4a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v17','M4 21h16','M13 12v1.5'],
+    window:['M4 4h16v16H4z','M12 4v16','M4 12h16'],
+    speaker:['M7 3h10v18H7z','M12 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z','M12 7h.01'],
+    plug:['M9 3v5','M15 3v5','M7 8h10v2a5 5 0 0 1-10 0z','M12 15v6'],
+    heater:['M12 3c2 3 4 4.6 4 8a4 4 0 0 1-8 0c0-1.6.7-2.9 1.5-3.8C9.8 8.5 11 6 12 3Z'],
+    radiator:['M4 7h16v10H4z','M8 7v10','M12 7v10','M16 7v10','M6 17v3','M18 17v3'],
+    heatwaves:['M7 16c-1.3-1.3-1.3-2.7 0-4s1.3-2.7 0-4','M12 16c-1.3-1.3-1.3-2.7 0-4s1.3-2.7 0-4','M17 16c-1.3-1.3-1.3-2.7 0-4s1.3-2.7 0-4'],
+    droplet:['M12 3c3 4 5.5 6.6 5.5 10a5.5 5.5 0 0 1-11 0C6.5 9.6 9 7 12 3Z'],
+    home:['M5 11l7-6 7 6','M6.5 9.6V20h11V9.6'],
+    grid:['M5 4h6v7H5zM13 4h6v4h-6zM13 11h6v9h-6zM5 14h6v6H5z'],
+    rules:['M4 5h11M4 12h11M4 19h7','M18 4l3 3M21 4l-3 3','M18 17l3 3M21 17l-3 3'],
+    clock:['M12 12 12 8','M12 12l3 2','M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z'],
+    check:['M5 12l4 4 10-10'],
+    chevron:['M9 6l6 6-6 6'],
+    close:['M6 6l12 12M18 6L6 18'],
+    arrowDown:['M12 5v14','M6 13l6 6 6-6'],
+    gear:['M12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z','M12 2.2v3','M12 18.8v3','M2.2 12h3','M18.8 12h3','M5.1 5.1l2.1 2.1','M16.8 16.8l2.1 2.1','M18.9 5.1 16.8 7.2','M7.2 16.8 5.1 18.9'],
+  };
+
+  ruleLinks = {
+    1:{src:['door','pres'],dst:['wld','wlw']},
+    2:{src:['pres'],dst:['bll','blr']},
+    3:{src:[],dst:['cur','rsh','wlw']},
+    4:{src:['door','pres'],dst:['tv']},
+    5:{src:['pres'],dst:['cur']},
+    6:{src:[],dst:['cur','rsh','fan','tv']},
+    7:{src:['tv','pres'],dst:[]},
+    8:{src:['tv'],dst:['wld','wlw']},
+    9:{src:['win'],dst:['fan']},
+  };
+
+  // Physical power links: a socket powers a device (dependency + connection).
+  powerLinks = [['fansock', 'fan'], ['tvsock', 'tv']];
+
+  ic(name, size, color, sw) {
+    const ds = this.ICONS[name] || this.ICONS.bulb;
+    return React.createElement('svg', { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', stroke: color || 'currentColor', strokeWidth: sw || 1.7, strokeLinecap: 'round', strokeLinejoin: 'round' },
+      ds.map((d, i) => React.createElement('path', { key: i, d })));
+  }
+
+  senseRings(bw, color) {
+    const mk = (delay) => React.createElement('span', { key: 'r' + delay, style: { position: 'absolute', inset: '-1px', borderRadius: '50%', border: bw + 'px solid ' + color, animation: 'shSense 2.6s ease-out ' + delay + 's infinite', pointerEvents: 'none' } });
+    return React.createElement('span', { style: { position: 'absolute', inset: 0, borderRadius: '50%', pointerEvents: 'none' } }, mk(0), mk(1.3));
+  }
+  senseDotEl() {
+    return React.createElement('span', { style: { position: 'relative', width: '11px', height: '11px', borderRadius: '50%', background: '#2F9E96', flex: 'none', boxShadow: '0 0 0 3px rgba(47,158,150,.16)' } },
+      React.createElement('span', { key: 'r', style: { position: 'absolute', inset: '-1px', borderRadius: '50%', border: '2px solid rgba(47,158,150,.7)', animation: 'shSense 2.6s ease-out infinite', pointerEvents: 'none' } }));
+  }
+
+  graphRing() {
+    const ids = this.state.devices.map(d => d.id);
+    const R = 375, cx = 500, cy = 500, pos = {}, ang = {};
+    ids.forEach((id, i) => { const a = -Math.PI / 2 + i / ids.length * 2 * Math.PI; ang[id] = a; pos[id] = { x: cx + R * Math.cos(a), y: cy + R * Math.sin(a) }; });
+    return { pos, ang, cx, cy };
+  }
+  edgeLine(x1, y1, x2, y2, o) {
+    return React.createElement('line', { key: o.key, x1, y1, x2, y2, stroke: o.stroke, strokeWidth: o.w, strokeDasharray: o.dash || null, strokeLinecap: 'round', markerEnd: o.marker || null, opacity: o.opacity == null ? 1 : o.opacity });
+  }
+  buildEdgesSvg(children, mid) {
+    const marker = React.createElement('marker', { id: 'arrow' + mid, markerWidth: 7, markerHeight: 7, refX: 6, refY: 3.5, orient: 'auto', markerUnits: 'strokeWidth' }, React.createElement('path', { d: 'M0 0 L7 3.5 L0 7 z', fill: '#E0992F' }));
+    return React.createElement('svg', { viewBox: '0 0 1000 1000', preserveAspectRatio: 'none', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1 } }, React.createElement('defs', { key: 'd' }, marker), ...children);
+  }
+
+  isOn(d) { return (d.type === 'toggle') ? !!d.on : false; }
+
+  statusLine(d) {
+    if (d.type === 'slider') return d.value + '% Open';
+    if (d.type === 'sensor') return d.state;
+    return d.on ? 'On' : 'Off';
+  }
+  valueLabel(d) {
+    if (d.type === 'slider') return d.value + '% Open';
+    if (d.type === 'sensor') return d.state;
+    return d.on ? 'On' : 'Off';
+  }
+
+  toggle(id) {
+    this.setState(s => ({ devices: s.devices.map(d => d.id === id ? { ...d, on: !d.on, last: 'just now' } : d) }));
+  }
+  setValue(id, v) {
+    this.setState(s => ({ devices: s.devices.map(d => d.id === id ? { ...d, value: v, last: 'just now' } : d) }));
+  }
+  setBri(id, v) {
+    this.setState(s => ({ devices: s.devices.map(d => d.id === id ? { ...d, bri: v, on: true, last: 'just now' } : d) }));
+  }
+  setTarget(id, v) {
+    this.setState(s => ({ devices: s.devices.map(d => d.id === id ? { ...d, target: v, on: true, last: 'just now' } : d) }));
+  }
+  arcDial(o) {
+    const cx = 60, cy = 60, r = 46, sw = 9, start = -150, span = 300;
+    const toXY = (deg) => { const t = deg * Math.PI / 180; return [cx + r * Math.sin(t), cy - r * Math.cos(t)]; };
+    const frac = Math.max(0, Math.min(1, o.frac));
+    const ang = start + frac * span;
+    const [sx, sy] = toXY(start), [ex, ey] = toXY(start + span), [kx, ky] = toXY(ang);
+    const trackPath = `M ${sx} ${sy} A ${r} ${r} 0 1 1 ${ex} ${ey}`;
+    const progPath = `M ${sx} ${sy} A ${r} ${r} 0 ${(frac * span) > 180 ? 1 : 0} 1 ${kx} ${ky}`;
+    const move = (e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const rx = (e.clientX - rect.left) / rect.width * 120 - cx;
+      const ry = (e.clientY - rect.top) / rect.height * 120 - cy;
+      let deg = Math.atan2(rx, -ry) * 180 / Math.PI;
+      if (deg < start) deg = start; if (deg > start + span) deg = start + span;
+      o.onFrac((deg - start) / span);
+    };
+    return React.createElement('div', { style: { position: 'relative', width: '118px', height: '118px' } },
+      React.createElement('svg', { viewBox: '0 0 120 120', style: { width: '100%', height: '100%', touchAction: 'none', cursor: 'pointer', display: 'block' },
+        onPointerDown: (e) => { if (e.currentTarget.setPointerCapture) e.currentTarget.setPointerCapture(e.pointerId); move(e); },
+        onPointerMove: (e) => { if (e.buttons) move(e); } },
+        React.createElement('path', { key: 't', d: trackPath, fill: 'none', stroke: '#EAE3D5', strokeWidth: sw, strokeLinecap: 'round' }),
+        frac > 0.002 ? React.createElement('path', { key: 'p', d: progPath, fill: 'none', stroke: o.active ? o.accent : '#CFC8B9', strokeWidth: sw, strokeLinecap: 'round' }) : null,
+        React.createElement('circle', { key: 'k', cx: kx, cy: ky, r: 7, fill: '#fff', stroke: o.active ? o.accent : '#CFC8B9', strokeWidth: 3 })
+      ),
+      React.createElement('button', { onClick: o.onToggle, style: { position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '60px', height: '60px', borderRadius: '50%', border: 'none', cursor: 'pointer', background: o.active ? o.accent : '#F4F0E7', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', boxShadow: o.active ? '0 0 16px rgba(224,153,47,.45)' : 'inset 0 0 0 1px #ECE6D9' } }, o.centerEl)
+    );
+  }
+  lightDial(d) {
+    const active = !!d.on;
+    return this.arcDial({ frac: (d.bri == null ? 80 : d.bri) / 100, active, accent: '#E0992F',
+      centerEl: this.ic(d.icon, 26, active ? '#2A2008' : '#A39E93', 1.8),
+      onToggle: () => this.toggle(d.id),
+      onFrac: (f) => this.setBri(d.id, Math.round(f * 100)) });
+  }
+  heaterDial(d) {
+    const active = !!d.on; const min = 15, max = 28; const tgt = d.target == null ? 21.5 : d.target;
+    const centerEl = React.createElement('div', { style: { textAlign: 'center', lineHeight: 1 } },
+      React.createElement('div', { key: 'i', style: { display: 'flex', justifyContent: 'center', marginBottom: '3px' } }, this.ic(d.icon, 15, active ? '#2A2008' : '#A39E93', 1.8)),
+      React.createElement('div', { key: 'v', style: { fontSize: '18px', fontWeight: 700, color: active ? '#2A2008' : '#7A756B' } }, tgt.toFixed(1) + '\u00B0'));
+    return this.arcDial({ frac: (tgt - min) / (max - min), active, accent: '#E0992F', centerEl,
+      onToggle: () => this.toggle(d.id),
+      onFrac: (f) => this.setTarget(d.id, Math.round((min + f * (max - min)) * 2) / 2) });
+  }
+  vBar(d) {
+    const v = d.value == null ? 0 : d.value;
+    const move = (e) => { const rect = e.currentTarget.getBoundingClientRect(); let f = 1 - (e.clientY - rect.top) / rect.height; f = Math.max(0, Math.min(1, f)); this.setValue(d.id, Math.round(f * 100)); };
+    return React.createElement('div', { style: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '9px' } },
+      React.createElement('div', { key: 'i', style: { display: 'flex', color: '#6F6A60' } }, this.ic(d.icon, 20, '#6F6A60', 1.7)),
+      React.createElement('div', { key: 'b', onPointerDown: (e) => { if (e.currentTarget.setPointerCapture) e.currentTarget.setPointerCapture(e.pointerId); move(e); }, onPointerMove: (e) => { if (e.buttons) move(e); },
+        style: { position: 'relative', width: '30px', height: '78px', borderRadius: '15px', background: '#EAE3D5', cursor: 'pointer', overflow: 'hidden', touchAction: 'none' } },
+        React.createElement('div', { key: 'f', style: { position: 'absolute', left: 0, right: 0, bottom: 0, height: v + '%', background: '#E0992F' } }),
+        React.createElement('div', { key: 'k', style: { position: 'absolute', left: 0, right: 0, bottom: `calc(${v}% - 4px)`, height: '8px', background: '#fff', boxShadow: '0 1px 4px rgba(0,0,0,.3)' } })
+      )
+    );
+  }
+  hBar(d) {
+    const v = d.value == null ? 0 : d.value;
+    const move = (e) => { const rect = e.currentTarget.getBoundingClientRect(); let f = (e.clientX - rect.left) / rect.width; f = Math.max(0, Math.min(1, f)); this.setValue(d.id, Math.round(f * 100)); };
+    return React.createElement('div', { style: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' } },
+      React.createElement('div', { key: 'i', style: { display: 'flex', color: '#6F6A60' } }, this.ic(d.icon, 22, '#6F6A60', 1.7)),
+      React.createElement('div', { key: 'b', onPointerDown: (e) => { if (e.currentTarget.setPointerCapture) e.currentTarget.setPointerCapture(e.pointerId); move(e); }, onPointerMove: (e) => { if (e.buttons) move(e); },
+        style: { position: 'relative', width: '124px', height: '30px', borderRadius: '15px', background: '#EAE3D5', cursor: 'pointer', overflow: 'hidden', touchAction: 'none' } },
+        React.createElement('div', { key: 'f', style: { position: 'absolute', top: 0, bottom: 0, left: 0, width: v + '%', background: '#E0992F' } }),
+        React.createElement('div', { key: 'k', style: { position: 'absolute', top: 0, bottom: 0, left: `calc(${v}% - 4px)`, width: '8px', background: '#fff', boxShadow: '0 1px 4px rgba(0,0,0,.3)' } })
+      )
+    );
+  }
+  btnTile(d) {
+    const active = !!d.on;
+    return React.createElement('button', { onClick: () => this.toggle(d.id),
+      style: { width: '86px', height: '86px', borderRadius: '22px', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all .15s',
+        background: active ? '#E0992F' : '#F1ECE1', boxShadow: active ? '0 6px 18px rgba(224,153,47,.4)' : 'inset 0 0 0 1px #ECE6D9' } },
+      this.ic(d.icon, 30, active ? '#2A2008' : '#A39E93', 1.7));
+  }
+  sensorTile(d) {
+    return React.createElement('div', { style: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' } },
+      React.createElement('div', { style: { position: 'relative', width: '52px', height: '52px', borderRadius: '50%', background: '#FBFAF6', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 0 2px rgba(47,158,150,.5), 0 2px 8px rgba(0,0,0,.12)' } }, this.ic(d.icon, 22, '#2A6F69', 1.7), this.senseRings(2, 'rgba(47,158,150,.5)')),
+      React.createElement('div', { style: { fontSize: '14px', fontWeight: 700, color: '#2A6F69', textAlign: 'center' } }, d.state));
+  }
+  select(id) { this.setState({ selectedId: id, panelKind: 'device' }); }
+  selectRuleByName(name) {
+    const r = this.state.rules.find(x => x.name === name);
+    if (r) this.setState({ nav: 'rules', ruleId: r.id });
+  }
+
+  buildDV(d) {
+    const on = this.isOn(d);
+    const isControl = d.type === 'toggle';
+    const isSlider = d.type === 'slider';
+    const isSensor = d.type === 'sensor';
+    const isSocket = !!d.socket;
+    const accent = '#E0992F';
+    const ring = (this.state.selectedId === d.id) ? '0 0 0 3px #E0992F, ' : '';
+    const bubble = isSocket
+      ? `position:relative;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .2s;background-color:${on ? accent : '#EDE7DA'};box-shadow:${ring}${on ? '0 0 9px 1px rgba(224,153,47,.45), ' : ''}0 2px 6px rgba(0,0,0,.22);`
+      : isSensor
+      ? `position:relative;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#2A6F69;transition:all .2s;background-color:#FBFAF6;box-shadow:${ring}0 0 0 2px rgba(47,158,150,.55), 0 3px 10px rgba(0,0,0,.26);`
+      : `position:relative;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#2A2A30;transition:all .2s;background-color:${on ? accent : '#FBFAF6'};box-shadow:${ring}${on ? '0 0 0 4px rgba(224,153,47,.22), 0 0 22px 5px rgba(224,153,47,.55), 0 4px 10px rgba(0,0,0,.25)' : '0 3px 10px rgba(0,0,0,.30)'};`;
+    const avatar = (bg) => `width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;color:#2A2A30;background-color:${bg};` +
+      (on ? `box-shadow:0 0 0 3px rgba(224,153,47,.16);` : '');
+    const card = `background-color:#FFFFFF;border-width:1px;border-style:solid;border-color:${this.state.selectedId === d.id ? accent : '#ECE6D9'};border-radius:16px;padding:16px;cursor:pointer;transition:border-color .15s, box-shadow .15s;box-shadow:${this.state.selectedId === d.id ? '0 6px 20px rgba(224,153,47,.16)' : '0 2px 8px rgba(40,38,32,.05)'};`;
+    const track = `width:52px;height:30px;border-radius:999px;border:none;cursor:pointer;padding:3px;display:flex;align-items:center;flex:none;transition:all .2s;justify-content:${on ? 'flex-end' : 'flex-start'};background-color:${on ? accent : '#D7D1C4'};box-shadow:${on ? '0 0 14px rgba(224,153,47,.5)' : 'none'};`;
+    const rangeBg = isSlider ? `linear-gradient(90deg, ${accent} 0%, ${accent} ${d.value}%, rgba(231,225,213,0) ${d.value}%, rgba(231,225,213,0) 100%)` : 'none';
+    const rowSel = this.state.selectedId === d.id;
+    const row = `display:grid;grid-template-columns:2.2fr 1.2fr 1fr 1.2fr 40px;padding:13px 22px;border-bottom:1px solid #F2EDE2;cursor:pointer;transition:background-color .12s;background-color:${rowSel ? '#FBF4E6' : 'transparent'};`;
+    let statePill;
+    if (isSensor) statePill = `display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background-color:#F1EDE4;color:#6F6A60;`;
+    else if (on || (isSlider && d.value > 0)) statePill = `display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background-color:#FBEAC9;color:#B8772A;`;
+    else statePill = `display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background-color:#F1EDE4;color:#9A958C;`;
+    const ruleObjs = (d.rules || []).map(n => ({ name: n, onClick: () => this.selectRuleByName(n) }));
+    return {
+      ...d, on, off: !on, isControl, isSlider, isSensor,
+      iconEl: this.ic(d.icon, isSocket ? 14 : 22, isSocket ? (on ? '#2A2008' : '#857F73') : (isSensor ? '#2A6F69' : '#2A2A30'), isSocket ? 1.9 : 1.7),
+      senseRingEl: isSensor ? this.senseRings(2, 'rgba(47,158,150,.5)') : null,
+      senseDotEl: isSensor ? this.senseDotEl() : null,
+      statusLine: 'Status: ' + this.statusLine(d),
+      valueLabel: this.valueLabel(d),
+      isSelected: this.state.selectedId === d.id,
+      z: isSocket ? 1 : 2,
+      left: d.x + '%', top: d.y + '%',
+      bubbleStyle: bubble, avatarStyle: avatar(on ? '#F6E2BC' : '#F1EDE4'),
+      avatarStyleSm: `width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;color:#2A2A30;background-color:${on || (isSlider && d.value > 0) ? '#F6E2BC' : '#F1EDE4'};`,
+      cardStyle: card, trackStyle: track, rangeBg,
+      rowStyle: row, statePill,
+      dot: d.dot || '#9A958C', dotHalo: on ? 'rgba(224,153,47,.18)' : 'rgba(154,149,140,.16)',
+      onSelect: () => this.select(d.id),
+      onToggle: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.toggle(d.id); },
+      onSlide: (e) => this.setValue(d.id, +e.target.value),
+      ruleObjs, hasRules: ruleObjs.length > 0, noRules: ruleObjs.length === 0,
+      hasBattery: d.battery != null,
+      batteryLabel: d.battery != null ? d.battery + '%' : '',
+      batteryColor: (d.battery != null && d.battery <= 20) ? '#C0552F' : '#3A3833',
+      entity: d.entity || '',
+    };
+  }
+
+  renderVals() {
+    const s = this.state;
+    // --- admin condition: 'Condition 1 — Cards only' vs 'Condition 2 — Devices + Graph' ---
+    const cond = 'Condition 1 — Cards only';
+    const isC1 = cond.indexOf('Cards only') !== -1;
+    // In condition 2 the room view switcher carries three tabs that merge the old
+    // floor-map + graph into one place: Devices (floor map) / Dependencies / Connections.
+    const c2tab = ['devices', 'dependencies', 'connections'].includes(s.roomView) ? s.roomView : 'devices';
+    const gMode = (!isC1 && c2tab === 'connections') ? 'connections' : 'dependencies';
+    const roomCardsView = isC1;
+    const roomMapView = !isC1 && c2tab === 'devices';
+    const roomGraphView = !isC1 && (c2tab === 'dependencies' || c2tab === 'connections');
+    // --- heater overrides (icon + floor-map placement) — hidden props, no panel UI ---
+    const heaterIcon = this.props.heaterIcon ?? 'radiator';
+    const heaterX = this.props.heaterX ?? 24;
+    const heaterY = this.props.heaterY ?? 17;
+    const devices = s.devices.map(d => d.id === 'htr' ? { ...d, icon: heaterIcon, x: heaterX, y: heaterY } : d);
+    const dt = s.now;
+    let h = dt.getHours(); const m = String(dt.getMinutes()).padStart(2, '0');
+    const ap = h >= 12 ? 'PM' : 'AM'; h = h % 12; if (h === 0) h = 12;
+    const clock = `${h}:${m} ${ap}`;
+
+    const navDefs = [
+      { id: 'room', label: 'Your Room', icon: 'home' },
+      { id: 'devices', label: 'All Devices', icon: 'grid' },
+      { id: 'rules', label: 'All Rules', icon: 'rules' },
+    ];
+    const navList = navDefs.map(n => {
+      const active = s.nav === n.id;
+      return {
+        label: n.label,
+        iconEl: this.ic(n.icon, 34, active ? '#C97E1E' : '#A7A399', 1.8),
+        btnStyle: `width:90px;height:80px;border:none;cursor:pointer;border-radius:0;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:all .15s;color:${active ? '#25242A' : '#C7C3BB'};background-color:${active ? '#F4F1EA' : 'transparent'};`,
+        onClick: () => this.setState({ nav: n.id }),
+      };
+    });
+
+    const selCats = s.categories || [];
+    const filterAll = selCats.length === 0;
+    const matchCat = (d) => filterAll || selCats.includes(d.cat);
+    const cats = ['All', 'Lights', 'Appliances', 'Media', 'Sensors'];
+    const pillList = cats.map(c => {
+      const active = c === 'All' ? filterAll : selCats.includes(c);
+      return {
+        label: c, active,
+        style: `display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;padding:9px 16px;border-radius:999px;cursor:pointer;transition:all .15s;border-width:1px;border-style:solid;` +
+          (active ? `background-color:#F6E6C9;color:#9A6A1E;border-color:#EAD3A4;` : `background-color:#FFFFFF;color:#6F6A60;border-color:#E7E1D5;`),
+        onClick: c === 'All'
+          ? () => this.setState({ categories: [] })
+          : () => this.setState(st => {
+              const cur = st.categories || [];
+              const next = cur.includes(c) ? cur.filter(x => x !== c) : [...cur, c];
+              return { categories: next };
+            }),
+      };
+    });
+
+    const viewDefs = isC1 ? [] : [
+      { id: 'devices', label: 'Devices' },
+      { id: 'dependencies', label: 'Dependencies' },
+      { id: 'connections', label: 'Connections' },
+    ];
+    const viewIcons = { devices: 'grid', dependencies: 'gear', connections: 'home' };
+    const viewList = viewDefs.map(v => {
+      const active = c2tab === v.id;
+      return {
+        label: v.label,
+        iconEl: this.ic(viewIcons[v.id], 18, active ? '#9A6A1E' : '#8A857A', 1.8),
+        vStyle: `display:flex; align-items:center; gap:10px; width:100%; text-align:left; border-width:1px; border-style:solid; cursor:pointer; font-size:13.5px; font-weight:600; padding:12px 15px; border-radius:13px; transition:all .15s; ` +
+          (active ? `background-color:#FFFFFF; color:#25242A; border-color:#EAD3A4; box-shadow:0 3px 10px rgba(40,38,32,.10);` : `background-color:#F0EBDF; color:#8A857A; border-color:transparent;`),
+        onClick: () => this.setState({ roomView: v.id }),
+      };
+    });
+
+    const visible = devices.filter(matchCat);
+    const dvAll = visible.map(d => this.buildDV(d));
+
+    const groupOrder = ['Lights', 'Appliances', 'Media', 'Sensors'];
+    const roomGroups = groupOrder.map(name => ({ name, items: dvAll.filter(d => d.cat === name) })).filter(g => g.items.length > 0);
+
+    const allDevices = devices.filter(matchCat).map(d => this.buildDV(d));
+
+    const mkTile = (d) => {
+      const isLight = d.cat === 'Lights';
+      const isHeater = d.id === 'htr';
+      const isCover = d.type === 'slider';
+      const isSensorT = d.type === 'sensor';
+      let controlEl, statusText;
+      if (isLight) { controlEl = this.lightDial(d); statusText = d.on ? (d.bri == null ? 80 : d.bri) + '%' : 'Off'; }
+      else if (isHeater) { controlEl = this.heaterDial(d); statusText = 'Room 23\u00B0 \u00B7 ' + (d.on ? 'On' : 'Off'); }
+      else if (isCover) { controlEl = (d.id === 'cur') ? this.hBar(d) : this.vBar(d); statusText = (d.value == null ? 0 : d.value) + '% open'; }
+      else if (isSensorT) { controlEl = this.sensorTile(d); statusText = d.last; }
+      else { controlEl = this.btnTile(d); statusText = d.on ? 'On' : 'Off'; }
+      return { key: d.id, name: d.name, cat: d.cat, controlEl, statusText };
+    };
+    const allTiles = visible.map(mkTile);
+    const groupDefs = [
+      { key: 'Lights', name: 'Lights', icon: 'bulb' },
+      { key: 'Appliances', name: 'Appliances', icon: 'fan' },
+      { key: 'Media', name: 'TV & Media', icon: 'tv' },
+      { key: 'Sensors', name: 'Sensors', icon: 'motion' },
+    ];
+    const groupsRaw = groupDefs.map(g => ({ def: g, items: allTiles.filter(t => t.cat === g.key) })).filter(g => g.items.length);
+    const singleGroup = groupsRaw.length === 1;
+    const fullSpan = { Lights: true, Appliances: true };
+    const dashGroups = groupsRaw.map(g => ({
+      key: g.def.key, name: g.def.name, count: g.items.length + ' devices', items: g.items,
+      iconEl: this.ic(g.def.icon, 17, '#9A6A1E', 1.9),
+      panelStyle: `grid-column:${(singleGroup || fullSpan[g.def.key]) ? '1 / -1' : 'auto'};background:#FFFFFF;border:1px solid #ECE6D9;border-radius:20px;padding:13px 20px 13px;box-shadow:0 2px 10px rgba(40,38,32,.06);`,
+    }));
+
+    const selRaw = devices.find(d => d.id === s.selectedId);
+    const sel = selRaw ? this.buildDV(selRaw) : null;
+
+    const ruleStatusStyle = (en, sm) => en
+      ? `display:inline-flex;align-items:center;gap:6px;font-size:${sm ? '11px' : '11.5px'};font-weight:700;padding:${sm ? '2px 9px' : '3px 10px'};border-radius:999px;background-color:#E3F1E8;color:#2E7D52;`
+      : `display:inline-flex;align-items:center;gap:6px;font-size:${sm ? '11px' : '11.5px'};font-weight:700;padding:${sm ? '2px 9px' : '3px 10px'};border-radius:999px;background-color:#F1EDE4;color:#9A958C;`;
+    const allRules = s.rules.map(r => ({
+      ...r,
+      dot: r.enabled ? '#3FA76C' : '#C9C3B6',
+      statusLabel: r.enabled ? 'Enabled' : 'Disabled',
+      statusStyle: ruleStatusStyle(r.enabled, true),
+      rowStyle: `display:grid;grid-template-columns:1.7fr .8fr 1fr 40px;padding:15px 22px;border-bottom:1px solid #F2EDE2;cursor:pointer;transition:background-color .12s;background-color:${s.ruleId === r.id ? '#FBF4E6' : 'transparent'};`,
+      onClick: () => this.setState({ ruleId: r.id, panelKind: 'rule' }),
+    }));
+    const ruleRaw = s.rules.find(r => r.id === s.ruleId);
+    const rule = ruleRaw ? {
+      name: ruleRaw.name, last: ruleRaw.last, entity: ruleRaw.entity,
+      enabled: ruleRaw.enabled,
+      statusLabel: ruleRaw.enabled ? 'Enabled' : 'Disabled',
+      statusStyle: ruleStatusStyle(ruleRaw.enabled, false),
+      statusDot: ruleRaw.enabled ? '#3FA76C' : '#C2BCAF',
+      trigList: ruleRaw.triggers.map(t => ({ text: t })),
+      condList: ruleRaw.conditions.map(t => ({ text: t })),
+      hasCond: ruleRaw.conditions.length > 0,
+      actList: ruleRaw.actions.map(t => ({ text: t })),
+      hasAct: ruleRaw.actions.length > 0,
+      noAct: ruleRaw.actions.length === 0,
+      summary: ruleRaw.summary,
+    } : null;
+
+    // ---------- GRAPH (floor-map background, devices at real positions) ----------
+    const links = Object.keys(this.ruleLinks).map(k => [k, this.ruleLinks[k]]);
+    const byId = {}; devices.forEach(d => byId[d.id] = d);
+    const gpos = {}; devices.forEach(d => gpos[d.id] = { x: d.x * 10, y: d.y * 10 });
+    const gcx = 500, gcy = 500;
+
+    const isDep = gMode === 'dependencies';
+    const ruleFocus = isDep && s.panelKind === 'rule' && s.ruleId != null;
+    const focusLink = ruleFocus ? this.ruleLinks[s.ruleId] : null;
+    const focusIds = ruleFocus ? [...focusLink.src, ...focusLink.dst] : [];
+    const catFilter = !filterAll;
+
+    // Device focus: clicking a device lights the automations wired to it and the
+    // other devices those automations touch; everything else dims.
+    const deviceFocus = isDep && s.panelKind === 'device' && s.selectedId != null;
+    let devFocusGearIds = [], devFocusDevIds = [];
+    if (deviceFocus) {
+      const sid = s.selectedId;
+      Object.keys(this.ruleLinks).forEach(rid => {
+        const rl = this.ruleLinks[rid];
+        if (rl.src.includes(sid) || rl.dst.includes(sid)) {
+          devFocusGearIds.push(String(rid));
+          devFocusDevIds.push(...rl.src, ...rl.dst);
+        }
+      });
+      this.powerLinks.forEach(([a, b]) => {
+        if (a === sid || b === sid) devFocusDevIds.push(a, b);
+      });
+      devFocusDevIds.push(sid);
+      devFocusDevIds = [...new Set(devFocusDevIds)];
+    }
+
+    const anyFocus = ruleFocus || deviceFocus || !!catFilter;
+
+    const devActive = (d) => {
+      if (deviceFocus) return devFocusDevIds.includes(d.id);
+      if (ruleFocus) return focusIds.includes(d.id);
+      if (catFilter) return matchCat(d);
+      return true;
+    };
+    const gearActive = (rid, rl) => {
+      if (deviceFocus) return devFocusGearIds.includes(String(rid));
+      if (ruleFocus) return String(rid) === String(s.ruleId);
+      if (catFilter) return [...rl.src, ...rl.dst].some(id => byId[id] && matchCat(byId[id]));
+      return true;
+    };
+    const dimO = anyFocus ? 0.28 : 1;
+
+    // gear positions: centroid of connected devices, clamped inside the map
+    const gearPos = {};
+    links.forEach(([rid, rl], i) => {
+      const pts = [...rl.src, ...rl.dst].map(id => gpos[id]).filter(Boolean);
+      let gx, gy;
+      if (pts.length) { gx = pts.reduce((t, p) => t + p.x, 0) / pts.length; gy = pts.reduce((t, p) => t + p.y, 0) / pts.length; }
+      else { const a = -Math.PI / 2 + i / links.length * 2 * Math.PI; gx = gcx + 230 * Math.cos(a); gy = gcy + 230 * Math.sin(a); }
+      gearPos[rid] = { x: Math.max(150, Math.min(850, gx)), y: Math.max(130, Math.min(870, gy)) };
+    });
+
+    const devNodes = devices.map(d => {
+      const p = gpos[d.id]; const on = this.isOn(d);
+      const act = devActive(d);
+      const seld = s.selectedId === d.id && s.panelKind === 'device';
+      const lit = on && act;
+      const isS = d.type === 'sensor';
+      const bubble = isS
+        ? `position:relative;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:${act ? '#2A6F69' : '#8E897E'};background-color:#FBFAF6;box-shadow:${seld ? '0 0 0 3px #E0992F, ' : ''}0 0 0 2px rgba(47,158,150,${act ? '.6' : '.28'}), 0 2px 8px rgba(0,0,0,.30);`
+        : `position:relative;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:${act ? '#2A2A30' : '#8E897E'};background-color:${lit ? '#E0992F' : '#FBFAF6'};box-shadow:${seld ? '0 0 0 3px #E0992F, ' : ''}${lit ? '0 0 16px 3px rgba(224,153,47,.55), ' : ''}0 2px 8px rgba(0,0,0,.30);`;
+      return {
+        key: d.id, left: d.x + '%', top: d.y + '%', nodeOpacity: act ? 1 : dimO,
+        bubbleStyle: bubble,
+        iconEl: this.ic(d.icon, 20, isS ? (act ? '#2A6F69' : '#A8A399') : (act ? '#2A2A30' : '#A8A399'), 1.7),
+        ringEl: (isS && act) ? this.senseRings(2, 'rgba(47,158,150,.5)') : null,
+        label: d.name, showLabel: seld || (ruleFocus && focusIds.includes(d.id)) || (deviceFocus && devFocusDevIds.includes(d.id)),
+        onClick: () => this.setState({ selectedId: d.id, panelKind: 'device' }),
+      };
+    });
+
+    const depEdges = [];
+    links.forEach(([rid, rl]) => {
+      const g = gearPos[rid]; const gAct = gearActive(rid, rl);
+      rl.src.forEach(id => {
+        const p = gpos[id]; const a = gAct && devActive(byId[id]);
+        depEdges.push(this.edgeLine(p.x, p.y, g.x, g.y, { key: rid + 's' + id, stroke: a ? 'rgba(224,153,47,.9)' : 'rgba(232,226,214,.55)', w: a ? (ruleFocus ? 2.6 : 2) : 1.4, dash: '6 7', opacity: a ? 1 : (anyFocus ? 0.2 : 0.65) }));
+      });
+      rl.dst.forEach(id => {
+        const p = gpos[id]; const a = gAct && devActive(byId[id]);
+        depEdges.push(this.edgeLine(g.x, g.y, p.x, p.y, { key: rid + 'd' + id, stroke: a ? '#E0992F' : 'rgba(232,226,214,.6)', w: a ? (ruleFocus ? 3.2 : 2.4) : 1.6, marker: a ? 'url(#arrowGT)' : null, opacity: a ? 1 : (anyFocus ? 0.2 : 0.7) }));
+      });
+    });
+    // socket -> device power dependency edges
+    this.powerLinks.forEach(([sockId, devId]) => {
+      const ps = gpos[sockId], pd = gpos[devId];
+      const a = devActive(byId[sockId]) && devActive(byId[devId]);
+      depEdges.push(this.edgeLine(ps.x, ps.y, pd.x, pd.y, { key: 'pw' + sockId, stroke: a ? '#E0992F' : 'rgba(232,226,214,.6)', w: a ? 2.4 : 1.6, marker: a ? 'url(#arrowGT)' : null, opacity: a ? 1 : (anyFocus ? 0.2 : 0.7) }));
+    });
+    const gearNodes = links.map(([rid, rl]) => {
+      const r = s.rules.find(x => String(x.id) === String(rid));
+      const g = gearPos[rid]; const selr = String(s.ruleId) === String(rid) && s.panelKind === 'rule';
+      const act = gearActive(rid, rl);
+      return {
+        key: 'g' + rid, left: (g.x / 10) + '%', top: (g.y / 10) + '%', nodeOpacity: act ? 1 : dimO,
+        bubbleStyle: `position:relative;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:${selr ? '#2A2008' : (act ? '#2A2A30' : '#B8B2A6')};background-color:${selr ? '#E0992F' : '#FFFFFF'};border-width:2px;border-style:solid;border-color:${selr || act ? '#E0992F' : '#D7D1C4'};box-shadow:${selr ? '0 0 0 3px rgba(224,153,47,.35), 0 0 16px rgba(224,153,47,.45), ' : ''}0 2px 8px rgba(0,0,0,.30);`,
+        iconEl: this.ic('gear', 18, selr ? '#2A2008' : (act ? '#2A2A30' : '#B8B2A6'), 1.9),
+        ringEl: null,
+        label: r ? r.name : '', showLabel: selr,
+        onClick: () => this.setState(st => (String(st.ruleId) === String(rid) && st.panelKind === 'rule') ? { panelKind: 'device' } : { ruleId: r ? r.id : null, panelKind: 'rule' }),
+      };
+    });
+
+    const connEdges = devices.map(d => {
+      const p = gpos[d.id]; const act = devActive(d);
+      return this.edgeLine(gcx, gcy, p.x, p.y, { key: 'c' + d.id, stroke: act ? 'rgba(224,153,47,.8)' : 'rgba(232,226,214,.55)', w: act ? 2 : 1.4, opacity: act ? 1 : (catFilter ? 0.22 : 0.65) });
+    });
+    // socket -> device direct power connections
+    this.powerLinks.forEach(([sockId, devId]) => {
+      const ps = gpos[sockId], pd = gpos[devId];
+      const act = devActive(byId[sockId]) && devActive(byId[devId]);
+      connEdges.push(this.edgeLine(ps.x, ps.y, pd.x, pd.y, { key: 'cpw' + sockId, stroke: act ? 'rgba(224,153,47,.85)' : 'rgba(232,226,214,.5)', w: act ? 2 : 1.4, opacity: act ? 1 : (catFilter ? 0.22 : 0.65) }));
+    });
+    const hubNode = {
+      key: 'hub', left: '50%', top: '50%', nodeOpacity: 1,
+      bubbleStyle: 'position:relative;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;background-color:#24242A;color:#E7A53A;box-shadow:0 4px 14px rgba(0,0,0,.45);',
+      iconEl: this.ic('home', 24, '#E7A53A', 1.9), ringEl: null, label: 'Hub', showLabel: true, onClick: () => {},
+    };
+
+    const graphEdgesEl = isDep ? this.buildEdgesSvg(depEdges, 'GT') : this.buildEdgesSvg(connEdges, 'GT');
+    const graphNodes = isDep ? devNodes.concat(gearNodes) : devNodes.concat([hubNode]);
+    const graphModeList = [{ id: 'dependencies', label: 'Dependencies' }, { id: 'connections', label: 'Connections' }].map(mm => ({
+      label: mm.label,
+      style: `border:none;cursor:pointer;font-size:13px;font-weight:600;padding:8px 16px;border-radius:9px;transition:all .15s;` + (s.graphMode === mm.id ? `background-color:#24242A;color:#F4F1EA;` : `background-color:#ECE6D9;color:#6F6A60;`),
+      onClick: () => this.setState(mm.id === 'connections' ? { graphMode: mm.id, panelKind: 'device' } : { graphMode: mm.id }),
+    }));
+
+    // ---------- FLOOR-MAP OVERLAYS ----------
+    const mpos = {}; devices.forEach(d => mpos[d.id] = { x: d.x * 10, y: d.y * 10 });
+    const mhx = 430, mhy = 430;
+    const mEdges = [];
+    if (s.mapConn) devices.forEach(d => { const p = mpos[d.id]; mEdges.push(this.edgeLine(mhx, mhy, p.x, p.y, { key: 'mc' + d.id, stroke: 'rgba(224,153,47,.55)', w: 1.6 })); });
+    const mapGearNodes = [];
+    if (s.mapDeps) links.forEach(([rid, rl]) => {
+      const pts = [...rl.src, ...rl.dst].map(id => mpos[id]).filter(Boolean);
+      if (!pts.length) return;
+      const gx = pts.reduce((t, p) => t + p.x, 0) / pts.length, gy = pts.reduce((t, p) => t + p.y, 0) / pts.length;
+      rl.src.forEach(id => { const p = mpos[id]; mEdges.push(this.edgeLine(p.x, p.y, gx, gy, { key: 'ms' + rid + id, stroke: 'rgba(224,153,47,.5)', w: 1.8, dash: '5 6' })); });
+      rl.dst.forEach(id => { const p = mpos[id]; mEdges.push(this.edgeLine(gx, gy, p.x, p.y, { key: 'md' + rid + id, stroke: 'rgba(224,153,47,.85)', w: 2, marker: 'url(#arrowMAP)' })); });
+      const r = s.rules.find(x => String(x.id) === String(rid));
+      const selr = String(s.ruleId) === String(rid) && s.panelKind === 'rule';
+      mapGearNodes.push({
+        key: 'mg' + rid, left: (gx / 10) + '%', top: (gy / 10) + '%',
+        bubbleStyle: `position:relative;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#2A2A30;background-color:${selr ? '#F6E2BC' : '#FFFFFF'};border-width:2px;border-style:solid;border-color:#E0992F;box-shadow:0 2px 7px rgba(0,0,0,.35);`,
+        iconEl: this.ic('gear', 16, '#2A2A30', 1.9), name: r ? r.name : '', showLabel: selr,
+        onClick: () => this.setState({ ruleId: r ? r.id : null, panelKind: 'rule' }),
+      });
+    });
+    const mapHasOverlay = s.mapConn || s.mapDeps;
+    const mapEdgesEl = mapHasOverlay ? this.buildEdgesSvg(mEdges, 'MAP') : null;
+    const mapHub = { left: (mhx / 10) + '%', top: (mhy / 10) + '%', bubbleStyle: 'width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background-color:#24242A;color:#E7A53A;box-shadow:0 4px 12px rgba(0,0,0,.45);', iconEl: this.ic('home', 20, '#E7A53A', 1.9) };
+    const mapToggles = [
+      { id: 'mapConn', label: 'Connections', active: s.mapConn },
+      { id: 'mapDeps', label: 'Dependencies', active: s.mapDeps },
+    ].map(t => ({
+      label: t.label,
+      dotColor: t.active ? '#E0992F' : '#C9C3B6',
+      style: `display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600; padding:8px 15px; border-radius:999px; cursor:pointer; transition:all .15s; border-width:1px; border-style:solid; ` + (t.active ? `background-color:#FBF1DE; color:#9A6A1E; border-color:#EAD3A4;` : `background-color:#FFFFFF; color:#6F6A60; border-color:#E7E1D5;`),
+      onClick: () => this.setState(st => ({ [t.id]: !st[t.id] })),
+    }));
+
+    const titles = { room: 'Your Room', devices: 'All Devices', rules: 'All Rules' };
+
+    return {
+      clock, clockIcon: this.ic('clock', 15, '#6F6A60', 1.7),
+      checkIcon: this.ic('check', 13, '#9A6A1E', 2.4),
+      chevronIcon: this.ic('chevron', 17, 'currentColor', 2),
+      closeIcon: this.ic('close', 15, 'currentColor', 2),
+      arrowDownIcon: this.ic('arrowDown', 22, 'currentColor', 1.8),
+      navList, pillList, viewList, showViewSwitch: s.nav === 'room' && !isC1,
+      graphHint: gMode === 'connections' ? 'Live link from every device to the room hub.' : 'Tap a rule to trace just its sensors and the devices it controls; everything else dims. Arrows point to the controlled device.',
+      pageTitle: titles[s.nav],
+      isRoom: s.nav === 'room', isDevices: s.nav === 'devices', isRules: s.nav === 'rules',
+      showPills: s.nav === 'room' || s.nav === 'devices',
+      roomCards: roomCardsView, roomMap: roomMapView, roomGraph: roomGraphView,
+      roomGroups, roomMapItems: dvAll, allDevices, dashGroups,
+      hasSelected: !!sel, sel,
+      showDevicePanel: !!sel && s.panelKind === 'device' && !roomCardsView,
+      showRulePanelRoom: (roomMapView || roomGraphView) && s.panelKind === 'rule' && !!rule,
+      gearIcon: this.ic('gear', 16, '#2A2A30', 1.9),
+      graphEdgesEl, graphNodes, graphModeList,
+      mapToggles, mapEdgesEl, mapHasOverlay, mapHub, mapGearNodes,
+      mapConn: s.mapConn, mapDeps: s.mapDeps,
+      allRules, hasRule: !!rule, rule,
+      closePanel: () => this.setState({ selectedId: null }),
+      closeRule: () => this.setState({ ruleId: null }),
+      closeRulePanel: () => this.setState({ ruleId: null, panelKind: 'device' }),
+    };
+  }
+}
+</script>
+</body>
+</html>

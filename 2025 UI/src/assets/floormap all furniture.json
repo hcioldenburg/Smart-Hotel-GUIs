@@ -1,0 +1,354 @@
+[
+  {
+    "id": "wall_1753097917265_4473",
+    "type": "wall",
+    "points": [
+      30,
+      125,
+      598,
+      122
+    ],
+    "stroke": "#333"
+  },
+  {
+    "id": "wall_1753097922628_9213",
+    "type": "wall",
+    "points": [
+      595,
+      121,
+      595,
+      503
+    ],
+    "stroke": "#333"
+  },
+  {
+    "id": "wall_1753097937548_3348",
+    "type": "wall",
+    "points": [
+      30,
+      125,
+      30,
+      504
+    ],
+    "stroke": "#333"
+  },
+  {
+    "id": "wall_1753097960402_1790",
+    "type": "wall",
+    "points": [
+      30,
+      504,
+      595,
+      502
+    ],
+    "stroke": "#333"
+  },
+  {
+    "id": "door_1753098001263_4474",
+    "type": "door",
+    "x": 560,
+    "y": 468,
+    "width": 46,
+    "height": 19,
+    "fill": "brown",
+    "label": "Door"
+  },
+  {
+    "id": "door_1753098035939_4497",
+    "type": "door",
+    "x": 15,
+    "y": 159,
+    "width": 41,
+    "height": 111,
+    "fill": "brown",
+    "label": "Window"
+  },
+  {
+    "id": "door_1753098064300_5127",
+    "type": "door",
+    "x": 20,
+    "y": 370,
+    "width": 38,
+    "height": 120,
+    "fill": "brown",
+    "label": "Window"
+  },
+  {
+    "id": "bed",
+    "type": "rect",
+    "x": 255,
+    "y": 125,
+    "width": 127,
+    "height": 160,
+    "fill": "orange",
+    "label": "Bed"
+  },
+  {
+    "id": "armchair bottom",
+    "type": "circle",
+    "x": 112,
+    "y": 442,
+    "radius": 23.249030993194197,
+    "fill": "gray",
+    "label": "Chair"
+  },
+  {
+    "id": "armchair top",
+    "type": "circle",
+    "x": 117,
+    "y": 338,
+    "radius": 26.0384331325831,
+    "fill": "gray",
+    "label": "Chair"
+  },
+  {
+    "id": "smartfan",
+    "type": "rect",
+    "x": 85,
+    "y": 162,
+    "width": 84,
+    "height": 44,
+    "fill": "orange",
+    "label": "Fan"
+  },
+  {
+    "id": "table",
+    "type": "rect",
+    "x": 86,
+    "y": 375,
+    "width": 75,
+    "height": 43,
+    "fill": "orange",
+    "label": "Table"
+  },
+  {
+    "id": "standinglamp",
+    "type": "rect",
+    "x": 60,
+    "y": 465,
+    "width": 83,
+    "height": 33,
+    "fill": "orange",
+    "label": "Standing Lamp"
+  },
+  {
+    "id": "tv",
+    "type": "rect",
+    "x": 274,
+    "y": 455,
+    "width": 91,
+    "height": 45,
+    "fill": "orange",
+    "label": "TV"
+  },
+  {
+    "id": "ipad",
+    "type": "rect",
+    "x": 380,
+    "y": 480,
+    "width": 40,
+    "height": 20,
+    "fill": "orange",
+    "label": "IPad"
+  },
+  {
+    "id": "desk",
+    "type": "rect",
+    "x": 525,
+    "y": 330,
+    "width": 68,
+    "height": 90,
+    "fill": "orange",
+    "label": "Desk"
+  },
+  {
+    "id": "officechair",
+    "type": "rect",
+    "x": 451,
+    "y": 352,
+    "width": 74,
+    "height": 47,
+    "fill": "orange",
+    "label": "Officechair"
+  },
+  {
+    "id": "hub",
+    "type": "rect",
+    "x": 478,
+    "y": 153,
+    "width": 113,
+    "height": 141,
+    "fill": "orange",
+    "label": "Hub"
+  },
+  {
+    "id": "nightstand left",
+    "type": "rect",
+    "x": 183,
+    "y": 127,
+    "width": 70,
+    "height": 76,
+    "fill": "orange",
+    "label": "Desk"
+  },
+  {
+    "id": "nightstand right",
+    "type": "rect",
+    "x": 385,
+    "y": 125,
+    "width": 92,
+    "height": 71,
+    "fill": "orange",
+    "label": "Desk"
+  },
+  {
+    "id": "curtain",
+    "type": "rect",
+    "x": 38,
+    "y": 156,
+    "width": 20,
+    "height": 115,
+    "fill": "orange",
+    "label": "Blinds"
+  },
+  {
+    "id": "rollo",
+    "type": "rect",
+    "x": 38,
+    "y": 377,
+    "width": 20,
+    "height": 95,
+    "fill": "orange",
+    "label": "Blinds"
+  },
+  {
+    "id": "heater",
+    "type": "rect",
+    "x": 60,
+    "y": 377,
+    "width": 20,
+    "height": 95,
+    "fill": "orange",
+    "label": "Heater"
+  },
+  {
+    "id": "presencesensor",
+    "type": "rect",
+    "x": 295,
+    "y": 350,
+    "width": 60,
+    "height": 38,
+    "fill": "orange",
+    "label": "Presencesensor"
+  },
+  {
+    "id": "doorsensor",
+    "type": "rect",
+    "x": 555,
+    "y": 431,
+    "width": 58,
+    "height": 27,
+    "fill": "orange",
+    "label": "Doorsensor"
+  },
+  {
+    "id": "windowsensor",
+    "type": "rect",
+    "x": 28,
+    "y": 345,
+    "width": 40,
+    "height": 27,
+    "fill": "orange",
+    "label": "Windowsensor"
+  },
+  {
+    "id": "windowlight",
+    "type": "rect",
+    "x": 27,
+    "y": 270,
+    "width": 54,
+    "height": 33,
+    "fill": "orange",
+    "label": "Walllight"
+  },
+  {
+    "id": "temperaturesensor",
+    "type": "rect",
+    "x": 27,
+    "y": 305,
+    "width": 40,
+    "height": 20,
+    "fill": "orange",
+    "label": "Temperaturesensor"
+  },
+  {
+    "id": "rolloswitch",
+    "type": "rect",
+    "x": 27,
+    "y": 325,
+    "width": 40,
+    "height": 20,
+    "fill": "orange",
+    "label": "Roller Shutter Control"
+  },
+  {
+    "id": "doorlight",
+    "type": "rect",
+    "x": 442,
+    "y": 457,
+    "width": 60,
+    "height": 40,
+    "fill": "orange",
+    "label": "Walllight"
+  },
+  {
+    "id": "doorswitch",
+    "type": "rect",
+    "x": 500,
+    "y": 475,
+    "width": 40,
+    "height": 20,
+    "fill": "orange",
+    "label": "Wallswitch"
+  },
+  {
+    "id": "bedlight left",
+    "type": "rect",
+    "x": 190,
+    "y": 128,
+    "width": 41,
+    "height": 29,
+    "fill": "orange",
+    "label": "Bedlight"
+  },
+  {
+    "id": "button left",
+    "type": "rect",
+    "x": 230,
+    "y": 173,
+    "width": 20,
+    "height": 20,
+    "fill": "orange",
+    "label": "Button"
+  },
+  {
+    "id": "bedlight right",
+    "type": "rect",
+    "x": 420,
+    "y": 124,
+    "width": 55,
+    "height": 22,
+    "fill": "orange",
+    "label": "Bedlight"
+  },
+  {
+    "id": "button right",
+    "type": "rect",
+    "x": 400,
+    "y": 167,
+    "width": 27,
+    "height": 30,
+    "fill": "orange",
+    "label": "Button"
+  }
+]

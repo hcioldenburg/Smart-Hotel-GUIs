@@ -1,0 +1,14 @@
+Have a recording of where the participants clicked and how they navigate the UI
+
+Can be in the form of a log like a console log.
+
+Should be enabled and disabled through a simple click.
+
+Experiment starts -> Console log gets enabled -> All clicks of the user gets recorded -> Experiment ends -> Console log gets saved and exported to some directory for later analysis
+
+
+No new rules yet, maybe later
+
+Implement Dictionary for useDevices hook
+
+Add header for categories for StructualUI

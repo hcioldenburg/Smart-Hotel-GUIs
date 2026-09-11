@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* ─── Design tokens ─── */
+:root {
+  /* Surfaces */
+  --c-bg:          #DCD6CA;   /* app canvas */
+  --c-panel:       #F4F1EA;   /* content panel / topbar */
+  --c-card:        #FFFFFF;   /* device cards */
+  --c-chip:        #ECE6D9;   /* warm chip */
+  --c-row-sel:     #FBF4E6;   /* selected table row */
+
+  /* Rail */
+  --c-rail:        #3E3D44;
+  --c-rail-active: #F4F1EA;   /* active nav item fill */
+
+  /* Amber / accent */
+  --c-amber:       #E0992F;
+  --c-amber-hover: #E7A53A;
+  --c-amber-light: #F6E6C9;
+  --c-amber-brd:   #EAD3A4;
+  --c-amber-deep:  #5C3F12;
+
+  /* Text */
+  --c-ink:         #25242A;
+  --c-muted:       #6F6A60;
+  --c-quiet:       #8A857A;
+  --c-disabled:    #C7C3BB;   /* inactive nav */
+
+  /* Borders */
+  --c-border:      #ECE6D9;
+  --c-border2:     #E5DFD2;
+
+  /* Sensor */
+  --c-teal:        #5BAE7A;   /* nominal/safe */
+  --c-teal-ring:   rgba(47,158,150,0.45);
+
+  /* Status */
+  --c-rule-on:     #2E7D52;
+  --c-rule-on-bg:  #E3F1E8;
+  --c-batt-low:    #C0552F;
+
+  /* Rule blocks */
+  --c-trigger-bg:  #FBF1DE;
+  --c-trigger-brd: #F2E3C4;
+  --c-cond-bg:     #FBF6EC;
+  --c-cond-brd:    #F0E4CC;
+}
+
+/* ─── Global resets ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  min-height: 100vh;
+  font-family: 'Manrope', system-ui, sans-serif;
+  background: var(--c-bg);
+  color: var(--c-ink);
+  -webkit-font-smoothing: antialiased;
+  font-size: 15px;
+}
+
+/* ─── Keyframes ─── */
+@keyframes sense-pulse {
+  0%   { transform: scale(.5); opacity: .65; }
+  70%  { opacity: 0; }
+  100% { transform: scale(1.65); opacity: 0; }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ─── Amber toggle ─── */
+.hw-toggle { position: relative; display: inline-block; width: 44px; height: 24px; flex-shrink: 0; }
+.hw-toggle input { opacity: 0; width: 0; height: 0; }
+.hw-toggle-slider {
+  position: absolute; inset: 0;
+  background: #D0C9BE; border-radius: 999px; cursor: pointer;
+  transition: background .2s;
+}
+.hw-toggle-slider::before {
+  content: ''; position: absolute;
+  height: 18px; width: 18px; left: 3px; top: 3px;
+  background: #fff; border-radius: 50%;
+  transition: transform .2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,.18);
+}
+.hw-toggle input:checked + .hw-toggle-slider { background: var(--c-amber); }
+.hw-toggle input:checked + .hw-toggle-slider::before { transform: translateX(20px); }
+
+/* ─── Sensor pulse ring ─── */
+.sense-pulse {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--c-teal-ring);
+  animation: sense-pulse 2.6s ease-out infinite;
+  pointer-events: none;
+}
+
+/* ─── Slim scrollbar ─── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #C8C0B4; border-radius: 99px; }
+
+/* ─── Range input accent ─── */
+input[type="range"] { accent-color: var(--c-amber); }

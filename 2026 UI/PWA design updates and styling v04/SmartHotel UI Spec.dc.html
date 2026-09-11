@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#24242A">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#24242A"/>
+    <rect x="500" y="300" width="200" height="200" rx="52" fill="#E0992F"/>
+    <rect x="560" y="360" width="80" height="80" rx="24" fill="#24242A"/>
+  </svg>
+</template>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #DCD6CA; font-family: 'Manrope', system-ui, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  @media print { body { background: #fff; } .sheet { box-shadow: none !important; margin: 0 !important; } }
+</style>
+</helmet>
+
+<div style="max-width: 920px; margin: 32px auto; padding: 0 20px 80px;">
+
+  <!-- ============ COVER ============ -->
+  <div class="sheet" style="background: #24242A; border-radius: 22px; padding: 54px 56px; color: #F4F1EA; box-shadow: 0 24px 60px rgba(40,38,32,.24); position: relative; overflow: hidden;">
+    <div style="position: absolute; right: -60px; top: -60px; width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle, rgba(224,153,47,.28) 0%, rgba(224,153,47,0) 70%);"></div>
+    <div style="display: flex; align-items: center; gap: 13px; margin-bottom: 40px;">
+      <div style="width: 34px; height: 34px; border-radius: 9px; background: #E0992F; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(224,153,47,.5);">
+        <div style="width: 13px; height: 13px; border-radius: 4px; background: #24242A;"></div>
+      </div>
+      <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 23px; letter-spacing: -.5px;">SmartHotel</span>
+    </div>
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px; letter-spacing: 2px; text-transform: uppercase; color: #E7A53A; margin-bottom: 16px;">UI / UX Specification</div>
+    <h1 style="margin: 0 0 18px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 46px; line-height: 1.05; letter-spacing: -1.2px; max-width: 620px;">In-room smart control dashboard</h1>
+    <p style="margin: 0; max-width: 560px; font-size: 16px; line-height: 1.6; color: #C7C2B7;">A guest-facing panel for monitoring and controlling every connected device in the room — and for understanding the automation rules that wire them together.</p>
+    <div style="display: flex; gap: 40px; margin-top: 40px; padding-top: 28px; border-top: 1px solid rgba(244,241,234,.14);">
+      <div><div style="font-family: 'Space Grotesk', sans-serif; font-size: 30px; font-weight: 600; color: #E7A53A;">3</div><div style="font-size: 12.5px; color: #9A958C; margin-top: 2px;">Top-level screens</div></div>
+      <div><div style="font-family: 'Space Grotesk', sans-serif; font-size: 30px; font-weight: 600; color: #E7A53A;">14</div><div style="font-size: 12.5px; color: #9A958C; margin-top: 2px;">Devices</div></div>
+      <div><div style="font-family: 'Space Grotesk', sans-serif; font-size: 30px; font-weight: 600; color: #E7A53A;">10</div><div style="font-size: 12.5px; color: #9A958C; margin-top: 2px;">Automation rules</div></div>
+      <div><div style="font-family: 'Space Grotesk', sans-serif; font-size: 30px; font-weight: 600; color: #E7A53A;">1366×1024</div><div style="font-size: 12.5px; color: #9A958C; margin-top: 2px;">Canvas (tablet landscape)</div></div>
+    </div>
+  </div>
+
+  <!-- ============ 01 INFORMATION ARCHITECTURE ============ -->
+  <div class="sheet" style="background: #F4F1EA; border-radius: 22px; padding: 48px 56px; margin-top: 28px; box-shadow: 0 18px 44px rgba(40,38,32,.14);">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 2px; color: #B8862E;">01 — STRUCTURE</div>
+    <h2 style="margin: 8px 0 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 30px; letter-spacing: -.6px; color: #25242A;">Information architecture</h2>
+    <p style="margin: 0 0 30px; font-size: 15px; line-height: 1.6; color: #57534B; max-width: 640px;">A persistent left rail switches between three screens. The room screen carries its own view-switcher and a device-category filter; nothing nests deeper than two levels.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+      <div style="background: #FFFFFF; border: 1px solid #ECE6D9; border-radius: 16px; padding: 20px;">
+        <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 17px; color: #25242A;">Your Room</div>
+        <div style="font-size: 13px; color: #8A857A; margin: 4px 0 14px;">Default landing screen</div>
+        <div style="display: flex; flex-direction: column; gap: 7px;">
+          <div style="font-size: 13.5px; color: #57534B; padding: 7px 12px; background: #FBF4E6; border-radius: 9px;">Cards view</div>
+          <div style="font-size: 13.5px; color: #57534B; padding: 7px 12px; background: #FBF4E6; border-radius: 9px;">Floor Map view</div>
+          <div style="font-size: 13.5px; color: #57534B; padding: 7px 12px; background: #FBF4E6; border-radius: 9px;">Graph view</div>
+        </div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #ECE6D9; border-radius: 16px; padding: 20px;">
+        <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 17px; color: #25242A;">All Devices</div>
+        <div style="font-size: 13px; color: #8A857A; margin: 4px 0 14px;">Dense list, all rooms</div>
+        <div style="font-size: 13.5px; color: #57534B; line-height: 1.55;">Tabular grid with status, last-activity and quick controls. Shares the category filter with the room screen.</div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #ECE6D9; border-radius: 16px; padding: 20px;">
+        <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 17px; color: #25242A;">All Rules</div>
+        <div style="font-size: 13px; color: #8A857A; margin: 4px 0 14px;">Automation catalogue</div>
+        <div style="font-size: 13.5px; color: #57534B; line-height: 1.55;">Every rule with trigger, condition and action. Selecting a row opens the rule-detail panel.</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 18px; background: #ECE6D9; border-radius: 14px; padding: 16px 20px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+      <span style="font-size: 12.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #9A6A1E;">Category filter</span>
+      <span style="font-size: 13.5px; color: #57534B;">All · Lights · Appliances · Media · Sensors — applies to room Cards/Map/Graph and to All Devices.</span>
+    </div>
+  </div>
+
+  <!-- ============ 02 LAYOUT ============ -->
+  <div class="sheet" style="background: #F4F1EA; border-radius: 22px; padding: 48px 56px; margin-top: 28px; box-shadow: 0 18px 44px rgba(40,38,32,.14);">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 2px; color: #B8862E;">02 — LAYOUT</div>
+    <h2 style="margin: 8px 0 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 30px; letter-spacing: -.6px; color: #25242A;">App frame</h2>
+    <p style="margin: 0 0 28px; font-size: 15px; line-height: 1.6; color: #57534B; max-width: 640px;">Fixed three-zone shell: top bar, dark nav rail, scrolling content. The room screen splits content into a flexible left stage and a fixed 380px detail panel on the right.</p>
+
+    <div style="border: 1px solid #E5DFD2; border-radius: 16px; overflow: hidden; background: #fff;">
+      <div style="height: 44px; background: #F4F1EA; border-bottom: 1px solid #E5DFD2; display: flex; align-items: center; justify-content: space-between; padding: 0 18px;">
+        <span style="font-size: 12px; font-weight: 700; color: #9A958C; letter-spacing: .3px;">TOP BAR · 64px — logo + live clock</span>
+      </div>
+      <div style="display: flex; height: 230px;">
+        <div style="width: 78px; background: #24242A; color: #C7C2B7; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 11px; font-weight: 600; padding: 0 8px;">NAV RAIL · 90px</div>
+        <div style="flex: 1; display: flex; gap: 12px; padding: 16px;">
+          <div style="flex: 1; border: 1.5px dashed #D7CFBE; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #9A958C; font-size: 12.5px; font-weight: 600;">CONTENT STAGE (flex)</div>
+          <div style="width: 150px; flex: none; border: 1.5px dashed #D7CFBE; border-radius: 12px; display: flex; align-items: center; justify-content: center; text-align: center; color: #9A958C; font-size: 12px; font-weight: 600; padding: 0 10px;">DETAIL PANEL · 380px</div>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; gap: 24px; margin-top: 18px; flex-wrap: wrap; font-size: 13px; color: #57534B;">
+      <span><b style="color:#25242A;">Content padding</b> · 26px 30px 40px</span>
+      <span><b style="color:#25242A;">Stage / panel gap</b> · 24px</span>
+      <span><b style="color:#25242A;">Scroll</b> · content zone only; bar + rail fixed</span>
+    </div>
+  </div>
+
+  <!-- ============ 03 COLOR ============ -->
+  <div class="sheet" style="background: #F4F1EA; border-radius: 22px; padding: 48px 56px; margin-top: 28px; box-shadow: 0 18px 44px rgba(40,38,32,.14);">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 2px; color: #B8862E;">03 — FOUNDATIONS</div>
+    <h2 style="margin: 8px 0 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 30px; letter-spacing: -.6px; color: #25242A;">Color</h2>
+    <p style="margin: 0 0 28px; font-size: 15px; line-height: 1.6; color: #57534B; max-width: 640px;">A warm, low-glare palette built for an in-room screen at night. One amber accent carries all "active / on" energy; the dark charcoal anchors navigation. Everything else is paper-toned neutral.</p>
+
+    <div style="font-size: 12px; font-weight: 700; letter-spacing: .5px; color: #9A958C; margin-bottom: 12px;">CORE</div>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 26px;">
+      <div><div style="height: 76px; border-radius: 13px; background: #E0992F; box-shadow: 0 4px 14px rgba(224,153,47,.4);"></div><div style="font-size: 13px; font-weight: 600; color: #25242A; margin-top: 8px;">Amber / Active</div><div style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #8A857A;">#E0992F</div></div>
+      <div><div style="height: 76px; border-radius: 13px; background: #E7A53A;"></div><div style="font-size: 13px; font-weight: 600; color: #25242A; margin-top: 8px;">Amber hover</div><div style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #8A857A;">#E7A53A</div></div>
+      <div><div style="height: 76px; border-radius: 13px; background: #24242A;"></div><div style="font-size: 13px; font-weight: 600; color: #25242A; margin-top: 8px;">Charcoal / Rail</div><div style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #8A857A;">#24242A</div></div>
+      <div><div style="height: 76px; border-radius: 13px; background: #25242A;"></div><div style="font-size: 13px; font-weight: 600; color: #25242A; margin-top: 8px;">Ink / Text</div><div style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #8A857A;">#25242A</div></div>
+    </div>
+
+    <div style="font-size: 12px; font-weight: 700; letter-spacing: .5px; color: #9A958C; margin-bottom: 12px;">SURFACES &amp; NEUTRALS</div>
+    <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 26px;">
+      <div><div style="height: 60px; border-radius: 11px; background: #DCD6CA; border: 1px solid #CFC8BA;"></div><div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A857A; margin-top: 6px;">#DCD6CA</div></div>
+      <div><div style="height: 60px; border-radius: 11px; background: #F4F1EA; border: 1px solid #E5DFD2;"></div><div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A857A; margin-top: 6px;">#F4F1EA</div></div>
+      <div><div style="height: 60px; border-radius: 11px; background: #FFFFFF; border: 1px solid #ECE6D9;"></div><div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A857A; margin-top: 6px;">#FFFFFF</div></div>
+      <div><div style="height: 60px; border-radius: 11px; background: #ECE6D9;"></div><div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A857A; margin-top: 6px;">#ECE6D9</div></div>
+      <div><div style="height: 60px; border-radius: 11px; background: #6F6A60;"></div><div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A857A; margin-top: 6px;">#6F6A60</div></div>
+      <div><div style="height: 60px; border-radius: 11px; background: #9A958C;"></div><div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A857A; margin-top: 6px;">#9A958C</div></div>
+    </div>
+
+    <div style="font-size: 12px; font-weight: 700; letter-spacing: .5px; color: #9A958C; margin-bottom: 12px;">SENSOR STATE DOTS</div>
+    <div style="display: flex; gap: 28px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 16px; height: 16px; border-radius: 50%; background: #5BAE7A; box-shadow: 0 0 0 4px rgba(91,174,122,.18);"></span><span style="font-size: 13.5px; color: #57534B;">Nominal — closed / safe <span style="font-family:'JetBrains Mono',monospace;color:#8A857A;">#5BAE7A</span></span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 16px; height: 16px; border-radius: 50%; background: #E0992F; box-shadow: 0 0 0 4px rgba(224,153,47,.18);"></span><span style="font-size: 13.5px; color: #57534B;">Attention — reading active <span style="font-family:'JetBrains Mono',monospace;color:#8A857A;">#E0992F</span></span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 16px; height: 16px; border-radius: 50%; background: #9A958C; box-shadow: 0 0 0 4px rgba(154,149,140,.16);"></span><span style="font-size: 13.5px; color: #57534B;">Idle — no presence <span style="font-family:'JetBrains Mono',monospace;color:#8A857A;">#9A958C</span></span></div>
+    </div>
+  </div>
+
+  <!-- ============ 04 TYPE ============ -->
+  <div class="sheet" style="background: #F4F1EA; border-radius: 22px; padding: 48px 56px; margin-top: 28px; box-shadow: 0 18px 44px rgba(40,38,32,.14);">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 2px; color: #B8862E;">04 — FOUNDATIONS</div>
+    <h2 style="margin: 8px 0 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 30px; letter-spacing: -.6px; color: #25242A;">Typography</h2>
+    <p style="margin: 0 0 28px; font-size: 15px; line-height: 1.6; color: #57534B; max-width: 640px;"><b style="color:#25242A;">Space Grotesk</b> for titles, numerals and brand — tight, technical. <b style="color:#25242A;">Manrope</b> for everything readable — labels, body, controls.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 0;">
+      <div style="display: flex; align-items: baseline; gap: 20px; padding: 16px 0; border-top: 1px solid #E5DFD2;"><span style="width: 130px; flex: none; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #9A958C;">Grotesk 30 / 600</span><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 30px; letter-spacing: -.6px; color: #25242A;">Your Room</span><span style="margin-left: auto; font-size: 12px; color: #9A958C;">Page title</span></div>
+      <div style="display: flex; align-items: baseline; gap: 20px; padding: 16px 0; border-top: 1px solid #E5DFD2;"><span style="width: 130px; flex: none; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #9A958C;">Grotesk 21 / 700</span><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 21px; letter-spacing: -.5px; color: #25242A;">SmartHotel</span><span style="margin-left: auto; font-size: 12px; color: #9A958C;">Brand / panel heads</span></div>
+      <div style="display: flex; align-items: baseline; gap: 20px; padding: 16px 0; border-top: 1px solid #E5DFD2;"><span style="width: 130px; flex: none; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #9A958C;">Manrope 15 / 400</span><span style="font-size: 15px; color: #3A3833; line-height: 1.55;">Body copy and rule summaries — comfortable reading.</span><span style="margin-left: auto; font-size: 12px; color: #9A958C;">Body</span></div>
+      <div style="display: flex; align-items: baseline; gap: 20px; padding: 16px 0; border-top: 1px solid #E5DFD2;"><span style="width: 130px; flex: none; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #9A958C;">Manrope 13.5 / 600</span><span style="font-size: 13.5px; font-weight: 600; color: #25242A;">Card titles · controls · pills</span><span style="margin-left: auto; font-size: 12px; color: #9A958C;">Label</span></div>
+      <div style="display: flex; align-items: baseline; gap: 20px; padding: 16px 0; border-top: 1px solid #E5DFD2; border-bottom: 1px solid #E5DFD2;"><span style="width: 130px; flex: none; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #9A958C;">Manrope 11.5 / 700</span><span style="font-size: 11.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #B8862E;">SECTION EYEBROW</span><span style="margin-left: auto; font-size: 12px; color: #9A958C;">Overline</span></div>
+    </div>
+  </div>
+
+  <!-- ============ 05 COMPONENTS ============ -->
+  <div class="sheet" style="background: #F4F1EA; border-radius: 22px; padding: 48px 56px; margin-top: 28px; box-shadow: 0 18px 44px rgba(40,38,32,.14);">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 2px; color: #B8862E;">05 — COMPONENTS</div>
+    <h2 style="margin: 8px 0 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 30px; letter-spacing: -.6px; color: #25242A;">Core components</h2>
+    <p style="margin: 0 0 28px; font-size: 15px; line-height: 1.6; color: #57534B; max-width: 640px;">Three device archetypes drive every control. Each renders a 54px circular "bubble" on the map/graph and a card or table row in lists.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px;">
+      <div style="background: #FFFFFF; border: 1px solid #ECE6D9; border-radius: 16px; padding: 20px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+          <span style="width: 44px; height: 44px; border-radius: 50%; background: #E0992F; box-shadow: 0 0 0 4px rgba(224,153,47,.22), 0 0 18px rgba(224,153,47,.5);"></span>
+          <span style="width: 46px; height: 26px; border-radius: 999px; background: #E0992F; display: flex; justify-content: flex-end; align-items: center; padding: 3px;"><span style="width: 20px; height: 20px; border-radius: 50%; background: #fff;"></span></span>
+        </div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 16px; color: #25242A;">Toggle</div>
+        <div style="font-size: 13px; color: #57534B; line-height: 1.5; margin-top: 4px;">On / Off devices — lights, fan, TV, sockets. Active = amber fill + glow + ON pill.</div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #ECE6D9; border-radius: 16px; padding: 20px;">
+        <div style="height: 44px; display: flex; align-items: center; margin-bottom: 14px;">
+          <span style="flex: 1; height: 6px; border-radius: 999px; background: linear-gradient(90deg,#E0992F 0%,#E0992F 65%,#E7E1D5 65%,#E7E1D5 100%); position: relative;"><span style="position: absolute; left: 65%; top: 50%; transform: translate(-50%,-50%); width: 18px; height: 18px; border-radius: 50%; background: #E0992F; box-shadow: 0 1px 4px rgba(176,118,30,.5);"></span></span>
+        </div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 16px; color: #25242A;">Slider</div>
+        <div style="font-size: 13px; color: #57534B; line-height: 1.5; margin-top: 4px;">Graded devices — curtains, roller shutter. Reports "% Open" with amber-filled track.</div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #ECE6D9; border-radius: 16px; padding: 20px;">
+        <div style="height: 44px; display: flex; align-items: center; gap: 9px; margin-bottom: 14px;">
+          <span style="width: 16px; height: 16px; border-radius: 50%; background: #5BAE7A; box-shadow: 0 0 0 4px rgba(91,174,122,.18);"></span>
+          <span style="font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: #F1EDE4; color: #6F6A60;">Closed</span>
+        </div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 16px; color: #25242A;">Sensor</div>
+        <div style="font-size: 13px; color: #57534B; line-height: 1.5; margin-top: 4px;">Read-only — door, window, presence, temperature. Colored dot + state pill, no controls.</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+      <div style="background: #ECE6D9; border-radius: 14px; padding: 16px 20px;"><div style="font-weight: 700; font-size: 13.5px; color: #25242A; margin-bottom: 4px;">Nav rail button</div><div style="font-size: 13px; color: #57534B; line-height: 1.5;">64px square, icon + label. Active = amber-tint fill, amber icon, cream label.</div></div>
+      <div style="background: #ECE6D9; border-radius: 14px; padding: 16px 20px;"><div style="font-weight: 700; font-size: 13.5px; color: #25242A; margin-bottom: 4px;">Category pill</div><div style="font-size: 13px; color: #57534B; line-height: 1.5;">Rounded. Selected gains a check glyph + warm fill (#F6E6C9 / #9A6A1E).</div></div>
+      <div style="background: #ECE6D9; border-radius: 14px; padding: 16px 20px;"><div style="font-weight: 700; font-size: 13.5px; color: #25242A; margin-bottom: 4px;">Segmented switcher</div><div style="font-size: 13px; color: #57534B; line-height: 1.5;">View + graph-mode toggles. Active segment = white chip with soft shadow.</div></div>
+      <div style="background: #ECE6D9; border-radius: 14px; padding: 16px 20px;"><div style="font-weight: 700; font-size: 13.5px; color: #25242A; margin-bottom: 4px;">Detail panel</div><div style="font-size: 13px; color: #57534B; line-height: 1.5;">380px white card, header + close. Two variants: device and rule.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ 06 GRAPH VIEW (FEATURE SPEC) ============ -->
+  <div class="sheet" style="background: #24242A; border-radius: 22px; padding: 48px 56px; margin-top: 28px; box-shadow: 0 18px 44px rgba(40,38,32,.2); color: #F4F1EA;">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 2px; color: #E7A53A;">06 — FEATURE SPEC</div>
+    <h2 style="margin: 8px 0 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 30px; letter-spacing: -.6px; color: #F4F1EA;">Graph view</h2>
+    <p style="margin: 0 0 28px; font-size: 15px; line-height: 1.6; color: #C7C2B7; max-width: 660px;">Renders devices at their real floor-plan positions over the room photo, then overlays the automation network. Answers two questions a flat list can't: <i>what controls what</i>, and <i>what's connected to the hub</i>.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+      <div style="background: rgba(244,241,234,.06); border: 1px solid rgba(244,241,234,.12); border-radius: 16px; padding: 22px;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+          <span style="font-size: 12.5px; font-weight: 700; padding: 6px 14px; border-radius: 8px; background: #E0992F; color: #24242A;">Dependencies</span>
+        </div>
+        <div style="font-size: 13.5px; color: #C7C2B7; line-height: 1.6;">Sensors link by <b style="color:#F4F1EA;">dashed</b> lines into rule "gear" nodes; gears emit <b style="color:#E7A53A;">solid arrows</b> to the device they control. Gear sits at the centroid of its connected devices.</div>
+      </div>
+      <div style="background: rgba(244,241,234,.06); border: 1px solid rgba(244,241,234,.12); border-radius: 16px; padding: 22px;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+          <span style="font-size: 12.5px; font-weight: 700; padding: 6px 14px; border-radius: 8px; background: #ECE6D9; color: #6F6A60;">Connections</span>
+        </div>
+        <div style="font-size: 13.5px; color: #C7C2B7; line-height: 1.6;">Every device draws a live spoke to a central <b style="color:#E7A53A;">room hub</b>. A simple topology read — what's paired and online.</div>
+      </div>
+    </div>
+
+    <div style="font-size: 12px; font-weight: 700; letter-spacing: .5px; color: #9A958C; margin-bottom: 14px;">INTERACTION & FOCUS</div>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <div style="display: flex; gap: 14px; align-items: flex-start;"><span style="width: 24px; height: 24px; flex: none; border-radius: 7px; background: #E0992F; color: #24242A; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center;">1</span><span style="font-size: 14px; color: #D9D4C9; line-height: 1.55;"><b style="color:#F4F1EA;">Tap a gear</b> → trace mode: only that rule's sensors + controlled devices stay lit, everything else dims to ~28%. Opens the rule-detail panel.</span></div>
+      <div style="display: flex; gap: 14px; align-items: flex-start;"><span style="width: 24px; height: 24px; flex: none; border-radius: 7px; background: #E0992F; color: #24242A; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center;">2</span><span style="font-size: 14px; color: #D9D4C9; line-height: 1.55;"><b style="color:#F4F1EA;">Tap a device</b> → opens the device-detail panel; its label pins on.</span></div>
+      <div style="display: flex; gap: 14px; align-items: flex-start;"><span style="width: 24px; height: 24px; flex: none; border-radius: 7px; background: #E0992F; color: #24242A; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center;">3</span><span style="font-size: 14px; color: #D9D4C9; line-height: 1.55;"><b style="color:#F4F1EA;">Category filter</b> → dims everything outside the chosen category, keeping the spatial map intact.</span></div>
+      <div style="display: flex; gap: 14px; align-items: flex-start;"><span style="width: 24px; height: 24px; flex: none; border-radius: 7px; background: #E0992F; color: #24242A; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center;">4</span><span style="font-size: 14px; color: #D9D4C9; line-height: 1.55;"><b style="color:#F4F1EA;">Re-tap the active gear</b> → clears trace mode and closes the panel.</span></div>
+    </div>
+  </div>
+
+  <!-- ============ 07 RULE DETAIL ============ -->
+  <div class="sheet" style="background: #F4F1EA; border-radius: 22px; padding: 48px 56px; margin-top: 28px; box-shadow: 0 18px 44px rgba(40,38,32,.14);">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 2px; color: #B8862E;">07 — PATTERN</div>
+    <h2 style="margin: 8px 0 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 30px; letter-spacing: -.6px; color: #25242A;">Rule grammar</h2>
+    <p style="margin: 0 0 28px; font-size: 15px; line-height: 1.6; color: #57534B; max-width: 640px;">Every automation reads as a three-part sentence. The detail panel renders it as stacked blocks so the logic is scannable without parsing prose.</p>
+
+    <div style="display: flex; align-items: stretch; gap: 12px; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 180px; background: #FBF1DE; border: 1px solid #F2E3C4; border-radius: 13px; padding: 16px 18px; text-align: center;">
+        <div style="font-size: 11.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #B8862E; margin-bottom: 6px;">Trigger</div>
+        <div style="font-size: 14px; color: #3A3833; line-height: 1.5;">WHEN <b>Presence Sensor</b> reports <b style="color:#C97E1E;">Presence</b></div>
+      </div>
+      <div style="flex: 1; min-width: 180px; background: #FBF6EC; border: 1px solid #F0E4CC; border-radius: 13px; padding: 16px 18px; text-align: center;">
+        <div style="font-size: 11.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #B8862E; margin-bottom: 6px;">Condition <span style="font-weight:500; text-transform:none; color:#9A958C;">(optional)</span></div>
+        <div style="font-size: 14px; color: #3A3833; line-height: 1.5;">AND <b>Door Sensor</b> is <b style="color:#C97E1E;">open</b></div>
+      </div>
+      <div style="flex: 1; min-width: 180px; background: #E0992F; border-radius: 13px; padding: 16px 18px; text-align: center; box-shadow: 0 6px 18px rgba(224,153,47,.3);">
+        <div style="font-size: 11.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #5C3F12; margin-bottom: 6px;">Action</div>
+        <div style="font-size: 14px; color: #2A2008; font-weight: 600; line-height: 1.5;">Turn on the Door Light</div>
+      </div>
+    </div>
+    <div style="margin-top: 18px; font-size: 13.5px; color: #8A857A;">Conditions are nullable — time-driven rules (e.g. "Curtain after 7pm") skip the middle block. Each rule also surfaces a plain-language summary and last-triggered timestamp.</div>
+  </div>
+
+  <!-- ============ 08 STATES ============ -->
+  <div class="sheet" style="background: #F4F1EA; border-radius: 22px; padding: 48px 56px; margin-top: 28px; box-shadow: 0 18px 44px rgba(40,38,32,.14);">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 2px; color: #B8862E;">08 — BEHAVIOR</div>
+    <h2 style="margin: 8px 0 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 30px; letter-spacing: -.6px; color: #25242A;">States &amp; motion</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px;">
+      <div style="background:#fff; border:1px solid #ECE6D9; border-radius:14px; padding:18px 20px;"><div style="font-weight:700; font-size:14px; color:#25242A; margin-bottom:5px;">On / active glow</div><div style="font-size:13px; color:#57534B; line-height:1.55;">Amber fill + layered halo (<span style="font-family:'JetBrains Mono',monospace; font-size:12px;">0 0 22px rgba(224,153,47,.55)</span>). Transitions at .2s.</div></div>
+      <div style="background:#fff; border:1px solid #ECE6D9; border-radius:14px; padding:18px 20px;"><div style="font-weight:700; font-size:14px; color:#25242A; margin-bottom:5px;">Selected</div><div style="font-size:13px; color:#57534B; line-height:1.55;">3px amber ring on bubble; amber border + lift shadow on cards; warm row tint in tables.</div></div>
+      <div style="background:#fff; border:1px solid #ECE6D9; border-radius:14px; padding:18px 20px;"><div style="font-weight:700; font-size:14px; color:#25242A; margin-bottom:5px;">Dimmed / out-of-focus</div><div style="font-size:13px; color:#57534B; line-height:1.55;">Opacity ~0.28, desaturated icon. Used by graph trace + category filter.</div></div>
+      <div style="background:#fff; border:1px solid #ECE6D9; border-radius:14px; padding:18px 20px;"><div style="font-weight:700; font-size:14px; color:#25242A; margin-bottom:5px;">Live clock</div><div style="font-size:13px; color:#57534B; line-height:1.55;">Top-bar time refreshes every 10s; "last activity" stamps update to "just now" on control.</div></div>
+    </div>
+    <div style="margin-top:18px; background:#ECE6D9; border-radius:14px; padding:16px 20px; font-size:13.5px; color:#57534B; line-height:1.55;"><b style="color:#25242A;">Radii</b> bubbles 50% · cards 16px · panels 18px · pills 999px · chips 9px &nbsp;·&nbsp; <b style="color:#25242A;">Transitions</b> .12–.2s ease on color, shadow, transform.</div>
+  </div>
+
+  <div style="text-align: center; margin-top: 36px; font-size: 12.5px; color: #8A857A;">SmartHotel · UI/UX Specification · Living document — mirrors the implemented prototype</div>
+
+</div>
+</x-dc>
+</body>
+</html>

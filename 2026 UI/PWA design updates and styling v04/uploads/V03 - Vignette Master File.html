@@ -1,0 +1,749 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>V03 — Vignette Master File</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="388a3a63-611a-8001-8e84-d746a6730eba" class="page sans"><header><h1 class="page-title" dir="auto">V03 — Vignette Master File</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><div id="388a3a63-611a-80de-a7e1-fe25163ff1a0" class="column-list"><div style="display:contents" dir="auto"><div id="388a3a63-611a-8059-bb2c-d5e8efeaa0ba" style="width:100%" class="column"><div style="display:contents" dir="auto"><h2 id="388a3a63-611a-8020-befe-f7d5b2871766" class="">🍏Vignette A </h2></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80cf-ba68-ec4393cf9b0d" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="388a3a63-611a-8085-9a57-e2b349036130" style="width:100%" class="column"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="388a3a63-611a-801a-850c-f042bef58881"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="388a3a63-611a-80b5-826b-db8bbe76b315" class="">⏱️<strong>Temporal Aspect:</strong> No</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8073-8edd-c4e21e05b9a2" class="">⚡<strong>Fault Type:</strong> device</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8081-a9e6-f75ce7937c0e" class="">👩🏻‍🔧Feasibility avg. Rate: —</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80e2-90d1-e42162338f7d" class="">📈Difficulty avg. Rate: —</p></div></div></figure></div></div></div></div></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-8067-8ff3-f3406eeb2756" class="">Scenario Description: </h3></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="388a3a63-611a-8018-b792-fca48f4874ed"><div style="font-size:1.5em"><span class="icon">📢</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="388a3a63-611a-807f-b1b2-ed5286daa4c1" class="">You enter the room and open the window. From your understanding, the roller shutter should automatically open when the window is opened, and someone is in the room. However, the roller shutter stays closed.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80fe-89b3-c2589ff81f4a" class="">Using the tablet interface, your task is to figure out what might be wrong. You’re not expected to fix anything, but please try to determine:</p></div><div style="display:contents" dir="auto"><ul id="388a3a63-611a-801c-a318-c2584b088e45" class="bulleted-list"><li style="list-style-type:disc">What kind of issue is it (e.g., device not responding, communication issue, configuration error)</li></ul></div><div style="display:contents" dir="auto"><ul id="388a3a63-611a-8072-ae9f-f41251e25243" class="bulleted-list"><li style="list-style-type:disc">Which device(s) are affected</li></ul></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80a6-b6ea-dfe422411089" class="">Let us know your diagnosis once you&#x27;re ready.</p></div></div></figure></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-80ec-908b-ea6158e689a0" class="block-color-default_background">🔑<strong>Answer key</strong></h3></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80b5-90b8-f35b59ca44be" class="">⚡<strong>Fault Type:</strong> device</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-805f-99fa-d289d5885bcc" class="">⚡⚡<strong>Fault Details: </strong>The Roller shutter is faulty.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80fb-8849-e28839d85006" class="">🛋️<strong>Including Devices: window sensor, roller shutter, presence sensor, roller_shutter_switch</strong></p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-804f-9e4c-c820eacf3c01" class="">⛓️<strong>Connection:</strong> The rule is well-authored, and the sensors report correctly; </p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-803a-b079-c521a0146f9b" class=""><strong>📏The Rule: </strong>the roller shutter should be opened when the user opens the window and presence is detected.</p></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-8090-8a96-f7b966a73236" class="block-color-gray_background">👩🏻‍🔧Lab Integrations:</h3></div><div style="display:contents" dir="ltr"><table id="388a3a63-611a-808f-9a34-c85068652b68" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-805f-9fde-e7f1b30df464"><th id="pkD=" class="block-color-red_background simple-table-header" style="width:227.65625px">Where?</th><th id="H?Q;" class="block-color-red_background simple-table-header" style="width:181.65625px">Access link </th><th id="PjiJ" class="block-color-red_background simple-table-header" style="width:397.65625px">What has been done?</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-808d-9f9f-dba20a5e3c05"><td id="pkD=" class="" style="width:227.65625px">Home Assistant Settings</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:8123/config/automation/dashboard">http://localhost:8123/config/automation/dashboard</a></td><td id="PjiJ" class="" style="width:397.65625px">  • A new Automation, “<mark class="highlight-red_background"><code><strong>Window Open Shutter Open</strong></code></mark>” has been created.<br/>  • adding exp at the beginning of the automation ID.<br/>  • Scenario details: <br/>      ◦ when the window state changes from closed to open<br/>      ◦ and if the presence sensor state is home<br/>      ◦ then open the roller shutter<br/>      </td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-8053-8b70-f11923bea4d1"><td id="pkD=" class="" style="width:227.65625px">Home Assistant Overview</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:8123/lovelace/default_view">http://localhost:8123/lovelace/default_view</a></td><td id="PjiJ" class="" style="width:397.65625px">  • Participant time set to —<br/>  • Experiment Clock set to —</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-8039-a50f-d7cd12389a27"><td id="pkD=" class="" style="width:227.65625px">Interceptor(Researcher Frontend)</td><td id="H?Q;" class="" style="width:181.65625px"><a href="https://localhost:3000/">https://localhost:3000/</a></td><td id="PjiJ" class="" style="width:397.65625px">  • config name: <code>Vignette_A</code><br/>  • The Zigbee2MQTT of the roller shutter switch is suppressed.<br/>  • The roller shutter has been excluded from the rule Window Open Shutter Close.<br/>  • Note&gt; the automation interception should be implemented each time, and then undo doesn’t work, and it should be reestablished from HA.</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-80cc-a463-eac5842e2d46"><td id="pkD=" class="" style="width:227.65625px">Lab Technical starting point</td><td id="H?Q;" class="" style="width:181.65625px"></td><td id="PjiJ" class="" style="width:397.65625px">  • Automation <mark class="highlight-red_background"><code><strong>Window Open Shutter Open </strong></code></mark>is enabled.<br/>  • automation<code> roller shutter switches</code> is enabled.<br/>  • Vignette_A is enabled on the interceptor.<br/>  • the roller shutter is on 60%(100%=open)<br/>  • the window is closed.</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-806b-b4e9-c7c54754762d"><td id="pkD=" class="" style="width:227.65625px">After Condition</td><td id="H?Q;" class="" style="width:181.65625px"></td><td id="PjiJ" class="" style="width:397.65625px">  • ‘undo all’ on the interceptor<br/>  • undo the automation change on the interceptor<br/>  • disable the Window Open Shutter Close automation on HA</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><hr id="388a3a63-611a-8059-82b7-eafe87663da1"/></div><div style="display:contents" dir="auto"><div id="388a3a63-611a-8089-b19c-e7358b1411c8" class="column-list"><div style="display:contents" dir="auto"><div id="388a3a63-611a-80b6-8e8a-e45875a4ee10" style="width:100%" class="column"><div style="display:contents" dir="auto"><h2 id="388a3a63-611a-8055-a464-d0a8c1da67e7" class="">🍉Vignette E </h2></div></div></div><div style="display:contents" dir="auto"><div id="388a3a63-611a-80d0-a7bf-cb226413414e" style="width:100%" class="column"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="388a3a63-611a-8035-b0f7-f71faf2bf331"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="388a3a63-611a-80ba-8bc1-eaf643935695" class="">⏱️<strong>Temporal Aspect:</strong> No</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8010-b837-caac35ef7628" class="">⚡<strong>Fault Type:</strong> device</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-809e-a62b-f82d12a60c08" class="">👩🏻‍🔧Feasibility avg. Rate: 4/5</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8085-a73e-edf99bf8446c" class="">📈Difficulty avg. Rate: 3/5</p></div></div></figure></div></div></div></div></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-8026-8f4f-e5fb0081f5b5" class="">Scenario Description: </h3></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="388a3a63-611a-804c-a4c8-cb8cbec2daae"><div style="font-size:1.5em"><span class="icon">📢</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="388a3a63-611a-808f-adb3-c70900a9f88f" class="">The fan is running in the smart hotel room. You open the door and the window to let in some fresh air. Based on your understanding, when both the door and window remain open for at least 20 seconds, the fan should automatically turn off to save energy. However, the fan keeps running.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8018-9397-cf9dc3c2e529" class="">Using the tablet interface, your task is to figure out what might be wrong. You’re not expected to fix anything, but please try to determine:</p></div><div style="display:contents" dir="auto"><ul id="388a3a63-611a-80c9-b8c0-f498d3c01722" class="bulleted-list"><li style="list-style-type:disc">What kind of issue is it (e.g., device not responding, communication issue, configuration error)</li></ul></div><div style="display:contents" dir="auto"><ul id="388a3a63-611a-80f6-a0c9-f9e9614d1ce7" class="bulleted-list"><li style="list-style-type:disc">Which device(s) are affected</li></ul></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80e9-9b6b-e20fd138f9a6" class="">Let us know your diagnosis once you&#x27;re ready.</p></div></div></figure></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-801a-9fc7-e88e3bf561f9" class="block-color-default_background">🔑<strong>Answer key</strong></h3></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8000-ab1a-e5ef580db5e1" class="">⚡<strong>Fault Type:</strong> device</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8090-8607-ec42fb656f95" class="">⚡⚡<strong>Fault Details: T</strong>he window sensor is faulty.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80bc-87f2-c9e5744ba7ed" class="">🛋️<strong>Including Devices: </strong>The door sensor, the window sensor, and the fan</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80b4-836c-f14a363475f8" class="">⛓️<strong>Connection:</strong> The rule is well authored, and the healthy sensor is reporting correctly.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8026-8e6f-cff2a36866ae" class=""><strong>📏The Rule: </strong>the fan should turn off when the door and window are both open for at least 20 seconds.</p></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-80c9-a928-d9a62cb05e54" class="block-color-gray_background">👩🏻‍🔧Lab Integrations:</h3></div><div style="display:contents" dir="ltr"><table id="388a3a63-611a-8070-ab9a-fc196fe107de" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-8055-9ab5-d30b00729843"><th id="pkD=" class="block-color-red_background simple-table-header" style="width:227.65625px">Where?</th><th id="H?Q;" class="block-color-red_background simple-table-header" style="width:181.65625px">Access link </th><th id="PjiJ" class="block-color-red_background simple-table-header" style="width:397.65625px">What has been done?</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-80f9-9db5-d568996cd12a"><td id="pkD=" class="" style="width:227.65625px">Home Assistant Settings</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:8123/config/automation/dashboard">http://localhost:8123/config/automation/dashboard</a></td><td id="PjiJ" class="" style="width:397.65625px">  • A new Automation called “<mark class="highlight-red_background"><code><strong>Door Window Open Fan Off</strong></code></mark>” has been created.<br/>  •  adding exp at the beginning of the automation Id.<br/>  • Scenario details: <br/></td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-8064-b805-c8879ec72c74"><td id="pkD=" class="" style="width:227.65625px">Home Assistant Overview</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:8123/lovelace/default_view">http://localhost:8123/lovelace/default_view</a></td><td id="PjiJ" class="" style="width:397.65625px">  • Participant time set to —<br/>  • Experiment Clock set to —</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-8029-8f7c-fef72d2efa9f"><td id="pkD=" class="" style="width:227.65625px">Interceptor(Researcher Frontend)</td><td id="H?Q;" class="" style="width:181.65625px"><a href="https://localhost:3000/">https://localhost:3000/</a></td><td id="PjiJ" class="" style="width:397.65625px">  • config name: <code>Vignette_E</code><br/>  • the window sensor suppressed.</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-80ff-8b32-c8ae1a824f41"><td id="pkD=" class="" style="width:227.65625px">Smart hotel lab</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:5173/">http://localhost:5173/</a></td><td id="PjiJ" class="" style="width:397.65625px">  • the automation appeared on the portal by adding exp_ to the beginning of the entity_id in home assistant portal.</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-8011-98fc-eea309b92233"><td id="pkD=" class="" style="width:227.65625px">Lab Technical starting point</td><td id="H?Q;" class="" style="width:181.65625px"></td><td id="PjiJ" class="" style="width:397.65625px">  •  the fan On.<br/>  • Automation <code>Door Window Open Fan Off</code> enabled<br/>  • Vignette_E on the interceptor enabled</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><hr id="388a3a63-611a-8026-a985-e7d0c8b39696"/></div><div style="display:contents" dir="auto"><div id="388a3a63-611a-80f7-a6d1-db8e38e43453" class="column-list"><div style="display:contents" dir="auto"><div id="388a3a63-611a-8023-9ab5-e0cf01d9b151" style="width:100%" class="column"><div style="display:contents" dir="auto"><h2 id="388a3a63-611a-807d-99c6-da8739473c45" class="">🍊Vignette G </h2></div></div></div><div style="display:contents" dir="auto"><div id="388a3a63-611a-805b-84b6-feab13a36a9c" style="width:100%" class="column"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="388a3a63-611a-80b1-ad7b-c26e9c0ff1fb"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="388a3a63-611a-8080-9286-d6e00998283a" class="">⏱️<strong>Temporal Aspect:</strong> No</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-802e-9194-f2c869dd3193" class="">⚡<strong>Fault Type:</strong> device</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80f2-9afc-dfbd9061a4b2" class="">👩🏻‍🔧Feasibility avg. Rate: 4.6</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80ef-97b8-fa71283dd74d" class="">📈Difficulty avg. Rate: 3</p></div></div></figure></div></div></div></div></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-80bf-888a-f5211e5a8907" class="">Scenario Description: </h3></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="388a3a63-611a-80f2-b0c8-ee617500cbe3"><div style="font-size:1.5em"><span class="icon">📢</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="388a3a63-611a-808e-b131-cd331dd2605a" class="">You open the window for a while to let in some fresh air. After closing it again, the room temperature still feels rather high, but the fan does not start.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80ce-abc6-fd526fade4b9" class="">Using the tablet interface, your task is to figure out what might be wrong. You’re not expected to fix anything, but please try to determine:</p></div><div style="display:contents" dir="auto"><ul id="388a3a63-611a-8063-84ee-c2c8350ae6df" class="bulleted-list"><li style="list-style-type:disc">What kind of issue is it (e.g., device not responding, communication issue, configuration error)</li></ul></div><div style="display:contents" dir="auto"><ul id="388a3a63-611a-8044-868e-d47d53f8710c" class="bulleted-list"><li style="list-style-type:disc">Which device(s) are affected</li></ul></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80a3-8dc3-d08fb6c68480" class="">Let us know your diagnosis once you&#x27;re ready.</p></div></div></figure></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-80fa-a382-e781f3418309" class="block-color-default_background">🔑<strong>Answer key</strong></h3></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80cb-87a6-fb32dc14c119" class="">⚡<strong>Fault Type:</strong> device</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-801f-9867-db48fc5995c1" class="">⚡⚡<strong>Fault Details: </strong>The fan socket is off and faulty.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80a6-8b43-c4c1429e4a11" class="">🛋️<strong>Including Devices: </strong>The Smart Fan, fan socket, temperature sensor, and the window sensor. The fan socket is physically not responsive.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8078-a567-dd5249cd37f9" class="">⛓️<strong>Connection:</strong> The rule is well-authored, and the sensor reports correctly; the Fan socket is broken.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8018-9eee-d22ca33c3512" class=""><strong>📏The Rule: </strong>When the Window is closed, and the temperature is higher than 20 degrees, the Fan should turn on.</p></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-8084-aad1-ea38a5199b12" class="block-color-gray_background">👩🏻‍🔧Lab Integrations:</h3></div><div style="display:contents" dir="ltr"><table id="388a3a63-611a-80c2-98f7-da546cdb4be8" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-80d6-b206-cc48c8e78fe5"><th id="pkD=" class="block-color-red_background simple-table-header" style="width:227.65625px">Where?</th><th id="H?Q;" class="block-color-red_background simple-table-header" style="width:181.65625px">Access link </th><th id="PjiJ" class="block-color-red_background simple-table-header" style="width:397.65625px">What has been done?</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-8001-9d72-dfb2ddb9cbf0"><td id="pkD=" class="" style="width:227.65625px">Home Assistant Settings</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:8123/config/automation/dashboard">http://localhost:8123/config/automation/dashboard</a></td><td id="PjiJ" class="" style="width:397.65625px">  • A new Automation called “<mark class="highlight-red_background"><code><strong>WindowClosedFanOn</strong></code></mark>” has been created.<br/>  •  adding exp at the beginning of the automation Id.<br/>  • Scenario details: <br/>      ◦ when the window sensor triggers window closed<br/>      ◦ and if the temperature &gt; 20<br/>      ◦ Then do:<br/>          ‣ turn on the smart fan</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-8059-95e5-da537097bece"><td id="pkD=" class="" style="width:227.65625px">Home Assistant Overview</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:8123/lovelace/default_view">http://localhost:8123/lovelace/default_view</a></td><td id="PjiJ" class="" style="width:397.65625px">  • Participant time set to —<br/>  • Experiment Clock set to —</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-800c-a9b0-fbbebdbd0f87"><td id="pkD=" class="" style="width:227.65625px">Interceptor(Researcher Frontend)</td><td id="H?Q;" class="" style="width:181.65625px"><a href="https://localhost:3000/">https://localhost:3000/</a></td><td id="PjiJ" class="" style="width:397.65625px"> Vignette G<br/>  • the fan_socket is suppressed.</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-8007-8362-eb4e203003d0"><td id="pkD=" class="" style="width:227.65625px">Smart hotel lab</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:5173/">http://localhost:5173/</a></td><td id="PjiJ" class="" style="width:397.65625px">  • the automation appeared on the portal by adding exp_ to the beginning of the entity_id in home assistant portal.</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-800b-8d06-d9758698c72f"><td id="pkD=" class="" style="width:227.65625px">Lab Technical starting point</td><td id="H?Q;" class="" style="width:181.65625px"></td><td id="PjiJ" class="" style="width:397.65625px">  • The window is open.<br/>  • fan off, socket off.<br/>  • fan_socket should be off before the scenario begins, and the button is hidden.<br/>  • Switch the fan socket off before the condition from HA.<br/>  • Automation <code>Window Closed Fan On</code> enabled.<br/>  • note: The fan_socket button should be hidden here.</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><hr id="388a3a63-611a-804b-b277-f598f2a65c26"/></div><div style="display:contents" dir="auto"><div id="388a3a63-611a-80ea-a7f2-d5c716b73d01" class="column-list"><div style="display:contents" dir="auto"><div id="388a3a63-611a-8081-92fb-e144abd5457e" style="width:100%" class="column"><div style="display:contents" dir="auto"><h2 id="388a3a63-611a-8094-a61c-ef389e7148af" class="block-color-default_background">🍌Vignette H</h2></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-809e-b015-cb4608790c7d" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="388a3a63-611a-802f-b810-ee1fa0d6a8b9" style="width:100%" class="column"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="388a3a63-611a-8036-80e7-d1f98ef4c165"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="388a3a63-611a-8011-9d98-e4643f4c44c4" class="">⏱️<strong>Temporal Aspect:</strong> Yes</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-806d-aaf4-ce0dbcf56781" class="">⚡<strong>Fault Type:</strong> connection</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-804e-bc47-e36d6514ca74" class="">👩🏻‍🔧Feasibility avg. Rate: 4/5</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8056-9d2c-dc0202d04b68" class="">📈Difficulty avg. Rate: 4/5</p></div></div></figure></div></div></div></div></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-80d2-b7c6-d25191dae7b1" class="">Scenario Description: </h3></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="388a3a63-611a-80ad-b570-f228d8ad975c"><div style="font-size:1.5em"><span class="icon">📢</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="388a3a63-611a-802a-9c14-fbb498b38f46" class="">You enter the room in the evening. The door light does not turn on to greet you. </p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8094-92dd-fb6d00aa218c" class="">From your understanding, the door light should turn on automatically in the evening when the door opens, and someone enters the room. </p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-809f-b28b-ef558d685d72" class="">Using the tablet interface, your task is to figure out what might be wrong. You’re not expected to fix anything, but please try to determine:</p></div><div style="display:contents" dir="auto"><ul id="388a3a63-611a-802c-82f2-def2e945e8f0" class="bulleted-list"><li style="list-style-type:disc">What kind of issue is it (e.g., device not responding, communication issue, configuration error)</li></ul></div><div style="display:contents" dir="auto"><ul id="388a3a63-611a-80ac-867e-c2cdc8dec87a" class="bulleted-list"><li style="list-style-type:disc">Which device(s) are affected</li></ul></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8051-848b-f2c5eebd73d0" class="">Let us know your diagnosis once you&#x27;re ready.</p></div></div></figure></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-802a-be66-d5258769ed1d" class="block-color-default_background">🔑<strong>Answer key</strong></h3></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80ab-8839-f24e028a0e65" class="">⚡<strong>Fault Type: </strong>connection</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-802f-84fe-c0089737e213" class="">⚡⚡<strong>Fault Details: </strong>The door sensor is suppressed. </p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8097-a711-c2f13ce48d29" class="">🛋️<strong>Including Devices: </strong>Door light, presence sensor, and the door sensor</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8029-9e4b-ff44cee6362b" class="">⛓️<strong>Connection:</strong>  the Zigbee integration between the door sensor and the hub is suppressed.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8044-ac3b-efbc930cbb42" class=""><strong>📏The Rule: </strong>the wall-mounted light should turn on when the door sensor and the presence sensor both trigger.</p></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-8050-8fdb-fa1136b9c361" class="block-color-gray_background">👩🏻‍🔧Lab Integrations:</h3></div><div style="display:contents" dir="ltr"><table id="388a3a63-611a-804a-98f6-f9e22ad48a48" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-800b-98ee-e9e8381f9179"><th id="pkD=" class="block-color-red_background simple-table-header" style="width:227.65625px">Where?</th><th id="H?Q;" class="block-color-red_background simple-table-header" style="width:181.65625px">Access link </th><th id="PjiJ" class="block-color-red_background simple-table-header" style="width:397.65625px">What has been done?</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-8035-a2b0-ea524bd392a8"><td id="pkD=" class="" style="width:227.65625px">Home Assistant Settings</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:8123/config/automation/dashboard">http://localhost:8123/config/automation/dashboard</a></td><td id="PjiJ" class="" style="width:397.65625px">  • A new Automation, “<mark class="highlight-red_background"><code><strong>EnteranceWallLightsOn</strong></code></mark>” has been created.<br/>  • adding exp at the beginning of the automation ID.<br/>  • Scenario details: <br/>      ◦ when :<br/>          ‣ Sensor_Door triggers door opened → id: entry <br/>          ‣ Presence sensor triggers not present → id:leaving<br/>      ◦ then do:<br/>          ‣ option 1:<br/>              • if (entry) and Presence sensor is present → turn on the light bulb<br/>          ‣ option 2:<br/>              • if (leaving) → turn off the lamp</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-803f-be95-d6902a432adf"><td id="pkD=" class="" style="width:227.65625px">Home Assistant Overview</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:8123/lovelace/default_view">http://localhost:8123/lovelace/default_view</a></td><td id="PjiJ" class="" style="width:397.65625px">  • Participant time set to 8:00 PM<br/>  • Experiment Clock set to 8:00 PM</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-806b-8594-e330f4209303"><td id="pkD=" class="" style="width:227.65625px">Interceptor(Researcher Frontend)</td><td id="H?Q;" class="" style="width:181.65625px"><a href="https://localhost:3000/">https://localhost:3000/</a></td><td id="PjiJ" class="" style="width:397.65625px">  • config name: <code>Vignette_H</code><br/>  • The Zigbee2MQTT of the door sensor is suppressed.</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-80f4-95b1-da6d5dca67fd"><td id="pkD=" class="" style="width:227.65625px">Lab Technical starting point</td><td id="H?Q;" class="" style="width:181.65625px"></td><td id="PjiJ" class="" style="width:397.65625px">  • Automation EntranceWallLightsOn enabled.<br/>  • Vignette_H config is deployed on the interceptor.<br/>  • Door light should be off.<br/>  • The door must be closed.</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><hr id="388a3a63-611a-804e-ac0a-d03d79e69895"/></div><div style="display:contents" dir="auto"><div id="388a3a63-611a-80ac-b89c-c3c14053b0da" class="column-list"><div style="display:contents" dir="auto"><div id="388a3a63-611a-80e8-b444-d7bcde9a5523" style="width:100%" class="column"><div style="display:contents" dir="auto"><h2 id="388a3a63-611a-8033-938a-ec35164ff7d5" class="block-color-default_background">🥭Vignette D</h2></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8009-968c-e6e962e40337" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="388a3a63-611a-80b1-a6f4-ca273e65e578" style="width:100%" class="column"><div style="display:contents" dir="auto"><p id="388a3a63-611a-8059-9da1-f702981f4e33" class="">⏱️<strong>Temporal Aspect:</strong> Yes</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8031-94b6-f77b907d92eb" class="">⚡<strong>Fault Type:</strong> Connection</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80eb-8bbb-f9a7ed9d9088" class="">👩🏻‍🔧Feasibility avg. Rate: 4/5</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8073-8896-efc3278a80e2" class="">📈Difficulty avg. Rate: 3/5</p></div></div></div></div></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-8099-9efa-f043dd31a9e0" class="block-color-default_background">Scenario Description: </h3></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="388a3a63-611a-801a-8caa-de5e01e9abf6"><div style="font-size:1.5em"><span class="icon">📢</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="388a3a63-611a-8064-8360-e1b20d9d8b39" class="">It&#x27;s morning. From your understanding, the system should open the curtains and shutters to let in daylight, and turn on the TV to play an ambient song. However, you notice the curtains are not closed yet.<br/><br/>Using the tablet interface, your task is to figure out what might be wrong. You’re not expected to fix anything, but please try to determine:<br/>    - What kind of issue is it (e.g., device not responding, communication issue, configuration error)<br/>    - Which device(s) are affected<br/><br/>Let us know your diagnosis once you&#x27;re ready.</p></div></div></figure></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-80a1-afc9-ea083865643b" class="block-color-default_background">🔑<strong>Answer key</strong></h3></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80d7-952e-d0a76bca7167" class="">⚡<strong>Fault Type:</strong> Connection</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8075-8619-feaa80c98566" class="">⚡⚡<strong>Fault Details: </strong>The connection between the hub and the curtains is broken.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-807f-974d-ce3055c7b684" class="">🛋️<strong>Including Devices: </strong>The TV, curtain, and roller shutter - device works correctly.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80b3-9d3f-fcce6019ffb0" class="">⛓️<strong>Connection:</strong> all devices are configured correctly in an authored rule, but the connection between the curtain and the hub is broken.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-800a-931d-d20b4d004932" class=""><strong>📏The Rule: </strong>The curtains and roller shutter should be opened automatically, and a the TV turns on the play a radio song at 7:00 AM.</p></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-80ef-9d0d-e791c5fb938d" class="block-color-gray_background">👩🏻‍🔧Lab Integrations:</h3></div><div style="display:contents" dir="ltr"><table id="388a3a63-611a-8088-9ddb-f433a861ae79" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-8056-8977-fc2af581bab0"><th id="pkD=" class="block-color-red_background simple-table-header" style="width:227.65625px">Where?</th><th id="H?Q;" class="block-color-red_background simple-table-header" style="width:181.65625px">Access link </th><th id="PjiJ" class="block-color-red_background simple-table-header" style="width:397.65625px">What has been done?</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-8040-a947-e7b4e2091d83"><td id="pkD=" class="" style="width:227.65625px">Home Assistant Settings</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:8123/config/automation/dashboard">http://localhost:8123/config/automation/dashboard</a></td><td id="PjiJ" class="" style="width:397.65625px">  • A new Automation called “<mark class="highlight-red_background"><code><strong>MorningRoutine</strong></code></mark>” has been created.<br/>  •  adding exp at the beginning of the automation ID.<br/>  • Scenario details: <br/>      ◦ when :<br/>          ‣ time triggers every 30 seconds<br/>      ◦ And if :<br/>          ‣ time is more than 7:00 AM<br/>      ◦ Then do:<br/>          ‣ Turn on the TV and play media via an ADB command<br/>          ‣ open the curtains<br/>          ‣ set roller blind position to 80</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-806b-bc9f-eb2055c1ac92"><td id="pkD=" class="" style="width:227.65625px">Home Assistant Overview</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:8123/lovelace/default_view">http://localhost:8123/lovelace/default_view</a></td><td id="PjiJ" class="" style="width:397.65625px">  • Participant time set to 7:00AM<br/>  • Experiment Clock set to 7:00AM</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-80a9-8cd9-f6b3ff63434d"><td id="pkD=" class="" style="width:227.65625px">Interceptor(Researcher Frontend)</td><td id="H?Q;" class="" style="width:181.65625px"><a href="https://localhost:3000/">https://localhost:3000/</a></td><td id="PjiJ" class="" style="width:397.65625px">  • config name: <code>Vignette_D</code><br/>  • The connection between the hub and the curtain is intercepted.</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-808d-8767-c49cde05b7aa"><td id="pkD=" class="" style="width:227.65625px">Smart hotel lab</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:5173/">http://localhost:5173/</a></td><td id="PjiJ" class="" style="width:397.65625px">  • the automation appeared on the portal by adding exp_ to the beginning of the entity_id in home assistant portal.</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><hr id="388a3a63-611a-8056-8cc2-c93a454d5f21"/></div><div style="display:contents" dir="auto"><div id="388a3a63-611a-802f-87ea-c51f854172c9" class="column-list"><div style="display:contents" dir="auto"><div id="388a3a63-611a-80b7-b425-e96a246f44af" style="width:100%" class="column"><div style="display:contents" dir="auto"><h2 id="388a3a63-611a-80b7-b474-eeb82d301396" class="block-color-default_background"><img alt="raspberries" src="raspberries.png" style="width:1em;height:1em"/>Vignette B </h2></div></div></div><div style="display:contents" dir="auto"><div id="388a3a63-611a-80d2-83c4-fdb3f81093c5" style="width:100%" class="column"><div style="display:contents" dir="auto"><p id="388a3a63-611a-808f-a401-dd0d032e85e1" class="">⏱️<strong>Temporal Aspect:</strong> No</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80c8-921d-d82ebd262912" class="">⚡<strong>Fault Type:</strong> Connection</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-805f-88be-d710a8a41e65" class="">👩🏻‍🔧Feasibility avg. Rate: 5/5</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8059-af71-eaa8875f0820" class="">📈Difficulty avg. Rate: 4/5</p></div></div></div></div></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-802d-964f-e31fd06ac76a" class="block-color-default_background">Scenario Description: </h3></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="388a3a63-611a-8017-aa2b-ce5bdb179889"><div style="font-size:1.5em"><span class="icon">📢</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="388a3a63-611a-8053-83b8-d23ed8984f38" class="">You turn on the TV and notice that the fan is still running.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80f4-b138-c8cd90e67487" class="">From your understanding, the fan should stop running automatically when someone is in the room, and the TV is turned ON.<br/><br/>Using the tablet interface, your task is to figure out what might be wrong. You’re not expected to fix anything, but please try to determine:<br/>    - What kind of issue is it (e.g., device not responding, communication issue, configuration error)<br/>    - Which device(s) are affected<br/><br/>Let us know your diagnosis once you&#x27;re ready.</p></div></div></figure></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-80e7-a8c0-f66e06788c80" class="block-color-default_background">🔑<strong>Answer key</strong></h3></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80d4-9422-cd91441f2dd2" class="">⚡<strong>Fault Type:</strong> Connection</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-807c-a508-f36dd935c3d6" class="">⚡⚡<strong>Fault Details: </strong>the link between the hub and the fan is broken, the rule’s target device binding to the fan has been lost.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80a0-8c2d-d93384f93b3f" class="">🛋️<strong>Including Devices: </strong>TV and the Fan - device works correctly.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8070-b582-c080a754ee77" class="">⛓️<strong>Connection:</strong> The Zigbee link between the hub and the fan is broken.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8025-99db-c12bbdc07020" class=""><strong>📏The Rule: </strong>The Fan should turn off when the TV turns on and the presence sensor triggers.</p></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-804e-8a90-c681017ceff0" class="block-color-gray_background">👩🏻‍🔧Lab Integrations:</h3></div><div style="display:contents" dir="ltr"><table id="388a3a63-611a-80c3-9d9e-e8012e06fdb0" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-8035-8c4d-e210d2e06610"><th id="pkD=" class="block-color-red_background simple-table-header" style="width:227.65625px">Where?</th><th id="H?Q;" class="block-color-red_background simple-table-header" style="width:181.65625px">Access link </th><th id="PjiJ" class="block-color-red_background simple-table-header" style="width:397.65625px">What has been done?</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-809a-bcf4-c00df3763286"><td id="pkD=" class="" style="width:227.65625px">Home Assistant Settings</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:8123/config/automation/dashboard">http://localhost:8123/config/automation/dashboard</a></td><td id="PjiJ" class="" style="width:397.65625px">  • A new Automation called “<mark class="highlight-red"><mark class="highlight-red_background"><strong>Movie mode - TV on Fan off</strong></mark></mark>” has been created.<br/>  •  adding exp at the beginning of the automation Id.<br/>  • Scenario details: <br/>      ◦ when :<br/>          ‣ TV status changes from Off to On<br/>      ◦ And if :<br/>          ‣ PresenceSensor presence is present<br/>      ◦ Then do:<br/>          ‣ Turn off Smart Fan </td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-80a7-9c47-d23d9d1959bc"><td id="pkD=" class="" style="width:227.65625px">Home Assistant Overview</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:8123/lovelace/default_view">http://localhost:8123/lovelace/default_view</a></td><td id="PjiJ" class="" style="width:397.65625px">  • Participant time set to —<br/>  • Experiment Clock set to —</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-80cf-a3cc-f9ec7ca97e25"><td id="pkD=" class="" style="width:227.65625px">Interceptor(Researcher Frontend)</td><td id="H?Q;" class="" style="width:181.65625px"><a href="https://localhost:3000/">https://localhost:3000/</a></td><td id="PjiJ" class="" style="width:397.65625px">  • config name: <code>Vignette_B</code><br/>  • the rule action is intercepted.</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-800a-8e3f-c4998e75b391"><td id="pkD=" class="" style="width:227.65625px">Smart hotel lab</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:5173/">http://localhost:5173/</a></td><td id="PjiJ" class="" style="width:397.65625px">  • The fan is ON.<br/>  • the TV is off.<br/>  • The fan Socket it ON.</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><hr id="388a3a63-611a-80dd-8651-db774a0ef505"/></div><div style="display:contents" dir="auto"><div id="388a3a63-611a-80b4-9714-fc922c37fce6" class="column-list"><div style="display:contents" dir="auto"><div id="388a3a63-611a-806d-9f57-d724115cb71b" style="width:100%" class="column"><div style="display:contents" dir="auto"><h2 id="388a3a63-611a-8078-9645-d65ddbbe75da" class="block-color-default">🥝Vignette F </h2></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8029-8f3d-ea68016b55b1" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="388a3a63-611a-806e-bbf8-d778fe78dcae" style="width:100%" class="column"><div style="display:contents" dir="auto"><p id="388a3a63-611a-8098-8d3c-d58949233340" class="">⏱️<strong>Temporal Aspect:</strong> Yes</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-802f-aa37-df45222e17fb" class="">⚡<strong>Fault Type:</strong> Configuration</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-806b-9eaa-d997305a557e" class="">👩🏻‍🔧Feasibility avg. Rate: 5/5</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-802c-9d99-e240334ae165" class="">📈Difficulty avg. Rate: 3/5</p></div></div></div></div></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-8038-b97b-f16c93d84d5e" class="block-color-default_background">Scenario Description: </h3></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="388a3a63-611a-80c2-b2af-e4f156367170"><div style="font-size:1.5em"><span class="icon">📢</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="388a3a63-611a-80dc-9e18-c1dbc4981964" class="">It is 8 PM. You turn on the TV, expecting the room to switch into a movie-like atmosphere. The right bed light changes to a soft ambient setting, but the left bed light stays off.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8034-b552-c58fc04edd07" class="">Using the tablet interface, your task is to figure out what might be wrong. You’re not expected to fix anything, but please try to determine:<br/>    - What kind of issue is it (e.g., device not responding, communication issue, configuration error)<br/>    - Which device(s) are affected<br/><br/>Let us know your diagnosis once you&#x27;re ready.</p></div></div></figure></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-8046-9d87-d7ca746cad1f" class="block-color-default_background">🔑<strong>Answer key</strong></h3></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8089-ab8b-cf7ccc763037" class="">⚡<strong>Fault Type:</strong> Configuration</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-809e-add7-df648295722f" class="">⚡⚡<strong>Fault Details: </strong>A part of the target rule is removed.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-800a-b0e6-e07aab2bc664" class="">🛋️<strong>Including Devices: </strong>Two bed lights, the TV - devices work correctly.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8060-b312-dcd0b73a5f0c" class="">⛓️<strong>Connection:</strong> All Zigbee links are healthy; the presence sensor reports correctly.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80a2-9412-e1cbd2fa775e" class=""><strong>📏The Rule: </strong>when the TV becomes On, the two bed lights should turn on and turn to an ambient mode; now the target rule for bedlight R is removed.</p></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-80b1-a16f-c9bde6ce8da1" class="block-color-gray_background">👩🏻‍🔧Lab Integrations:</h3></div><div style="display:contents" dir="ltr"><table id="388a3a63-611a-8042-8735-c683b3fc5588" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-80a8-816d-db1506467c3a"><th id="pkD=" class="block-color-red_background simple-table-header" style="width:227.65625px">Where?</th><th id="H?Q;" class="block-color-red_background simple-table-header" style="width:181.65625px">Access link </th><th id="PjiJ" class="block-color-red_background simple-table-header" style="width:397.65625px">What has been done?</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-80d4-b567-f00bd76c2ab2"><td id="pkD=" class="" style="width:227.65625px">Home Assistant Settings</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:8123/config/automation/dashboard">http://localhost:8123/config/automation/dashboard</a></td><td id="PjiJ" class="" style="width:397.65625px">  • A new Automation called “TV On Bed Light Ambient” has been created.<br/>  • Adding exp at the beginning of the automation Id.<br/>  • Scenario details: </td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-80d7-872b-ed0f5c328e5e"><td id="pkD=" class="" style="width:227.65625px">Home Assistant Overview</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:8123/lovelace/default_view">http://localhost:8123/lovelace/default_view</a></td><td id="PjiJ" class="" style="width:397.65625px">  • Participant time set to 8:00 PM<br/>  • Experiment Clock set to 8:00 PM</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-803d-95ba-e89a4bcf8e1b"><td id="pkD=" class="" style="width:227.65625px">Interceptor(Researcher Frontend)</td><td id="H?Q;" class="" style="width:181.65625px"><a href="https://localhost:3000/">https://localhost:3000/</a></td><td id="PjiJ" class="" style="width:397.65625px">  • Nothing!</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><hr id="388a3a63-611a-8032-bd7a-c0f0f7a01b03"/></div><div style="display:contents" dir="auto"><div id="388a3a63-611a-80d2-b544-c8205aa6af8c" class="column-list"><div style="display:contents" dir="auto"><div id="388a3a63-611a-8011-b03f-c4d7991af6a2" style="width:100%" class="column"><div style="display:contents" dir="auto"><h2 id="388a3a63-611a-80f6-8e95-c837d2c27ecd" class="block-color-default">🍇Vignette C </h2></div></div></div><div style="display:contents" dir="auto"><div id="388a3a63-611a-80d4-8ed6-f7db3e2d8226" style="width:100%" class="column"><div style="display:contents" dir="auto"><p id="388a3a63-611a-80ab-8b29-e330d6084a5d" class="">⏱️<strong>Temporal Aspect:</strong> Yes</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80c1-a73d-fcddd0c860ec" class="">⚡<strong>Fault Type:</strong> Configuration</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-807f-a949-e18f897ba7ec" class="">👩🏻‍🔧Feasibility avg. Rate: 5/5</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8043-8c8c-f0981b133e85" class="">📈Difficulty avg. Rate: 3/5</p></div></div></div></div></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-806a-8f74-c5f50919894a" class="block-color-default_background">Scenario Description: </h3></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="388a3a63-611a-806b-a806-d97ba1e99532"><div style="font-size:1.5em"><span class="icon">📢</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="388a3a63-611a-800c-8c13-ddfa1483f7b9" class="">It is 1:00 PM. You are working at the desk in daylight when the roller shutter comes down, the curtains close, and the floor lamp turns on by itself. </p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8083-ab10-ef25d524eb96" class="">From your understanding, this should only happen automatically in the evening.<br/><br/>Using the tablet interface, your task is to figure out what might be wrong. You’re not expected to fix anything, but please try to determine:<br/>    - What kind of issue is it (e.g., device not responding, communication issue, configuration error)<br/>    - Which device(s) are affected<br/><br/>Let us know your diagnosis once you&#x27;re ready.</p></div></div></figure></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-8053-82c8-f35a29f138d0" class="block-color-default_background">🔑<strong>Answer key</strong></h3></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-809e-9c9d-c46bd33dbf2a" class="">⚡<strong>Fault Type:</strong> Configuration</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8031-b5b0-e824be228a8d" class="">⚡⚡<strong>Fault Details: T</strong>he system time and the real time are different.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80ce-b669-fcd33afd41e9" class="">🛋️<strong>Including Devices: </strong>Motorized curtain (Aquara Curtain Driver E1), roller shutter, and the floor lamp - device works correctly.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-805a-b726-e01470d2c2fb" class="">⛓️<strong>Connection:</strong> Zigbee link is healthy.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80eb-a2e6-d2e7cc90b135" class=""><strong>📏The Rule: </strong>The curtains and roller shutter should be closed and a floor lamp turns on after 9 PM.</p></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-8092-886a-c82d47903e63" class="block-color-gray_background">👩🏻‍🔧Lab Integrations:</h3></div><div style="display:contents" dir="ltr"><table id="388a3a63-611a-8091-9c32-ddf27f6810b9" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-804e-a86a-ff61a5343405"><th id="pkD=" class="block-color-red_background simple-table-header" style="width:227.65625px">Where?</th><th id="H?Q;" class="block-color-red_background simple-table-header" style="width:181.65625px">Access link </th><th id="PjiJ" class="block-color-red_background simple-table-header" style="width:397.65625px">What has been done?</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-809d-a514-f4662c53e348"><td id="pkD=" class="" style="width:227.65625px">Home Assistant Settings</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:8123/config/automation/dashboard">http://localhost:8123/config/automation/dashboard</a></td><td id="PjiJ" class="" style="width:397.65625px">  • A new Automation called <mark class="highlight-red_background"><code><strong>Evening Wind down </strong></code></mark>has been created.<br/>  •  adding exp at the beginning of the automation Id.<br/>  • Scanerio details: <br/>      ◦ when :<br/>          ‣ &lt;Trigger on the 30th second of every minute of every hour&gt;<br/>      ◦ And if :<br/>          ‣ &lt;template renders a value equal to true&gt; → Value template: {% set time = states(&#x27;input_datetime.experiment_clock&#x27;) %}<br/>{{ time &gt;= &#x27;21:00:00&#x27; or time &lt; &#x27;23:00:00&#x27; }}<br/>      ◦ Then do:<br/>          ‣ close Roller Shutter Action<br/>          ‣ close Curtain Action<br/>          ‣ Turn on Floor Lamp Action </td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-80e8-aab7-cd48edcfb83a"><td id="pkD=" class="" style="width:227.65625px">Home Assistant Overview</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:8123/lovelace/default_view">http://localhost:8123/lovelace/default_view</a></td><td id="PjiJ" class="" style="width:397.65625px">  • Participant time set to 1:00 PM<br/>  • Experiment Clock set to 9:00 PM</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-80ca-bf72-f3b299a203c5"><td id="pkD=" class="" style="width:227.65625px">Interceptor(Researcher Frontend)</td><td id="H?Q;" class="" style="width:181.65625px"><a href="https://localhost:3000/">https://localhost:3000/</a></td><td id="PjiJ" class="" style="width:397.65625px">  • Nothing!</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><hr id="388a3a63-611a-80ba-adb6-f0d59c40ecb4"/></div><div style="display:contents" dir="auto"><div id="388a3a63-611a-80f0-85b4-e9d334ff8ab7" class="column-list"><div style="display:contents" dir="auto"><div id="388a3a63-611a-80e4-98e1-e672fc2daa17" style="width:100%" class="column"><div style="display:contents" dir="auto"><h2 id="388a3a63-611a-80b6-bf5d-decfdf880523" class="block-color-default">🥑Vignette I </h2></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-801a-9dbc-ee96f8c93c95" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="388a3a63-611a-8055-b6fb-db796255ca22" style="width:100%" class="column"><div style="display:contents" dir="auto"><p id="388a3a63-611a-806f-8155-fede72528415" class="">⏱️<strong>Temporal Aspect:</strong> No</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8034-9d04-c1fbdf6a85e9" class="">⚡<strong>Fault Type:</strong> Configuration</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8064-813a-daf170e70495" class="">👩🏻‍🔧Feasibility avg. Rate: 5/5</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-804c-bb5e-c6d8eba88c5f" class="">📈Difficulty avg. Rate: 3/5</p></div></div></div></div></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-8020-a2f1-de8c9c8a5a84" class="block-color-default_background">Scenario Description: </h3></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="388a3a63-611a-8001-8552-eceb25792c5e"><div style="font-size:1.5em"><span class="icon">📢</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="388a3a63-611a-80e1-a0ba-f09c6e0ebe80" class="">It is a hot summer day. You enter the room and notice the thermostat is running. From your understanding, the heating should only activate when someone is in the room and the temperature drops below 19°C.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80f6-820e-daefe07a9a08" class="">Using the tablet interface, your task is to figure out what might be wrong. You’re not expected to fix anything, but please try to determine:<br/>    - What kind of issue is it (e.g., device not responding, communication issue, configuration error)<br/>    - Which device(s) are affected<br/><br/>Let us know your diagnosis once you&#x27;re ready.</p></div></div></figure></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-80ab-86e7-f877ce12242e" class="block-color-default_background">🔑<strong>Answer key</strong></h3></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-808d-b01a-e84ac63ded51" class="">⚡<strong>Fault Type:</strong> Configuration</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8099-8311-e88234a51b57" class="">⚡⚡<strong>Fault Details: </strong>The target settings in the rule are wrong; it should be when the temp is below 19 °C, but now it’s above 19 °C.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8060-b9d2-d71d81e7c6b9" class="">🛋️<strong>Including Devices: </strong> The Presence sensor, the Temperature sensor, and the thermostat</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8031-933c-f60452d78d67" class="">⛓️<strong>Connection:</strong> All Zigbee links are healthy; the temp sensor and presence sensor report correctly.</p></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-80d5-ac53-e544baa6f550" class=""><strong>📏The Rule: </strong>when the temp is below 19, and someone is in the room, turn on the thermostat, but now the rule is faulty, and it’s above 19.</p></div><div style="display:contents" dir="auto"><h3 id="388a3a63-611a-8077-b9c5-d667b4749cd3" class="block-color-gray_background">👩🏻‍🔧Lab Integrations:</h3></div><div style="display:contents" dir="ltr"><table id="388a3a63-611a-8075-905c-f9384d89ca4c" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-80b7-a467-f8c8473997f8"><th id="pkD=" class="block-color-red_background simple-table-header" style="width:227.65625px">Where?</th><th id="H?Q;" class="block-color-red_background simple-table-header" style="width:181.65625px">Access link </th><th id="PjiJ" class="block-color-red_background simple-table-header" style="width:397.65625px">What has been done?</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-801e-b17b-ff7d203d9c92"><td id="pkD=" class="" style="width:227.65625px">Home Assistant Settings</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:8123/config/automation/dashboard">http://localhost:8123/config/automation/dashboard</a></td><td id="PjiJ" class="" style="width:397.65625px">  • A new Automation called “<code>Temp Low Thermo On</code>” has been created.<br/>  • adding exp at the beginning of the automation Id.<br/>  • Scenario details: <br/>      </td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-8073-b5fb-e787edb674f3"><td id="pkD=" class="" style="width:227.65625px">Home Assistant Overview</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:8123/lovelace/default_view">http://localhost:8123/lovelace/default_view</a></td><td id="PjiJ" class="" style="width:397.65625px">  • Participant time set to —<br/>  • Experiment Clock set to —</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-80ee-bbb6-c538bc1a6371"><td id="pkD=" class="" style="width:227.65625px">Interceptor(Researcher Frontend)</td><td id="H?Q;" class="" style="width:181.65625px"><a href="https://localhost:3000/">https://localhost:3000/</a></td><td id="PjiJ" class="" style="width:397.65625px">  • Nothing!</td></tr></div><div style="display:contents" dir="ltr"><tr id="388a3a63-611a-8000-aa27-c86880bc3327"><td id="pkD=" class="" style="width:227.65625px">Smart hotel lab</td><td id="H?Q;" class="" style="width:181.65625px"><a href="http://localhost:5173/">http://localhost:5173/</a></td><td id="PjiJ" class="" style="width:397.65625px">  • </td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="388a3a63-611a-8084-8ee0-df362ff68812" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

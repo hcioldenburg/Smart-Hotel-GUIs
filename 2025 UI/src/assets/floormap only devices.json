@@ -1,0 +1,256 @@
+[
+  {
+    "id": "wall_1753097917265_4473",
+    "type": "wall",
+    "points": [
+      30,
+      125,
+      598,
+      122
+    ],
+    "stroke": "#333"
+  },
+  {
+    "id": "wall_1753097922628_9213",
+    "type": "wall",
+    "points": [
+      595,
+      121,
+      595,
+      503
+    ],
+    "stroke": "#333"
+  },
+  {
+    "id": "wall_1753097937548_3348",
+    "type": "wall",
+    "points": [
+      30,
+      125,
+      30,
+      504
+    ],
+    "stroke": "#333"
+  },
+  {
+    "id": "wall_1753097960402_1790",
+    "type": "wall",
+    "points": [
+      30,
+      504,
+      595,
+      502
+    ],
+    "stroke": "#333"
+  },
+  {
+    "id": "bed",
+    "type": "rect",
+    "x": 250,
+    "y": 125,
+    "width": 127,
+    "height": 160,
+    "fill": "orange",
+    "label": "Bed"
+  },
+  {
+    "id": "smartfan",
+    "type": "rect",
+    "x": 110,
+    "y": 160,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Fan"
+  },
+  {
+    "id": "standinglamp",
+    "type": "rect",
+    "x": 60,
+    "y": 465,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Standing Lamp"
+  },
+  {
+    "id": "tv",
+    "type": "rect",
+    "x": 300,
+    "y": 460,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "TV"
+  },
+  {
+    "id": "ipad",
+    "type": "rect",
+    "x": 380,
+    "y": 475,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "IPad"
+  },
+  {
+    "id": "hub",
+    "type": "rect",
+    "x": 478,
+    "y": 153,
+    "width": 113,
+    "height": 141,
+    "fill": "orange",
+    "label": "Hub"
+  },
+  {
+    "id": "curtain",
+    "type": "rect",
+    "x": 30,
+    "y": 160,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Blinds"
+  },
+  {
+    "id": "rollo",
+    "type": "rect",
+    "x": 30,
+    "y": 420,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Blinds"
+  },
+  {
+    "id": "heater",
+    "type": "rect",
+    "x": 30,
+    "y": 377,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Heater"
+  },
+  {
+    "id": "presencesensor",
+    "type": "rect",
+    "x": 300,
+    "y": 350,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Presencesensor"
+  },
+  {
+    "id": "doorsensor",
+    "type": "rect",
+    "x": 560,
+    "y": 430,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Doorsensor"
+  },
+  {
+    "id": "windowsensor",
+    "type": "rect",
+    "x": 30,
+    "y": 335,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Windowsensor"
+  },
+  {
+    "id": "windowlight",
+    "type": "rect",
+    "x": 30,
+    "y": 210,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Walllight"
+  },
+  {
+    "id": "temperaturesensor",
+    "type": "rect",
+    "x": 30,
+    "y": 255,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Temperaturesensor"
+  },
+  {
+    "id": "rolloswitch",
+    "type": "rect",
+    "x": 30,
+    "y": 295,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Roller Shutter Control"
+  },
+  {
+    "id": "doorlight",
+    "type": "rect",
+    "x": 442,
+    "y": 475,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Walllight"
+  },
+  {
+    "id": "doorswitch",
+    "type": "rect",
+    "x": 500,
+    "y": 475,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Wallswitch"
+  },
+  {
+    "id": "bedlight_left",
+    "type": "rect",
+    "x": 190,
+    "y": 124,
+   "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Bedlight"
+  },
+  {
+    "id": "sf02",
+    "type": "rect",
+    "x": 190,
+    "y": 180,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Button"
+  },
+  {
+    "id": "bedlight_right",
+    "type": "rect",
+    "x": 400,
+    "y": 124,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Bedlight"
+  },
+  {
+    "id": "sf01",
+    "type": "rect",
+    "x": 400,
+    "y": 180,
+    "width": 30,
+    "height": 30,
+    "fill": "orange",
+    "label": "Button"
+  }
+]

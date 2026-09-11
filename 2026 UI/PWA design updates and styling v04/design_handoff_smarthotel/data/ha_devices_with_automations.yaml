@@ -1,0 +1,1406 @@
+metadata:
+  generated_at: '2026-06-22T15:09:05.364911'
+  ha_url: http://localhost:8123
+  total_devices: 135
+  study_tag: Psanei_Thesis_Experiment
+  note: All smart hotel devices with live state and study automation involvement.
+    portal_name, portal_locations, and diagnostic_note must be hand-annotated in portal_entities.yaml
+    — not inferrable from HA.
+devices:
+  binary_sensor.remote_ui:
+    entity_id: binary_sensor.remote_ui
+    friendly_name: Remote UI
+    domain: binary_sensor
+    current_state: 'on'
+    last_changed: '2026-06-22T07:38:11.911520+00:00'
+    device_class: connectivity
+    unit_of_measurement: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  script.new_script:
+    entity_id: script.new_script
+    friendly_name: TV_OnOff
+    domain: script
+    current_state: 'off'
+    last_changed: '2026-06-20T14:32:01.398411+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0
+  script.tv_volup:
+    entity_id: script.tv_volup
+    friendly_name: TV_VolUp
+    domain: script
+    current_state: 'off'
+    last_changed: '2026-06-19T17:04:49.364785+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0
+  script.tv_voldown:
+    entity_id: script.tv_voldown
+    friendly_name: TV_VolDown
+    domain: script
+    current_state: 'off'
+    last_changed: '2026-06-19T17:04:49.364908+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0
+  script.tick_experiment_clock:
+    entity_id: script.tick_experiment_clock
+    friendly_name: Advance Experiment Clock by 1 Second
+    domain: script
+    current_state: 'off'
+    last_changed: '2026-06-22T13:09:03.299998+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0
+  script.advance_participant_clock_by_1_second:
+    entity_id: script.advance_participant_clock_by_1_second
+    friendly_name: Advance Participant Clock by 1 Second
+    domain: script
+    current_state: 'off'
+    last_changed: '2026-06-22T13:09:03.064270+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0
+  script.sync_participant_clock_to_experiment_clock:
+    entity_id: script.sync_participant_clock_to_experiment_clock
+    friendly_name: Sync Second Clock to Experiment Clock
+    domain: script
+    current_state: 'off'
+    last_changed: '2026-06-19T17:04:49.365234+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0
+  script.set_experiment_and_participant_clocks:
+    entity_id: script.set_experiment_and_participant_clocks
+    friendly_name: Set Experiment and Participant Clocks Manually
+    domain: script
+    current_state: 'off'
+    last_changed: '2026-06-19T17:04:49.365359+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0
+  script.1779809457657:
+    entity_id: script.1779809457657
+    friendly_name: TV_On
+    domain: script
+    current_state: 'off'
+    last_changed: '2026-06-19T17:04:49.365467+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0
+  script.tv_off:
+    entity_id: script.tv_off
+    friendly_name: TV_Off
+    domain: script
+    current_state: 'off'
+    last_changed: '2026-06-19T17:04:49.365568+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0
+  input_boolean.report_toggle_state_bedlight_l:
+    entity_id: input_boolean.report_toggle_state_bedlight_l
+    friendly_name: Report Toggle State Bedlight L
+    domain: input_boolean
+    current_state: 'off'
+    last_changed: '2026-06-19T17:04:49.375982+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0
+  input_boolean.report_toggle_state_bedlight_r:
+    entity_id: input_boolean.report_toggle_state_bedlight_r
+    friendly_name: Report Toggle State Bedlight R
+    domain: input_boolean
+    current_state: 'off'
+    last_changed: '2026-06-19T17:04:49.376057+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0
+  input_boolean.report_toggle_state_windowlight:
+    entity_id: input_boolean.report_toggle_state_windowlight
+    friendly_name: Report Toggle State Windowlight
+    domain: input_boolean
+    current_state: 'off'
+    last_changed: '2026-06-19T17:04:49.376106+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0
+  input_boolean.report_toggle_state_doorlight:
+    entity_id: input_boolean.report_toggle_state_doorlight
+    friendly_name: Report Toggle State Doorlight
+    domain: input_boolean
+    current_state: 'off'
+    last_changed: '2026-06-19T17:04:49.376146+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0
+  input_boolean.report_activity_roller_shutter_control:
+    entity_id: input_boolean.report_activity_roller_shutter_control
+    friendly_name: Report Activity Roller Shutter Control
+    domain: input_boolean
+    current_state: 'off'
+    last_changed: '2026-06-19T17:04:49.376182+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0
+  input_boolean.report_toggle_state_floorlamp:
+    entity_id: input_boolean.report_toggle_state_floorlamp
+    friendly_name: Report Toggle State Floorlamp
+    domain: input_boolean
+    current_state: 'off'
+    last_changed: '2026-06-19T17:04:49.376225+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0
+  input_boolean.fan_integration:
+    entity_id: input_boolean.fan_integration
+    friendly_name: Fan_Integration
+    domain: input_boolean
+    current_state: 'off'
+    last_changed: '2026-06-19T17:04:49.376270+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.sun_next_dawn:
+    entity_id: sensor.sun_next_dawn
+    friendly_name: Sun Next dawn
+    domain: sensor
+    current_state: '2026-06-23T02:07:47+00:00'
+    last_changed: '2026-06-22T02:07:29.210481+00:00'
+    device_class: timestamp
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.sun_next_dusk:
+    entity_id: sensor.sun_next_dusk
+    friendly_name: Sun Next dusk
+    domain: sensor
+    current_state: '2026-06-22T20:50:40+00:00'
+    last_changed: '2026-06-21T20:50:32.007146+00:00'
+    device_class: timestamp
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.sun_next_midnight:
+    entity_id: sensor.sun_next_midnight
+    friendly_name: Sun Next midnight
+    domain: sensor
+    current_state: '2026-06-22T23:29:20+00:00'
+    last_changed: '2026-06-21T23:29:07.004865+00:00'
+    device_class: timestamp
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.sun_next_noon:
+    entity_id: sensor.sun_next_noon
+    friendly_name: Sun Next noon
+    domain: sensor
+    current_state: '2026-06-23T11:29:13+00:00'
+    last_changed: '2026-06-22T11:29:00.005110+00:00'
+    device_class: timestamp
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.sun_next_rising:
+    entity_id: sensor.sun_next_rising
+    friendly_name: Sun Next rising
+    domain: sensor
+    current_state: '2026-06-23T03:00:48+00:00'
+    last_changed: '2026-06-22T03:00:30.867670+00:00'
+    device_class: timestamp
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.sun_next_setting:
+    entity_id: sensor.sun_next_setting
+    friendly_name: Sun Next setting
+    domain: sensor
+    current_state: '2026-06-22T19:57:40+00:00'
+    last_changed: '2026-06-21T19:57:30.384865+00:00'
+    device_class: timestamp
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.time:
+    entity_id: sensor.time
+    friendly_name: Time
+    domain: sensor
+    current_state: '15:09'
+    last_changed: '2026-06-22T13:09:00.000729+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  binary_sensor.tv_status:
+    entity_id: binary_sensor.tv_status
+    friendly_name: TV Status
+    domain: binary_sensor
+    current_state: 'off'
+    last_changed: '2026-06-20T17:08:43.747612+00:00'
+    device_class: null
+    unit_of_measurement: null
+    involved_in_study_automations:
+    - automation.exp_movie_mode_tv_on_fan_off
+    - automation.exp_tv_ambient_wall_dim
+    study_automation_count: 2
+  input_datetime.experiment_clock:
+    entity_id: input_datetime.experiment_clock
+    friendly_name: Experiment Clock
+    domain: input_datetime
+    current_state: 08:56:17
+    last_changed: '2026-06-22T13:09:03.299755+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0
+  input_datetime.participant_time:
+    entity_id: input_datetime.participant_time
+    friendly_name: Participant Time
+    domain: input_datetime
+    current_state: 09:01:15
+    last_changed: '2026-06-22T13:09:03.064029+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0
+  input_datetime.openingcurtaintime:
+    entity_id: input_datetime.openingcurtaintime
+    friendly_name: OpeningCurtainTime
+    domain: input_datetime
+    current_state: 00:00:00
+    last_changed: '2026-06-19T17:04:50.538825+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.local_ip:
+    entity_id: sensor.local_ip
+    friendly_name: Local IP
+    domain: sensor
+    current_state: 192.168.178.28
+    last_changed: '2026-06-19T17:04:50.862741+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  binary_sensor.ipad_focus:
+    entity_id: binary_sensor.ipad_focus
+    friendly_name: iPad Focus
+    domain: binary_sensor
+    current_state: 'off'
+    last_changed: '2026-06-19T17:04:50.998154+00:00'
+    device_class: null
+    unit_of_measurement: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.ipad_activity:
+    entity_id: sensor.ipad_activity
+    friendly_name: iPad Activity
+    domain: sensor
+    current_state: Stationary
+    last_changed: '2026-06-19T17:04:50.998983+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.ipad_connection_type:
+    entity_id: sensor.ipad_connection_type
+    friendly_name: iPad Connection Type
+    domain: sensor
+    current_state: Wi-Fi
+    last_changed: '2026-06-19T17:04:50.999076+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.ipad_battery_state:
+    entity_id: sensor.ipad_battery_state
+    friendly_name: iPad Battery State
+    domain: sensor
+    current_state: Not Charging
+    last_changed: '2026-06-19T17:04:50.999155+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.ipad_geocoded_location:
+    entity_id: sensor.ipad_geocoded_location
+    friendly_name: iPad Geocoded Location
+    domain: sensor
+    current_state: 'Escherweg 2
+
+      26121 Oldenburg
+
+      Germany'
+    last_changed: '2026-06-19T17:04:50.999227+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.ipad_battery_level:
+    entity_id: sensor.ipad_battery_level
+    friendly_name: iPad Battery Level
+    domain: sensor
+    current_state: '55'
+    last_changed: '2026-06-19T17:04:50.999310+00:00'
+    device_class: battery
+    unit_of_measurement: '%'
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.ipad_storage:
+    entity_id: sensor.ipad_storage
+    friendly_name: iPad Storage
+    domain: sensor
+    current_state: '92.29'
+    last_changed: '2026-06-19T17:04:50.999559+00:00'
+    device_class: null
+    unit_of_measurement: '% available'
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.ipad_ssid:
+    entity_id: sensor.ipad_ssid
+    friendly_name: iPad SSID
+    domain: sensor
+    current_state: SmartHotel
+    last_changed: '2026-06-19T17:04:50.999649+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.ipad_bssid:
+    entity_id: sensor.ipad_bssid
+    friendly_name: iPad BSSID
+    domain: sensor
+    current_state: 80:23:95:0c:c0:a0
+    last_changed: '2026-06-19T17:04:50.999721+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.ipad_app_version:
+    entity_id: sensor.ipad_app_version
+    friendly_name: iPad App Version
+    domain: sensor
+    current_state: 2026.1.1
+    last_changed: '2026-06-19T17:04:50.999784+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.ipad_last_update_trigger:
+    entity_id: sensor.ipad_last_update_trigger
+    friendly_name: iPad Last Update Trigger
+    domain: sensor
+    current_state: Geographic Region Exited
+    last_changed: '2026-06-19T17:04:50.999853+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.ipad_location_permission:
+    entity_id: sensor.ipad_location_permission
+    friendly_name: iPad Location permission
+    domain: sensor
+    current_state: Authorized when in use
+    last_changed: '2026-06-19T17:04:50.999916+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.ipad_audio_output:
+    entity_id: sensor.ipad_audio_output
+    friendly_name: iPad Audio Output
+    domain: sensor
+    current_state: Built-in Speaker
+    last_changed: '2026-06-19T17:04:50.999979+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.pixel_battery_level:
+    entity_id: sensor.pixel_battery_level
+    friendly_name: Pixel Battery level
+    domain: sensor
+    current_state: '80'
+    last_changed: '2026-06-19T17:04:51.000490+00:00'
+    device_class: battery
+    unit_of_measurement: '%'
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.pixel_battery_state:
+    entity_id: sensor.pixel_battery_state
+    friendly_name: Pixel Battery state
+    domain: sensor
+    current_state: not_charging
+    last_changed: '2026-06-19T17:04:51.000574+00:00'
+    device_class: enum
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.pixel_charger_type:
+    entity_id: sensor.pixel_charger_type
+    friendly_name: Pixel Charger type
+    domain: sensor
+    current_state: ac
+    last_changed: '2026-06-19T17:04:51.000651+00:00'
+    device_class: enum
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  todo.shopping_list:
+    entity_id: todo.shopping_list
+    friendly_name: Shopping List
+    domain: todo
+    current_state: '0'
+    last_changed: '2026-06-19T17:04:51.005777+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0
+  cover.rollo:
+    entity_id: cover.rollo
+    friendly_name: Roller Shutter
+    domain: cover
+    current_state: open
+    last_changed: '2026-06-19T17:04:56.580978+00:00'
+    current_position: 91
+    device_class: shade
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.rollerblind_0004_battery:
+    entity_id: sensor.rollerblind_0004_battery
+    friendly_name: RollerBlind 0004 Battery
+    domain: sensor
+    current_state: '86.0'
+    last_changed: '2026-06-21T23:50:44.993648+00:00'
+    device_class: battery
+    unit_of_measurement: '%'
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  binary_sensor.zigbee2mqtt_bridge_connection_state:
+    entity_id: binary_sensor.zigbee2mqtt_bridge_connection_state
+    friendly_name: Connection state
+    domain: binary_sensor
+    current_state: unavailable
+    last_changed: '2026-06-19T17:05:14.045867+00:00'
+    device_class: connectivity
+    unit_of_measurement: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  binary_sensor.zigbee2mqtt_bridge_connection_state_2:
+    entity_id: binary_sensor.zigbee2mqtt_bridge_connection_state_2
+    friendly_name: Zigbee2MQTT Bridge Connection state
+    domain: binary_sensor
+    current_state: 'on'
+    last_changed: '2026-06-20T17:08:43.737945+00:00'
+    device_class: connectivity
+    unit_of_measurement: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.zigbee2mqtt_bridge_version:
+    entity_id: sensor.zigbee2mqtt_bridge_version
+    friendly_name: Zigbee2MQTT Bridge Version
+    domain: sensor
+    current_state: 2.5.1
+    last_changed: '2026-06-20T17:08:43.728836+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  switch.zigbee2mqtt_bridge_permit_join:
+    entity_id: switch.zigbee2mqtt_bridge_permit_join
+    friendly_name: Zigbee2MQTT Bridge Permit join
+    domain: switch
+    current_state: 'off'
+    last_changed: '2026-06-20T17:08:43.745185+00:00'
+    device_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  light.doorlight:
+    entity_id: light.doorlight
+    friendly_name: Door Light
+    domain: light
+    current_state: 'off'
+    last_changed: '2026-06-22T07:36:42.137937+00:00'
+    brightness: null
+    color_mode: null
+    supported_color_modes:
+    - color_temp
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.doorlight_color_options:
+    entity_id: sensor.doorlight_color_options
+    friendly_name: Door Light Color options
+    domain: sensor
+    current_state: ''
+    last_changed: '2026-06-20T17:08:43.731247+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  light.windowlight:
+    entity_id: light.windowlight
+    friendly_name: Window Light
+    domain: light
+    current_state: 'off'
+    last_changed: '2026-06-20T17:08:43.746356+00:00'
+    brightness: null
+    color_mode: null
+    supported_color_modes:
+    - color_temp
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.windowlight_color_options:
+    entity_id: sensor.windowlight_color_options
+    friendly_name: Window Light Color options
+    domain: sensor
+    current_state: ''
+    last_changed: '2026-06-20T17:08:43.735779+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.h1switch_door_battery:
+    entity_id: sensor.h1switch_door_battery
+    friendly_name: Wall Switch Battery
+    domain: sensor
+    current_state: '90'
+    last_changed: '2026-06-22T13:08:22.334015+00:00'
+    device_class: battery
+    unit_of_measurement: '%'
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  light.bedlight_r:
+    entity_id: light.bedlight_r
+    friendly_name: Bedlight R
+    domain: light
+    current_state: 'off'
+    last_changed: '2026-06-20T17:08:43.746791+00:00'
+    brightness: null
+    color_mode: null
+    supported_color_modes:
+    - color_temp
+    - xy
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.bedlight_r_color_options:
+    entity_id: sensor.bedlight_r_color_options
+    friendly_name: Bedlight R Color options
+    domain: sensor
+    current_state: ''
+    last_changed: '2026-06-20T17:08:43.729406+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  light.bedlight_l:
+    entity_id: light.bedlight_l
+    friendly_name: Bedlight L
+    domain: light
+    current_state: 'off'
+    last_changed: '2026-06-20T17:08:43.736682+00:00'
+    brightness: null
+    color_mode: null
+    supported_color_modes:
+    - color_temp
+    - xy
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.bedlight_l_color_options:
+    entity_id: sensor.bedlight_l_color_options
+    friendly_name: Bedlight L Color options
+    domain: sensor
+    current_state: ''
+    last_changed: '2026-06-20T17:08:43.747014+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.sf_02_battery:
+    entity_id: sensor.sf_02_battery
+    friendly_name: Button - Bedside Left Battery
+    domain: sensor
+    current_state: '100'
+    last_changed: '2026-06-20T17:08:43.731676+00:00'
+    device_class: battery
+    unit_of_measurement: '%'
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.sf_01_battery:
+    entity_id: sensor.sf_01_battery
+    friendly_name: Button - Bedside Right Battery
+    domain: sensor
+    current_state: '100'
+    last_changed: '2026-06-20T17:08:43.728431+00:00'
+    device_class: battery
+    unit_of_measurement: '%'
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.pir_window_battery:
+    entity_id: sensor.pir_window_battery
+    friendly_name: PIR_Window Battery
+    domain: sensor
+    current_state: '55'
+    last_changed: '2026-06-20T23:02:04.811869+00:00'
+    device_class: battery
+    unit_of_measurement: '%'
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  binary_sensor.pir_window_occupancy:
+    entity_id: binary_sensor.pir_window_occupancy
+    friendly_name: PIR_Window Occupancy
+    domain: binary_sensor
+    current_state: 'off'
+    last_changed: '2026-06-22T07:37:54.874769+00:00'
+    device_class: occupancy
+    unit_of_measurement: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  binary_sensor.pir_window_battery_low:
+    entity_id: binary_sensor.pir_window_battery_low
+    friendly_name: PIR_Window Battery
+    domain: binary_sensor
+    current_state: 'off'
+    last_changed: '2026-06-20T17:08:43.746505+00:00'
+    device_class: battery
+    unit_of_measurement: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.pir_door_battery:
+    entity_id: sensor.pir_door_battery
+    friendly_name: PIR_Door Battery
+    domain: sensor
+    current_state: '100'
+    last_changed: '2026-06-20T17:08:43.731335+00:00'
+    device_class: battery
+    unit_of_measurement: '%'
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  binary_sensor.pir_door_occupancy:
+    entity_id: binary_sensor.pir_door_occupancy
+    friendly_name: PIR_Door Occupancy
+    domain: binary_sensor
+    current_state: 'on'
+    last_changed: '2026-06-20T17:08:43.728127+00:00'
+    device_class: occupancy
+    unit_of_measurement: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  binary_sensor.pir_door_battery_low:
+    entity_id: binary_sensor.pir_door_battery_low
+    friendly_name: PIR_Door Battery
+    domain: binary_sensor
+    current_state: 'off'
+    last_changed: '2026-06-20T17:08:43.745255+00:00'
+    device_class: battery
+    unit_of_measurement: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.rolloswitch_battery:
+    entity_id: sensor.rolloswitch_battery
+    friendly_name: Button - Roller Shutter Battery
+    domain: sensor
+    current_state: '16'
+    last_changed: '2026-06-20T17:08:43.737675+00:00'
+    device_class: battery
+    unit_of_measurement: '%'
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  switch.0x54ef441000c939e0_hand_open:
+    entity_id: switch.0x54ef441000c939e0_hand_open
+    friendly_name: Curtain Hand open
+    domain: switch
+    current_state: 'off'
+    last_changed: '2026-06-20T17:08:43.730751+00:00'
+    device_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.0x54ef441000c939e0_battery:
+    entity_id: sensor.0x54ef441000c939e0_battery
+    friendly_name: Curtain Battery
+    domain: sensor
+    current_state: '66'
+    last_changed: '2026-06-20T17:08:43.744523+00:00'
+    device_class: battery
+    unit_of_measurement: '%'
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.0x54ef441000c939e0_voltage:
+    entity_id: sensor.0x54ef441000c939e0_voltage
+    friendly_name: Curtain Voltage
+    domain: sensor
+    current_state: '3000'
+    last_changed: '2026-06-20T21:41:39.716177+00:00'
+    device_class: voltage
+    unit_of_measurement: mV
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.0x54ef441000c939e0_device_temperature:
+    entity_id: sensor.0x54ef441000c939e0_device_temperature
+    friendly_name: Curtain Temperature
+    domain: sensor
+    current_state: '27'
+    last_changed: '2026-06-22T12:53:27.431508+00:00'
+    device_class: temperature
+    unit_of_measurement: °C
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.0x54ef441000c939e0_illuminance:
+    entity_id: sensor.0x54ef441000c939e0_illuminance
+    friendly_name: Curtain Illuminance
+    domain: sensor
+    current_state: '100'
+    last_changed: '2026-06-22T11:19:20.825326+00:00'
+    device_class: illuminance
+    unit_of_measurement: lx
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.0x54ef441000c939e0_motor_state:
+    entity_id: sensor.0x54ef441000c939e0_motor_state
+    friendly_name: Curtain Motor state
+    domain: sensor
+    current_state: stopped
+    last_changed: '2026-06-20T17:08:43.740297+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  binary_sensor.0x54ef441000c939e0_running:
+    entity_id: binary_sensor.0x54ef441000c939e0_running
+    friendly_name: Curtain Running
+    domain: binary_sensor
+    current_state: 'off'
+    last_changed: '2026-06-20T17:08:43.736985+00:00'
+    device_class: null
+    unit_of_measurement: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.0x54ef441000c939e0_hooks_state:
+    entity_id: sensor.0x54ef441000c939e0_hooks_state
+    friendly_name: Curtain Hooks state
+    domain: sensor
+    current_state: unlocked
+    last_changed: '2026-06-20T17:08:43.737595+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.0x54ef441000c939e0_target_position:
+    entity_id: sensor.0x54ef441000c939e0_target_position
+    friendly_name: Curtain Target position
+    domain: sensor
+    current_state: '65'
+    last_changed: '2026-06-20T17:08:43.740059+00:00'
+    device_class: null
+    unit_of_measurement: '%'
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.0x54ef441000c939e0_power_source:
+    entity_id: sensor.0x54ef441000c939e0_power_source
+    friendly_name: Curtain Power source
+    domain: sensor
+    current_state: battery
+    last_changed: '2026-06-20T17:08:43.740776+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  binary_sensor.0x54ef441000c939e0_charging:
+    entity_id: binary_sensor.0x54ef441000c939e0_charging
+    friendly_name: Curtain Charging
+    domain: binary_sensor
+    current_state: 'off'
+    last_changed: '2026-06-20T17:08:43.744434+00:00'
+    device_class: null
+    unit_of_measurement: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.cube_battery:
+    entity_id: sensor.cube_battery
+    friendly_name: Cube Battery
+    domain: sensor
+    current_state: '100'
+    last_changed: '2026-06-20T17:08:43.743990+00:00'
+    device_class: battery
+    unit_of_measurement: '%'
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.cube_voltage:
+    entity_id: sensor.cube_voltage
+    friendly_name: Cube Voltage
+    domain: sensor
+    current_state: '3072'
+    last_changed: '2026-06-22T12:17:23.373603+00:00'
+    device_class: voltage
+    unit_of_measurement: mV
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.cube_side:
+    entity_id: sensor.cube_side
+    friendly_name: Cube Side
+    domain: sensor
+    current_state: '2'
+    last_changed: '2026-06-20T17:08:43.746445+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.cube_action_from_side:
+    entity_id: sensor.cube_action_from_side
+    friendly_name: Cube Action from side
+    domain: sensor
+    current_state: unknown
+    last_changed: '2026-06-20T17:08:43.738926+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.cube_action_angle:
+    entity_id: sensor.cube_action_angle
+    friendly_name: Cube Action angle
+    domain: sensor
+    current_state: unknown
+    last_changed: '2026-06-20T17:08:43.727274+00:00'
+    device_class: null
+    unit_of_measurement: °
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  binary_sensor.heater_setup:
+    entity_id: binary_sensor.heater_setup
+    friendly_name: Heater Running
+    domain: binary_sensor
+    current_state: 'off'
+    last_changed: '2026-06-20T17:08:43.739707+00:00'
+    device_class: running
+    unit_of_measurement: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  climate.heater:
+    entity_id: climate.heater
+    friendly_name: Heater
+    domain: climate
+    current_state: heat
+    last_changed: '2026-06-20T17:08:43.739232+00:00'
+    hvac_mode: heat
+    current_temperature: 22.0
+    target_temperature: 21.5
+    hvac_modes:
+    - 'off'
+    - heat
+    involved_in_study_automations: []
+    study_automation_count: 0
+  binary_sensor.heater_calibrated:
+    entity_id: binary_sensor.heater_calibrated
+    friendly_name: Heater Calibrated
+    domain: binary_sensor
+    current_state: 'on'
+    last_changed: '2026-06-20T17:08:43.729036+00:00'
+    device_class: null
+    unit_of_measurement: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  switch.heater_child_lock:
+    entity_id: switch.heater_child_lock
+    friendly_name: Heater Child lock
+    domain: switch
+    current_state: 'off'
+    last_changed: '2026-06-20T17:08:43.740154+00:00'
+    device_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  switch.heater_window_detection:
+    entity_id: switch.heater_window_detection
+    friendly_name: Heater Window detection
+    domain: switch
+    current_state: 'on'
+    last_changed: '2026-06-20T17:08:43.745790+00:00'
+    device_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  binary_sensor.heater_window_open:
+    entity_id: binary_sensor.heater_window_open
+    friendly_name: Heater Window
+    domain: binary_sensor
+    current_state: 'off'
+    last_changed: '2026-06-20T17:08:43.744172+00:00'
+    device_class: window
+    unit_of_measurement: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  switch.heater_valve_detection:
+    entity_id: switch.heater_valve_detection
+    friendly_name: Heater Valve detection
+    domain: switch
+    current_state: 'on'
+    last_changed: '2026-06-20T17:08:43.744888+00:00'
+    device_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  binary_sensor.heater_valve_alarm:
+    entity_id: binary_sensor.heater_valve_alarm
+    friendly_name: Heater Problem
+    domain: binary_sensor
+    current_state: 'on'
+    last_changed: '2026-06-20T17:08:43.736360+00:00'
+    device_class: problem
+    unit_of_measurement: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.heater_voltage:
+    entity_id: sensor.heater_voltage
+    friendly_name: Heater Voltage
+    domain: sensor
+    current_state: '3100'
+    last_changed: '2026-06-20T17:08:43.728948+00:00'
+    device_class: voltage
+    unit_of_measurement: mV
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.heater_battery:
+    entity_id: sensor.heater_battery
+    friendly_name: Heater Battery
+    domain: sensor
+    current_state: '81'
+    last_changed: '2026-06-22T09:56:37.505982+00:00'
+    device_class: battery
+    unit_of_measurement: '%'
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.heater_device_temperature:
+    entity_id: sensor.heater_device_temperature
+    friendly_name: Heater Temperature
+    domain: sensor
+    current_state: '24'
+    last_changed: '2026-06-21T22:35:53.013463+00:00'
+    device_class: temperature
+    unit_of_measurement: °C
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  switch.heater_schedule:
+    entity_id: switch.heater_schedule
+    friendly_name: Heater Schedule
+    domain: switch
+    current_state: 'off'
+    last_changed: '2026-06-20T17:08:43.728620+00:00'
+    device_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.presencesensor_device_temperature:
+    entity_id: sensor.presencesensor_device_temperature
+    friendly_name: PresenceSensor Temperature
+    domain: sensor
+    current_state: '28'
+    last_changed: '2026-06-21T21:01:11.174587+00:00'
+    device_class: temperature
+    unit_of_measurement: °C
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  binary_sensor.presencesensor_presence:
+    entity_id: binary_sensor.presencesensor_presence
+    friendly_name: PresenceSensor Presence
+    domain: binary_sensor
+    current_state: 'on'
+    last_changed: '2026-06-22T10:54:39.390606+00:00'
+    device_class: presence
+    unit_of_measurement: null
+    involved_in_study_automations:
+    - automation.exp_evening_bed_lights_on
+    - automation.exp_greeting_door_light
+    - automation.exp_morning_curtains_open
+    - automation.exp_movie_mode_tv_on_fan_off
+    study_automation_count: 4
+  sensor.presencesensor_movement:
+    entity_id: sensor.presencesensor_movement
+    friendly_name: PresenceSensor Movement
+    domain: sensor
+    current_state: no_movement
+    last_changed: '2026-06-22T10:54:39.396656+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.presencesensor_target_distance:
+    entity_id: sensor.presencesensor_target_distance
+    friendly_name: PresenceSensor Target distance
+    domain: sensor
+    current_state: '1.95'
+    last_changed: '2026-06-22T11:31:09.481235+00:00'
+    device_class: null
+    unit_of_measurement: m
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  cover.0x54ef441000c939e0:
+    entity_id: cover.0x54ef441000c939e0
+    friendly_name: Curtain
+    domain: cover
+    current_state: open
+    last_changed: '2026-06-20T17:08:43.739036+00:00'
+    current_position: 65
+    device_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  switch.irblaster_learn_ir_code:
+    entity_id: switch.irblaster_learn_ir_code
+    friendly_name: IRBlaster Learn ir code
+    domain: switch
+    current_state: unknown
+    last_changed: '2026-06-20T17:08:43.730675+00:00'
+    device_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.irblaster_learned_ir_code:
+    entity_id: sensor.irblaster_learned_ir_code
+    friendly_name: IRBlaster Learned ir code
+    domain: sensor
+    current_state: DYkDiQMDBwMHiQOJAwMHQAEBiQOAAQADYAkAA2AFD/r8iQOJAwMHAweJA4kDAwdAAQGJA4ABAANgCQADYAXgHCcCA4kD
+    last_changed: '2026-06-20T17:08:43.730217+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.irblaster_battery:
+    entity_id: sensor.irblaster_battery
+    friendly_name: IRBlaster Battery
+    domain: sensor
+    current_state: '46'
+    last_changed: '2026-06-20T17:08:43.745868+00:00'
+    device_class: battery
+    unit_of_measurement: '%'
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.irblaster_voltage:
+    entity_id: sensor.irblaster_voltage
+    friendly_name: IRBlaster Voltage
+    domain: sensor
+    current_state: '1300'
+    last_changed: '2026-06-20T17:08:43.738198+00:00'
+    device_class: voltage
+    unit_of_measurement: mV
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.temp_humid_battery:
+    entity_id: sensor.temp_humid_battery
+    friendly_name: Temperature Sensor Battery
+    domain: sensor
+    current_state: '100'
+    last_changed: '2026-06-20T17:08:43.746267+00:00'
+    device_class: battery
+    unit_of_measurement: '%'
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.temp_humid_temperature:
+    entity_id: sensor.temp_humid_temperature
+    friendly_name: Temperature Sensor Temperature
+    domain: sensor
+    current_state: '23'
+    last_changed: '2026-06-22T12:41:21.515327+00:00'
+    device_class: temperature
+    unit_of_measurement: °C
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.temp_humid_humidity:
+    entity_id: sensor.temp_humid_humidity
+    friendly_name: Humidity
+    domain: sensor
+    current_state: '63.5'
+    last_changed: '2026-06-22T09:17:43.209116+00:00'
+    device_class: humidity
+    unit_of_measurement: '%'
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  binary_sensor.sensor_door_contact:
+    entity_id: binary_sensor.sensor_door_contact
+    friendly_name: Sensor_Door Door
+    domain: binary_sensor
+    current_state: 'off'
+    last_changed: '2026-06-22T07:37:01.510555+00:00'
+    device_class: door
+    unit_of_measurement: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.sensor_door_battery:
+    entity_id: sensor.sensor_door_battery
+    friendly_name: Sensor_Door Battery
+    domain: sensor
+    current_state: '100'
+    last_changed: '2026-06-20T17:08:43.739630+00:00'
+    device_class: battery
+    unit_of_measurement: '%'
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.sensor_door_voltage:
+    entity_id: sensor.sensor_door_voltage
+    friendly_name: Sensor_Door Voltage
+    domain: sensor
+    current_state: '1400'
+    last_changed: '2026-06-20T17:08:43.739532+00:00'
+    device_class: voltage
+    unit_of_measurement: mV
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  switch.socket_fan:
+    entity_id: switch.socket_fan
+    friendly_name: Socket - Fan
+    domain: switch
+    current_state: 'on'
+    last_changed: '2026-06-20T17:08:43.727141+00:00'
+    device_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  switch.socket_bedlightl:
+    entity_id: switch.socket_bedlightl
+    friendly_name: Socket - Bedlight Left
+    domain: switch
+    current_state: 'on'
+    last_changed: '2026-06-20T17:08:43.747223+00:00'
+    device_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  switch.socket_tv:
+    entity_id: switch.socket_tv
+    friendly_name: Socket - TV
+    domain: switch
+    current_state: 'on'
+    last_changed: '2026-06-20T17:08:43.737067+00:00'
+    device_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.socket_tv_power:
+    entity_id: sensor.socket_tv_power
+    friendly_name: Socket - TV Power
+    domain: sensor
+    current_state: '0.2'
+    last_changed: '2026-06-22T13:04:25.151569+00:00'
+    device_class: power
+    unit_of_measurement: W
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.socket_tv_voltage:
+    entity_id: sensor.socket_tv_voltage
+    friendly_name: Socket - TV Voltage
+    domain: sensor
+    current_state: '232.3'
+    last_changed: '2026-06-22T03:01:20.161764+00:00'
+    device_class: voltage
+    unit_of_measurement: V
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.socket_tv_current:
+    entity_id: sensor.socket_tv_current
+    friendly_name: Socket - TV Current
+    domain: sensor
+    current_state: '0.05'
+    last_changed: '2026-06-20T17:08:43.746956+00:00'
+    device_class: current
+    unit_of_measurement: A
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.socket_tv_energy:
+    entity_id: sensor.socket_tv_energy
+    friendly_name: Socket - TV Energy
+    domain: sensor
+    current_state: '4.61'
+    last_changed: '2026-06-22T05:24:59.429055+00:00'
+    device_class: energy
+    unit_of_measurement: kWh
+    state_class: total_increasing
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.standlightswitch_battery:
+    entity_id: sensor.standlightswitch_battery
+    friendly_name: Button - Floor Lamp Battery
+    domain: sensor
+    current_state: '100'
+    last_changed: '2026-06-20T17:08:43.745955+00:00'
+    device_class: battery
+    unit_of_measurement: '%'
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.standlightswitch_voltage:
+    entity_id: sensor.standlightswitch_voltage
+    friendly_name: Button - Floor Lamp Voltage
+    domain: sensor
+    current_state: '3005'
+    last_changed: '2026-06-20T17:08:43.736137+00:00'
+    device_class: voltage
+    unit_of_measurement: mV
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.standlightswitch_device_temperature:
+    entity_id: sensor.standlightswitch_device_temperature
+    friendly_name: Button - Floor Lamp Temperature
+    domain: sensor
+    current_state: '25'
+    last_changed: '2026-06-20T17:08:43.744810+00:00'
+    device_class: temperature
+    unit_of_measurement: °C
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  light.floorlamp:
+    entity_id: light.floorlamp
+    friendly_name: Floor Lamp
+    domain: light
+    current_state: 'off'
+    last_changed: '2026-06-20T17:08:43.745537+00:00'
+    brightness: null
+    color_mode: null
+    supported_color_modes:
+    - color_temp
+    - xy
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.floorlamp_color_options:
+    entity_id: sensor.floorlamp_color_options
+    friendly_name: Floor Lamp Color options
+    domain: sensor
+    current_state: ''
+    last_changed: '2026-06-20T17:08:43.746109+00:00'
+    device_class: null
+    unit_of_measurement: null
+    state_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.smartfan_temperature:
+    entity_id: sensor.smartfan_temperature
+    friendly_name: SmartFan temperature
+    domain: sensor
+    current_state: unavailable
+    last_changed: '2026-06-19T17:05:14.047683+00:00'
+    device_class: temperature
+    unit_of_measurement: °C
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  switch.smartfan_horizontally_oscillating:
+    entity_id: switch.smartfan_horizontally_oscillating
+    friendly_name: SmartFan Horizontal Oscillation
+    domain: switch
+    current_state: 'off'
+    last_changed: '2026-06-20T14:30:19.459040+00:00'
+    device_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  switch.smartfan_vertically_oscillating:
+    entity_id: switch.smartfan_vertically_oscillating
+    friendly_name: SmartFan Vertical Oscillation
+    domain: switch
+    current_state: 'off'
+    last_changed: '2026-06-20T14:30:19.459219+00:00'
+    device_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  switch.smartfan_panel_sound:
+    entity_id: switch.smartfan_panel_sound
+    friendly_name: SmartFan Panel Sound
+    domain: switch
+    current_state: 'on'
+    last_changed: '2026-06-20T14:30:19.459284+00:00'
+    device_class: null
+    involved_in_study_automations: []
+    study_automation_count: 0
+  fan.smartfan:
+    entity_id: fan.smartfan
+    friendly_name: SmartFan
+    domain: fan
+    current_state: 'off'
+    last_changed: '2026-06-20T14:31:47.570298+00:00'
+    percentage: 75
+    preset_mode: normal
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.smartfan_temperature_2:
+    entity_id: sensor.smartfan_temperature_2
+    friendly_name: SmartFan Temperature
+    domain: sensor
+    current_state: '27'
+    last_changed: '2026-06-22T07:39:00.027077+00:00'
+    device_class: temperature
+    unit_of_measurement: °C
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  binary_sensor.sensor_window_contact:
+    entity_id: binary_sensor.sensor_window_contact
+    friendly_name: Window
+    domain: binary_sensor
+    current_state: 'off'
+    last_changed: '2026-06-20T17:08:43.738444+00:00'
+    device_class: window
+    unit_of_measurement: null
+    involved_in_study_automations:
+    - automation.exp_window_closed_fan_on
+    study_automation_count: 1
+  sensor.sensor_window_battery:
+    entity_id: sensor.sensor_window_battery
+    friendly_name: Sensor_Window Battery
+    domain: sensor
+    current_state: '100'
+    last_changed: '2026-06-20T17:08:43.727760+00:00'
+    device_class: battery
+    unit_of_measurement: '%'
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  sensor.sensor_window_voltage:
+    entity_id: sensor.sensor_window_voltage
+    friendly_name: Sensor_Window Voltage
+    domain: sensor
+    current_state: '1500'
+    last_changed: '2026-06-20T17:08:43.740640+00:00'
+    device_class: voltage
+    unit_of_measurement: mV
+    state_class: measurement
+    involved_in_study_automations: []
+    study_automation_count: 0
+  media_player.fire_tv_192_168_178_22:
+    entity_id: media_player.fire_tv_192_168_178_22
+    friendly_name: Fire TV 192.168.178.22
+    domain: media_player
+    current_state: unavailable
+    last_changed: '2026-06-22T13:04:36.348066+00:00'
+    involved_in_study_automations: []
+    study_automation_count: 0

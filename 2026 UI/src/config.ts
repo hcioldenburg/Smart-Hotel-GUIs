@@ -1,0 +1,9 @@
+export const TOKEN =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIzN2IzMzk0OGE1NDk0NjMyYWJkZjVmNjNkMWY4MzA3NiIsImlhdCI6MTc1MDg1MzY0MCwiZXhwIjoyMDY2MjEzNjQwfQ.4QYd6clcfTUVPX3Q33y6ta88O3-E35u_ILSzM9fA0jE';
+
+export const RECORDER_PASSWORD = 'shhub';
+
+export const HA_HEADERS = {
+  Authorization: `Bearer ${TOKEN}`,
+  'Content-Type': 'application/json',
+};
